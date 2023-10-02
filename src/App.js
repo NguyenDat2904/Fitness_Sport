@@ -2,6 +2,8 @@ import { Fragment } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes/routes';
 import DefaultLayout from './Layout/DefaultLayout/DefaultLayout';
+import Register from './Layout/DefaultLayout/Register/Form/Form'
+import Header from './Layout/DefaultLayout/Header/Header';
 function App() {
     return (
         <Router>
@@ -29,6 +31,8 @@ function App() {
                             />
                         );
                     })}
+                    <Route path='/register' element={<Register/>}></Route>
+                    <Route path='/login'></Route>
                 </Routes>
             </div>
         </Router>

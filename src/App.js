@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes/routes';
 import DefaultLayout from './Layout/DefaultLayout/DefaultLayout';
 import { AppProvider } from '../src/hook/context/AppContext';
+import Register from '../src/pages/Register/Form/Form';
+import Signin from './pages/Signin/Signin';
 function App() {
     return (
         <AppProvider>
@@ -29,6 +31,8 @@ function App() {
                                 />
                             );
                         })}
+                          <Route path='/register' element={<Register/>}></Route>
+                         <Route path='/signin' element={<Signin/>}></Route>
                     </Routes>
                 </div>
             </Router>

@@ -58,8 +58,32 @@ body {
     text-align: left;
     color: #212529;
 }
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+ul{
+    margin: 0;
+}
+
+.slick-dots {
+    bottom: 20px;
+}
+
+.slick-slider{
+    max-width: 100vw;
+    width: 100%;
+    overflow: hidden !important;
+    // display: flex;
+    align-items: stretch;
+    // height: 1010px;
+}
+
+.slick-slide {
+    height: 100%;
+}
+
+#slick .slick-slide {
+    height: 1050px !important;
+}
+
+#slick .slick-slide img {
+    object-fit: cover;
 }

@@ -3,7 +3,7 @@
 .footer-contain {
     font-family: var(--Oswald-famil);
     justify-content: space-between;
-    padding: 40px 0;
+    padding: 40px 8px;
     display: flex;
     color: var(--hover);
     margin: auto;
@@ -159,10 +159,10 @@
 @media (max-width: 768px){
 .footer-contain {
     flex-direction: column;
-    padding: 0;
+    padding: 0 8px !important;
 
     .block-menu-footer {
-        width: 90%;
+        width: 100%;
         margin: auto;
         flex-wrap: wrap;
     }
@@ -196,12 +196,13 @@
 
     .block-menu-network {
         padding: 0;
-        width: 90%;
+        width: 100%;
         margin: auto;
         flex-wrap: wrap;
         margin-top: 30px;
 
         .network-contain {
+            line-height: 33px;
             margin: 0;
             width: 100%;
             padding: 24px 0;
@@ -245,8 +246,7 @@
 @media (max-width: 1024px)
 {
     .footer-contain, .under-footer-contain {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 40px 8px;
     }
 }
 

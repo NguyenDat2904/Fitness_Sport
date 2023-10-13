@@ -1,14 +1,18 @@
 import { useState } from 'react';
-import './Header.module.scss';
 import style from './Header.module.scss';
 import classnames from 'classnames/bind';
 import { AiOutlineDown, AiOutlineRight, AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
+import { publicRoutes } from '~/routes/routes';
+
 const cx = classnames.bind(style);
 
 function Header() {
     const [active, setActive] = useState('');
     const [showMenu, setShowMenu] = useState('');
     const [selectedOption, setSelectedOption] = useState('');
+
+    const publicRoute = publicRoutes[1];
 
     const onShowActiveHandle = () => {
         if (active === '') {
@@ -54,15 +58,14 @@ function Header() {
         <div className={cx('header-contain')}>
             <div className={cx('header')}>
                 <div className={cx('logo_header')}>
-                    {/* <a href="">
+                    <a href="">
                         <img
                             src="https://cali.vn/storage/app/media/brand_logo/Cali-OriginalLogo-2x.png"
                             width="100%"
                             height="100%"
                             alt="logo"
                         />
-                    </a> */}
-                    <h1 style={{fontFamily:'var(--Montserrat-family)', color:'var(--white)'}}>Fitness_Sport</h1>
+                    </a>
                 </div>
                 <div className={cx('menu_bar')}>
                     <ul style={active === '' ? { visibility: 'unset' } : { visibility: 'hidden' }}>
@@ -73,7 +76,7 @@ function Header() {
                             <div className={cx('dropdown_menu')}>
                                 <ul>
                                     <li className={cx('downbtn_1')}>
-                                        Lớp Học <AiOutlineRight size={'1.2rem'} className={cx('fas')} color="#fff" />
+                                        Lớp Học <AiOutlineRight size={'15px'} className={cx('fas')} color="#fff" />
                                         <div className={cx('dropdown_menu_1')}>
                                             <ul>
                                                 <li>Yoga</li>
@@ -82,7 +85,7 @@ function Header() {
                                         </div>
                                     </li>
                                     <li className={cx('downbtn_2')}>
-                                        Huấn Luyện <AiOutlineRight size={'1.2rem'} className={cx('fas')} color="#fff" />
+                                        Huấn Luyện <AiOutlineRight size={'15px'} className={cx('fas')} color="#fff" />
                                         <div className={cx('dropdown_menu_2')}>
                                             <ul>
                                                 <li>California NutriFit</li>
@@ -96,9 +99,9 @@ function Header() {
                             </div>
                         </li>
                         <li className={cx('downbtn')}>
-                            <a href="">
+                            <Link to={publicRoute.path}>
                                 CÂU LẠC BỘ <AiOutlineDown className={cx('ai')} size={'1rem'} color="#fff" />
-                            </a>
+                            </Link>
                             <div className={cx('dropdown_menu')}>
                                 <ul className={cx('dropdown-content-mobile')}>
                                     <li className={cx('dropdown-group-mobile')}>
@@ -151,7 +154,7 @@ function Header() {
                             <div className={cx('dropdown_menu')}>
                                 <ul>
                                     <li className={cx('downbtn_4')}>
-                                        Tin Tức <AiOutlineRight size={'1.2rem'} className={cx('fas')} color="#fff" />
+                                        Tin Tức <AiOutlineRight size={'15px'} className={cx('fas')} color="#fff" />
                                         <div className={cx('dropdown_menu_4')}>
                                             <ul>
                                                 <li>Gym Quận 6</li>
@@ -172,7 +175,7 @@ function Header() {
                                     </li>
                                     <li className={cx('downbtn_5')}>
                                         Kiến Thức Luyện Tập{' '}
-                                        <AiOutlineRight size={'1.2rem'} className={cx('fas')} color="#fff" />
+                                        <AiOutlineRight size={'15px'} className={cx('fas')} color="#fff" />
                                         <div className={cx('dropdown_menu_5')}>
                                             <ul>
                                                 <li>Cách giảm mỡ đùi</li>
@@ -183,7 +186,7 @@ function Header() {
                                         </div>
                                     </li>
                                     <li className={cx('downbtn_6')}>
-                                        Bài Tập <AiOutlineRight size={'1.2rem'} className={cx('fas')} color="#fff" />
+                                        Bài Tập <AiOutlineRight size={'15px'} className={cx('fas')} color="#fff" />
                                         <div className={cx('dropdown_menu_6')}>
                                             <ul>
                                                 <li>Yoga</li>
@@ -196,7 +199,7 @@ function Header() {
                                         </div>
                                     </li>
                                     <li className={cx('downbtn_7')}>
-                                        Yoga <AiOutlineRight size={'1.2rem'} className={cx('fas')} color="#fff" />
+                                        Yoga <AiOutlineRight size={'15px'} className={cx('fas')} color="#fff" />
                                         <div className={cx('dropdown_menu_7')}>
                                             <ul>
                                                 <li>Yoga giảm mỡ bụng</li>
@@ -213,7 +216,7 @@ function Header() {
                                     </li>
                                     <li>Kickfit & MMA</li>
                                     <li className={cx('downbtn_8')}>
-                                        Dinh Dưỡng <AiOutlineRight size={'1.2rem'} className={cx('fas')} color="#fff" />
+                                        Dinh Dưỡng <AiOutlineRight size={'15px'} className={cx('fas')} color="#fff" />
                                         <div className={cx('dropdown_menu_8')}>
                                             <ul>
                                                 <li>Yến mạch bao nhiêu calo</li>
@@ -288,7 +291,10 @@ function Header() {
                             textDecoration: 'none',
                         }}
                     >
-                        <div className={cx('box-trying')}>TẬP THỬ MIỄN PHÍ</div>
+                        <div className={cx('group-input')}>
+                            <div className={cx('box-trying')}>TẬP THỬ </div>
+                            <div className={cx('box-trying')}>ĐĂNG NHẬP</div>
+                        </div>
                     </a>
                     <div className={cx('block-header-mobile')}>
                         <input id={cx('burger-menu-checker')} type="checkbox" hidden />

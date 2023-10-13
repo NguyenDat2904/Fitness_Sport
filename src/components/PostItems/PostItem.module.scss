@@ -1,0 +1,100 @@
+
+    .item {
+        padding: 0 40px;
+        padding-left: 1px;
+        flex: 0 25%;
+        width: 25%;
+        box-sizing: border-box;
+        margin-bottom: 50px;
+        /* margin-right: 80px; */
+
+        .image {
+            width: 100%;
+            /* max-width: 240px; */
+            padding-bottom: calc(100% * (5 / 4));
+            object-fit: cover;
+            height: 0;
+            position: relative;
+        }
+    } 
+    
+    .item a {
+        color: var(--black);
+        align-items: center;
+        display: flex;
+        /* max-width: 240px; */
+    }
+
+    .item-text {
+        /* position: relative; */
+        z-index: 4;
+        /* margin-top: -52px; */
+        /* background: #FFFFFF; */
+        /* margin-left: 10%; */
+        /* margin-right: 10%; */
+        padding: 16px 0px;
+        /* background: #FFFFFF; */
+        /* border: 1px solid #000000; */
+        box-sizing: border-box;
+        border-top: none;
+        min-height: 90px;
+        /* max-width: 240px; */
+    }
+
+    .item-title {
+        font-family: var(--Montserrat-family);
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 27px;
+        color: #000000;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        /* max-width: 240px; */
+    }
+
+    a span {
+        font-family: var(--Montserrat-family);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .icon-readmore {
+        margin-left: 10px;
+    }
+                    
+    a:hover > .icon-readmore {
+        padding-left: 5px;
+        transition: all .1s ease-in-out,-webkit-transform .1s ease-in-out;
+    }
+
+    .item img {
+        object-fit: cover;
+    }
+
+    .item {
+        .blog-image {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            transform: none;
+        }
+    }
+
+    .post-usefull-contain a img {
+        display: unset;
+    }
+
+@media (max-width: 768px) {
+    .item {
+        padding: 0 20px;
+        padding-left: 0;
+        flex: 0 100%;
+        width: 100%;
+    }
+}

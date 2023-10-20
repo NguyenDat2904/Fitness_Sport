@@ -7,12 +7,12 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ItemContainMobile from '~/components/ItemContainMobile/ItemContainMobile.js';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(style);
 
 function Home() {
     const settings = {
-        dots: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -85,14 +85,14 @@ function Home() {
 
     const [post, setPost] = useState(['', '', '', '', '', '', '', '']);
 
-    const mapPost = post.map((post) => <PostItem />);
+    const mapPost = post.map((post, index) => <PostItem key={index} />);
     const mapItemContain = sliderContainMobile.map((item, index) => {
-        return <ItemContainMobile item={item} index={index} />;
+        return <ItemContainMobile item={item} index={index} key={index} />;
     });
 
     return (
         <div className={cx('body-contain')} style={{ background: '#141414' }}>
-            <div className={cx('banner-contain', 'slick-initialized', 'slick-slider', 'slick-dotted')} >
+            <div className={cx('banner-contain', 'slick-initialized', 'slick-slider', 'slick-dotted')}>
                 <div className={cx('slick-list', 'draggable')}>
                     <div className={cx('slickDesktop')}>
                         <Slick slider={sliderDesktop} />
@@ -122,203 +122,203 @@ function Home() {
                     <div className={cx('column-left')}>
                         <div className={cx('item')}>
                             <div className={cx('item-img')}>
-                                <a href="#">
+                                <Link>
                                     <img
                                         className={cx('lazy', 'service-image')}
-                                        alt="pt image"
+                                        alt="pt img"
                                         src="https://cali.vn/storage/app/media/2023/Home%20page/cali-community_900x1200px.jpg"
                                         style={{}}
                                     />
-                                </a>
+                                </Link>
                             </div>
                             <div className={cx('item-content')}>
                                 <div className={cx('content')}>
                                     <span className={cx('title')}>
-                                        <a href="#">
+                                        <Link to="#">
                                             <h3>Chương Trình Nhảy Độc Đáo</h3>
-                                        </a>
+                                        </Link>
                                     </span>
                                     <div className={cx('text')}>
-                                        <a href="#">
+                                        <Link to="#">
                                             Hoà mình vào giai điệu yêu thích và đốt cháy calo với các lớp học nhảy sôi
                                             động. Thoả sức “phiêu” Pop dance, Sexy Dance, Pole dance hoặc Zumba dưới sự
                                             hướng dẫn của các HLV chuẩn Quốc Tế tại California
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                             <div className={cx('read_more_place')}>
-                                <a href="#">
+                                <Link to="#">
                                     <span>Tìm hiểu thêm</span>
                                     <img
                                         src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore-white.svg"
                                         className={cx('lazy', 'icon-readmore')}
                                         alt="icon read more"
                                     />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className={cx('item')}>
                             <div className={cx('item-img')}>
-                                <a href="#">
+                                <Link to="#">
                                     <img
                                         className={cx('lazy', 'service-image')}
-                                        alt="pt image"
+                                        alt="pt img"
                                         src="https://cali.vn/storage/app/media/2023/Home%20page/inspired-community-900x1200px.jpg"
                                         style={{}}
                                     />
-                                </a>
+                                </Link>
                             </div>
                             <div className={cx('item-content')}>
                                 <div className={cx('content')}>
                                     <span className={cx('title')}>
-                                        <a href="#">
+                                        <Link to="#">
                                             <h3>Cộng Đồng Truyền Cảm Hứng Cho Bạn Trở Nên Tốt Hơn Nữa</h3>
-                                        </a>
+                                        </Link>
                                     </span>
                                     <div className={cx('text')}>
-                                        <a href="#">
+                                        <Link to="#">
                                             Cùng hàng ngàn hội viên lan toả lối sống lành mạnh ngay hôm nay! Đã đến lúc
                                             bạn nên thử những điều mới mẻ, hướng tới cuộc sống hứng khởi và tự tin toả
                                             sáng
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                             <div className={cx('read_more_place')}>
-                                <a href="#">
+                                <Link to="#">
                                     <span>Tìm hiểu thêm</span>
                                     <img
                                         src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore-white.svg"
                                         className={cx('lazy', 'icon-readmore')}
                                         alt="icon read more"
                                     />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className={cx('item')}>
                             <div className={cx('item-img')}>
-                                <a href="#">
+                                <Link to="#">
                                     <img
                                         className={cx('lazy', 'service-image')}
-                                        alt="pt image"
+                                        alt="pt img"
                                         src="https://cali.vn/storage/app/media/2021/Homepage/Yogi_900x1200.jpg"
                                         style={{}}
                                     />
-                                </a>
+                                </Link>
                             </div>
                             <div className={cx('item-content')}>
                                 <div className={cx('content')}>
                                     <span className={cx('title')}>
-                                        <a href="#">
+                                        <Link to="#">
                                             <h3>Tinh Hoa Yoga Ấn Độ Nguyên Bản</h3>
-                                        </a>
+                                        </Link>
                                     </span>
                                     <div className={cx('text')}>
-                                        <a href="#">
+                                        <Link to="#">
                                             Thực hành chuẩn xác Yoga với sự hướng dẫn của các bậc thầy Yoga Ấn Độ. Đạt
                                             đến trạng thái cân bằng hoàn hảo bằng cách xây dựng sức mạnh, độ linh hoạt
                                             và sự uyển chuyển cơ thể trong khi thư giãn hoàn toàn mọi giác quan và giải
                                             phóng tâm trí
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                             <div className={cx('read_more_place')}>
-                                <a href="#">
+                                <Link to="#">
                                     <span>Tìm hiểu thêm</span>
                                     <img
                                         src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore-white.svg"
                                         className={cx('lazy', 'icon-readmore')}
                                         alt="icon read more"
                                     />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
                     <div className={cx('column-right')}>
                         <div className={cx('item')}>
                             <div className={cx('item-img')}>
-                                <a href="#">
+                                <Link to="#">
                                     <img
                                         className={cx('lazy', 'service-image')}
-                                        alt="pt image"
+                                        alt="pt img"
                                         src="https://cali.vn/storage/app/media/2021/Homepage/PT_at_Cent.jpg"
                                         style={{}}
                                     />
-                                </a>
+                                </Link>
                             </div>
                             <div className={cx('item-content')}>
                                 <div className={cx('content')}>
                                     <span className={cx('title')}>
-                                        <a href="#">
+                                        <Link to="#">
                                             <h3>HLV Cá Nhân Luôn Đồng Hành Cùng Bạn</h3>
-                                        </a>
+                                        </Link>
                                     </span>
                                     <div className={cx('text')}>
-                                        <a href="#">
+                                        <Link to="#">
                                             Các huấn luyện viên đạt chuẩn NASM của chúng tôi sẽ cùng bạn thiết lập
                                             chương trình tập luyện & chế độ dinh dưỡng phù hợp với thể trạng của bạn.
                                             Đồng thời, các Huấn Luyện Viên Cá Nhân sẽ hướng dẫn bạn từng bước để chinh
                                             phục mục tiêu hình thể đã đặt ra
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                             <div className={cx('read_more_place')}>
-                                <a href="#">
+                                <Link to="#">
                                     <span>Tìm hiểu thêm</span>
                                     <img
                                         src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore-white.svg"
                                         className={cx('lazy', 'icon-readmore')}
                                         alt="icon read more"
                                     />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className={cx('item')}>
                             <div className={cx('item-img')}>
-                                <a href="#">
+                                <Link to="#">
                                     <img
                                         className={cx('lazy', 'service-image')}
-                                        alt="pt image"
+                                        alt="pt img"
                                         src="https://cali.vn/storage/app/media/2023/Home%20page/Chtrinh%20nhay_900x1200.jpeg"
                                         style={{}}
                                     />
-                                </a>
+                                </Link>
                             </div>
                             <div className={cx('item-content')}>
                                 <div className={cx('content')}>
                                     <span className={cx('title')}>
-                                        <a href="#">
+                                        <Link to="#">
                                             <h3>Không Giới Hạn Lớp Tập Nhóm</h3>
-                                        </a>
+                                        </Link>
                                     </span>
                                     <div className={cx('text')}>
-                                        <a href="#">
+                                        <Link to="#">
                                             Tận hưởng niềm vui bất tận với hơn 50 lớp tập nhóm bản quyền từ Lesmills như
                                             Body Combat, Body Jam, RPM, SH’Bam và các chương trình độc quyền do
                                             California thiết kế như CaliDrumfit, CaliStep. Các phiên bản mới được cập
                                             nhật liên tục mỗi tháng.
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
                             <div className={cx('read_more_place')}>
-                                <a href="#">
+                                <Link to="#">
                                     <span>Tìm hiểu thêm</span>
                                     <img
                                         src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore-white.svg"
                                         className={cx('lazy', 'icon-readmore')}
                                         alt="icon read more"
                                     />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className={cx('item-contain-mobile')} id='slick'>
-                    <div className={cx('slick-list', 'draggable')} style={{height:'100%'}}>
+                <div className={cx('item-contain-mobile')} id="slick">
+                    <div className={cx('slick-list', 'draggable')} style={{ height: '100%' }}>
                         <Slider {...settings}>{mapItemContain}</Slider>
                     </div>
                 </div>
@@ -334,21 +334,21 @@ function Home() {
                             được đầu tư trang thiết bị tốt nhất, khu vực VIP và các tiện ích đặc biệt như Xông hơi, Hồ
                             bơi và Bể sục Jacuzzi.
                         </span>
-                        <a href="#">
+                        <Link to="#">
                             <span>Tìm Câu Lạc Bộ Gần Bạn</span>
                             <img
                                 src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore-white.svg"
                                 className={cx('lazy', 'icon-readmore')}
                                 alt="icon read more"
                             />
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className={cx('clb-nearly-right')}>
                     <img
                         width="100%"
                         className={cx('lazy')}
-                        alt="image member"
+                        alt="img member"
                         src="https://cali.vn/storage/app/media/2021/Membership/Big-workout_area.jpg"
                         style={{}}
                     />
@@ -364,14 +364,14 @@ function Home() {
                             Trong thập kỷ qua, hơn 350.000 người đã chọn chúng tôi để bắt đầu hành trình tập luyện. Hãy
                             cùng khám phá vì sao California được nhiều hội viên tin tưởng lựa chọn nhé!
                         </span>
-                        <a href="#">
+                        <Link to="#">
                             <span>Tìm Hiểu Về Dịch Vụ Huấn Luyện Viên Cá Nhân</span>
                             <img
                                 src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore-white.svg"
                                 className={cx('lazy', 'icon-readmore')}
                                 alt="icon read more"
                             />
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className={cx('story-success-right')}>
@@ -425,7 +425,7 @@ function Home() {
                             <h3>BÀI VIẾT HỮU ÍCH </h3>
                         </div>
                         <div className={cx('readmore-contain')} style={{ minWidth: '140px' }}>
-                            <a href="#">
+                            <Link to="#">
                                 <span>Xem tất cả</span>
                                 <img
                                     className={cx('lazy', 'icon-readmore')}
@@ -433,7 +433,7 @@ function Home() {
                                     src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore.svg"
                                     style={{}}
                                 />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className={cx('post-usefull-right')}>

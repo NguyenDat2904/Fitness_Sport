@@ -5,6 +5,10 @@ import ClubProvince from '~/pages/Club/ClubProvince/ClubProvince';
 import Error from '~/pages/Error/Error';
 import ProductDetails from '~/pages/ProductDetails/ProductDetails';
 import ListBlogContain from '~/pages/ListBlogContain/ListBlogContain';
+import Course from '~/pages/Course/Course';
+import CourseDance from '~/pages/CourseDance/CourseDance';
+import CourseAll from '~/pages/CourseAll/CourseAll';
+
 
 // Không cần đăng nhập
 const publicRoutes = [
@@ -37,6 +41,18 @@ const publicRoutes = [
         path: '/admin',
         component: Admin,
         layout: null,
+    },
+    {
+        path: '/yoga',
+        component: Course,
+    },
+    {
+        path: '/dance',
+        component: CourseDance,
+    },
+    {
+        path: '/course',
+        component: CourseAll,
     },
 ];
 // Cần đăng nhập

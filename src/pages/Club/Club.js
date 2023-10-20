@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import style from './Club.module.scss';
-import axios from 'axios';
 import WhiteContain from '~/components/WhiteContain/WhiteContain';
 import { useContext } from 'react';
 import { AppContext } from '~/hook/context/AppContext';
@@ -138,7 +137,8 @@ const Club = () => {
                                 id="icon-search-dropdown"
                                 style={{
                                     marginRight: 20,
-                                    transform: show == 'show' ? 'unset' : 'rotate(180deg)',
+                                    cursor: 'pointer',
+                                    transform: show === 'show' ? 'unset' : 'rotate(180deg)',
                                     transition: 'all 0.3s ease',
                                 }}
                                 alt="Vector-submenu.svg"
@@ -157,7 +157,7 @@ const Club = () => {
                                 <div className={cx('description')}>Thành phố Hà Nội</div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <Link to="/club/Hà Nội" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Hà Nội
                                 </Link>
                                 <img
@@ -173,7 +173,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/old/club/Hanoi_900x600.jpg"
                                 style={{}}
                             />
@@ -188,7 +188,7 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <Link to="/club/Đà Nẵng" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Đà Nẵng
                                 </Link>
                                 <img
@@ -204,7 +204,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/old/club/Danang_900x600.jpg"
                                 style={{}}
                             />
@@ -219,7 +219,7 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <Link to="/club/Khánh Hòa" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Tỉnh Khánh Hòa
                                 </Link>
                                 <img
@@ -235,7 +235,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/2021/City/NhaTrang_900x600.jpg"
                                 style={{}}
                             />
@@ -266,7 +266,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/2021/City/BinhDuong_900x600.jpg"
                                 style={{}}
                             />
@@ -297,7 +297,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/2021/City/DongNai_900x600.jpg"
                                 style={{}}
                             />
@@ -328,7 +328,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/2021/Club/Vung%20Tau/VTC_900x600.jpg"
                                 style={{}}
                             />
@@ -359,7 +359,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/old/club/HCM_900x600.jpg"
                                 style={{}}
                             />
@@ -390,7 +390,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/2021/City/Cantho_900x600.jpg"
                                 style={{}}
                             />

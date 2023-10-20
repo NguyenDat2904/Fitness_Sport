@@ -110,7 +110,7 @@ const ProductDetails = () => {
                             <div className={cx('item-img')}>
                                 <img
                                     className="lazy"
-                                    alt="pt image"
+                                    alt="pt"
                                     src="https://cali.vn/storage/app/media/2021/Homepage/Yogi_900x1200.jpg"
                                     style={{}}
                                 />
@@ -131,7 +131,7 @@ const ProductDetails = () => {
                             <div className={cx('item-img')}>
                                 <img
                                     className="lazy"
-                                    alt="pt image"
+                                    alt="pt"
                                     src="https://cali.vn/storage/app/media/2021/Homepage/Lop%20group%20X_900x1200.jpg"
                                     style={{}}
                                 />
@@ -151,7 +151,7 @@ const ProductDetails = () => {
                             <div className={cx('item-img')}>
                                 <img
                                     className="lazy"
-                                    alt="pt image"
+                                    alt="pt"
                                     src="https://cali.vn/storage/app/media/2023/Home%20page/inspiring-comm.jpg"
                                     style={{}}
                                 />
@@ -175,7 +175,7 @@ const ProductDetails = () => {
                             <div className={cx('item-img')}>
                                 <img
                                     className={cx('lazy')}
-                                    alt="pt image"
+                                    alt="pt"
                                     src="https://cali.vn/storage/app/media/2021/Homepage/Chtrinh%20nhay_900x1200.jpg"
                                     style={{}}
                                 />
@@ -195,7 +195,7 @@ const ProductDetails = () => {
                             <div className={cx('item-img')}>
                                 <img
                                     className="lazy"
-                                    alt="pt image"
+                                    alt="pt"
                                     src="https://cali.vn/storage/app/media/2021/Homepage/PT_at_Cent.jpg"
                                     style={{}}
                                 />
@@ -216,7 +216,7 @@ const ProductDetails = () => {
                             <div className={cx('item-img')}>
                                 <img
                                     className="lazy"
-                                    alt="pt image"
+                                    alt="pt"
                                     src="https://cali.vn/storage/app/media/2021/Homepage/An%20uong%20khoa%20hoc_900x1200.jpg"
                                     style={{}}
                                 />

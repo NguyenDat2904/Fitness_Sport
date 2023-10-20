@@ -157,7 +157,7 @@ const Club = () => {
                                 <div className={cx('description')}>Thành phố Hà Nội</div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <Link to="#" className={cx('clb-link')}>
+                                <Link to="/club/Hà Nội" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Hà Nội
                                 </Link>
                                 <img
@@ -188,7 +188,7 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <Link to="#" className={cx('clb-link')}>
+                                <Link to="/club/Đà Nẵng" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Đà Nẵng
                                 </Link>
                                 <img
@@ -219,7 +219,7 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <Link to="#" className={cx('clb-link')}>
+                                <Link to="/club/Khánh Hòa" className={cx('clb-link')}>
                                     Xem phòng tập tại Tỉnh Khánh Hòa
                                 </Link>
                                 <img

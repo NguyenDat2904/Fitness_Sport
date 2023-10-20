@@ -299,7 +299,12 @@ function Header() {
                     >
                         <div className={cx('group-input')}>
                             <div className={cx('box-trying')}>TẬP THỬ </div>
-                            <div className={cx('box-trying')}>ĐĂNG NHẬP</div>
+                            <div className={cx('box-trying')}>
+                                <Link to= "/signin">
+                                
+                                ĐĂNG NHẬP
+                                </Link>
+                            </div>
                         </div>
                     </Link>
                     <div className={cx('block-header-mobile')}>

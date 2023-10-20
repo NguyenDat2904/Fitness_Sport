@@ -1,12 +1,13 @@
 import React from 'react';
 import style from './PostItem.module.scss';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(style);
 
 const PostItem = () => {
     return (
         <div className={cx('item')}>
-            <a href="#">
+            <Link to="#">
                 <div className={cx('image')}>
                     <img
                         className={cx('lazy', 'blog-image')}
@@ -16,16 +17,16 @@ const PostItem = () => {
                         alt="banner-homepage"
                     />
                 </div>
-            </a>
+            </Link>
             <div className={cx('item-text')}>
-                <a href="#">
+                <Link to="#">
                     <div className={cx('item-title')}>
                         8.000 khán giả “cháy” cùng tlinh, HIEUTHUHAI, Andree Right Hand, Chillies tại đại nhạc hội
                         California’s Fitness Festival
                     </div>
-                </a>
+                </Link>
             </div>
-            <a href="#">
+            <Link to="#">
                 <span>Tìm hiểu thêm </span>
                 <img
                     className={cx('lazy', 'icon-readmore')}
@@ -33,7 +34,7 @@ const PostItem = () => {
                     src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore.svg"
                     style={{}}
                 />
-            </a>
+            </Link>
         </div>
     );
 };

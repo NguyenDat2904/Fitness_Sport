@@ -54,6 +54,10 @@ function Signin() {
                   <input type="text" name='name' onChange={(e)=>setEmail(e.target.value)}  placeholder='Tên Đăng Nhập' />  
                   <input type="password" name='password' onChange={(e)=>setPassword(e.target.value)}  placeholder='Mật Khẩu' /> 
                   <div>
+                    <NavLink to="/register">
+                      Chưa Có Tài Khoản ?
+
+                    </NavLink>
                     <NavLink to="/forgot" className="nav-link">
                     Quên Mật Khẩu?
                     </NavLink>

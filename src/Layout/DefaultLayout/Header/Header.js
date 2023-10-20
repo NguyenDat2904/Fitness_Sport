@@ -58,32 +58,38 @@ function Header() {
         <div className={cx('header-contain')}>
             <div className={cx('header')}>
                 <div className={cx('logo_header')}>
-                    <a href="">
+                    <Link to="/">
                         <img
                             src="https://cali.vn/storage/app/media/brand_logo/Cali-OriginalLogo-2x.png"
                             width="100%"
                             height="100%"
                             alt="logo"
                         />
-                    </a>
+                    </Link>
                 </div>
                 <div className={cx('menu_bar')}>
                     <ul style={active === '' ? { visibility: 'unset' } : { visibility: 'hidden' }}>
                         <li className={cx('downbtn')}>
-                            <a href="">
+                            <Link>
                                 DỊCH VỤ <AiOutlineDown className={cx('ai')} size={'1rem'} color="#fff" />
-                            </a>
+                            </Link>
                             <div className={cx('dropdown_menu')}>
                                 <ul>
-                                    <li className={cx('downbtn_1')}>
-                                        Lớp Học <AiOutlineRight size={'15px'} className={cx('fas')} color="#fff" />
-                                        <div className={cx('dropdown_menu_1')}>
-                                            <ul>
-                                                <li>Yoga</li>
-                                                <li>Dance</li>
-                                            </ul>
-                                        </div>
-                                    </li>
+                                    <Link to="/course">
+                                        <li className={cx('downbtn_1')}>
+                                            Lớp Học <AiOutlineRight size={'15px'} className={cx('fas')} color="#fff" />
+                                            <div className={cx('dropdown_menu_1')}>
+                                                <ul>
+                                                    <Link to="/yoga">
+                                                        <li>Yoga</li>
+                                                    </Link>
+                                                    <Link to="/dance">
+                                                        <li>Dance</li>
+                                                    </Link>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </Link>
                                     <li className={cx('downbtn_2')}>
                                         Huấn Luyện <AiOutlineRight size={'15px'} className={cx('fas')} color="#fff" />
                                         <div className={cx('dropdown_menu_2')}>
@@ -105,52 +111,52 @@ function Header() {
                             <div className={cx('dropdown_menu')}>
                                 <ul className={cx('dropdown-content-mobile')}>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a href="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Hà Nội' className={cx('nav-sub-link')}>
                                             Hà Nội
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a href="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Đà Nẵng' className={cx('nav-sub-link')}>
                                             Đà Nẵng
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a href="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Khánh Hòa' className={cx('nav-sub-link')}>
                                             Khánh Hòa
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a href="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Bình Dương' className={cx('nav-sub-link')}>
                                             Bình Dương
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a href="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Đồng Nai' className={cx('nav-sub-link')}>
                                             Đồng Nai
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a href="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Bà Rịa - Vũng Tàu' className={cx('nav-sub-link')}>
                                             Bà Rịa - Vũng Tàu
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a href="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Hồ Chí Minh' className={cx('nav-sub-link')}>
                                             Hồ Chí Minh
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a href="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Cần Thơ' className={cx('nav-sub-link')}>
                                             Cần Thơ
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                         <li className={cx('downbtn')}>
-                            <a href="">
+                            <Link to="">
                                 BLOG <AiOutlineDown className={cx('ai')} size={'1rem'} color="#fff" />
-                            </a>
+                            </Link>
                             <div className={cx('dropdown_menu')}>
                                 <ul>
                                     <li className={cx('downbtn_4')}>
@@ -235,12 +241,12 @@ function Header() {
                             </div>
                         </li>
                         <li>
-                            <a href="">LỊCH TẬP / SCHEDULE</a>
+                            <Link to="">LỊCH TẬP / SCHEDULE</Link>
                         </li>
                         <li className={cx('downbtn')}>
-                            <a href="">
+                            <Link to="">
                                 HỘI VIÊN <AiOutlineDown className={cx('ai')} size={'1rem'} color="#fff" />
-                            </a>
+                            </Link>
                             <div className={cx('dropdown_menu')}>
                                 <ul>
                                     <li>HẠNG PLATINUM PLUS</li>
@@ -282,8 +288,8 @@ function Header() {
                     </div>
                 </div>
                 <div className={cx('contain-right')}>
-                    <a
-                        href=""
+                    <Link
+                        to=""
                         style={{
                             color: '#fff',
                             position: 'relative',
@@ -293,9 +299,14 @@ function Header() {
                     >
                         <div className={cx('group-input')}>
                             <div className={cx('box-trying')}>TẬP THỬ </div>
-                            <div className={cx('box-trying')}>ĐĂNG NHẬP</div>
+                            <div className={cx('box-trying')}>
+                                <Link to= "/signin">
+                                
+                                ĐĂNG NHẬP
+                                </Link>
+                            </div>
                         </div>
-                    </a>
+                    </Link>
                     <div className={cx('block-header-mobile')}>
                         <input id={cx('burger-menu-checker')} type="checkbox" hidden />
                         <label id={cx('burger-menu-cfyc')} style={{ cursor: 'pointer' }} onClick={onShowMenuHandle}>
@@ -342,11 +353,11 @@ function Header() {
                                     checked={selectedOption === '1'}
                                     onChange={handleOptionChange}
                                 />
-                                <label for={0}>
+                                <label htmlFor={0}>
                                     <div>
-                                        <a href="" className={cx('navbar-item-header')}>
+                                        <Link href="" className={cx('navbar-item-header')}>
                                             DỊCH VỤ
-                                        </a>
+                                        </Link>
                                     </div>
                                     <AiOutlineDown className={cx('icon-sub-menu')} color="#fff" />
                                 </label>
@@ -361,20 +372,20 @@ function Header() {
                                             // onchange={handleOptionChangeSub}
                                             name="drop-down-sub-content-mobile"
                                         />
-                                        <label for="training">
+                                        <label htmlFor="training">
                                             <span className={cx('nav-sub-link')}>Lớp Học</span>
                                             <AiOutlineDown className={cx('icon-sub-sub-menu')} color="#fff" />
                                         </label>
                                         <ul className={cx('dropdown-sub-content-mobile')}>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a href="" className={cx('dropdowm-submenu-item')}>
+                                                <Link to="" className={cx('dropdowm-submenu-item')}>
                                                     Yoga
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a href="" className={cx('dropdowm-submenu-item')}>
+                                                <Link to="" className={cx('dropdowm-submenu-item')}>
                                                     Dance
-                                                </a>
+                                                </Link>
                                             </li>
                                         </ul>
                                     </li>
@@ -388,30 +399,30 @@ function Header() {
                                             // onchange={handleOptionChangeSub}
                                             name="drop-down-sub-content-mobile"
                                         />
-                                        <label for="coaching">
+                                        <label htmlFor="coaching">
                                             <span className={cx('nav-sub-link')}>Huấn Luyện</span>
                                             <AiOutlineDown className={cx('icon-sub-sub-menu')} color="#fff" />
                                         </label>
                                         <ul className={cx('dropdown-sub-content-mobile')}>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a href="" className={cx('dropdowm-submenu-item')}>
+                                                <Link to="" className={cx('dropdowm-submenu-item')}>
                                                     California NutriFit
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a href="" className={cx('dropdowm-submenu-item')}>
+                                                <Link to="" className={cx('dropdowm-submenu-item')}>
                                                     Huấn luyện viên cá nhân
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a href="" className={cx('dropdowm-submenu-item')}>
+                                                <Link to="" className={cx('dropdowm-submenu-item')}>
                                                     Kickfit & MMA
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a href="" className={cx('dropdowm-submenu-item')}>
+                                                <Link to="" className={cx('dropdowm-submenu-item')}>
                                                     Công nghệ giảm mỡ Hypoxi
-                                                </a>
+                                                </Link>
                                             </li>
                                         </ul>
                                     </li>
@@ -429,34 +440,50 @@ function Header() {
                                 />
                                 <label htmlFor={1}>
                                     <div>
-                                        <a className={cx('navbar-item-header')}>CÂU LẠC BỘ</a>
+                                        <Link className={cx('navbar-item-header')}>CÂU LẠC BỘ</Link>
                                     </div>
                                     <AiOutlineDown className={cx('icon-sub-menu')} color="#fff" />
                                 </label>
                                 <ul className={cx('dropdown-content-mobile')}>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a className={cx('nav-sub-link')}>Hà Nội</a>
+                                        <Link to="/club/Hà Nội" className={cx('nav-sub-link')}>
+                                            Hà Nội
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a className={cx('nav-sub-link')}>Đà Nẵng</a>
+                                        <Link to="/club/Đà Nẵng" className={cx('nav-sub-link')}>
+                                            Đà Nẵng
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a className={cx('nav-sub-link')}>Khánh Hòa</a>
+                                        <Link to="/club/Khánh Hòa" className={cx('nav-sub-link')}>
+                                            Khánh Hòa
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a className={cx('nav-sub-link')}>Bình Dương</a>
+                                        <Link to="/club/Bình Dương" className={cx('nav-sub-link')}>
+                                            Bình Dương
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a className="nav-sub-link">Đồng Nai</a>
+                                        <Link to="/club/Đồng Nai" className="nav-sub-link">
+                                            Đồng Nai
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a className={cx('nav-sub-link')}>Bà Rịa - Vũng Tàu</a>
+                                        <Link to="/club/Bà Rịa - Vũng Tàu" className={cx('nav-sub-link')}>
+                                            Bà Rịa - Vũng Tàu
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a className={cx('nav-sub-link')}>Hồ Chí Minh</a>
+                                        <Link to="/club/Hồ Chí Minh" className={cx('nav-sub-link')}>
+                                            Hồ Chí Minh
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <a className={cx('nav-sub-link')}>Cần Thơ</a>
+                                        <Link to="/club/Cần Thơ" className={cx('nav-sub-link')}>
+                                            Cần Thơ
+                                        </Link>
                                     </li>
                                 </ul>
                             </li>
@@ -472,7 +499,7 @@ function Header() {
                                 />
                                 <label htmlFor={2}>
                                     <div>
-                                        <a className={cx('navbar-item-header')}>BLOG</a>
+                                        <Link className={cx('navbar-item-header')}>BLOG</Link>
                                     </div>
                                     <AiOutlineDown className={cx('icon-sub-menu')} color="#fff" />
                                 </label>
@@ -489,23 +516,23 @@ function Header() {
                                         />
                                         <label htmlFor="news" style={{ padding: '0' }}>
                                             <div className={cx('group-blog-cate')}>
-                                                <a className={cx('nav-sub-link')}>Tin tức</a>
+                                                <Link className={cx('nav-sub-link')}>Tin tức</Link>
                                             </div>
                                             <AiOutlineDown className={cx('icon-sub-sub-menu')} color="#fff" />
                                         </label>
                                         <ul className={cx('dropdown-sub-content-mobile')}>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a className={cx('dropdowm-submenu-item')}>Video</a>
+                                                <Link className={cx('dropdowm-submenu-item')}>Video</Link>
                                             </li>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a className={cx('dropdowm-submenu-item')}>Tin tức & Sự kiện</a>
+                                                <Link className={cx('dropdowm-submenu-item')}>Tin tức & Sự kiện</Link>
                                             </li>
                                         </ul>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
                                         <label htmlFor="kien-thuc-tap-luyen" style={{ padding: '0' }}>
                                             <div className={cx('group-blog-cate')}>
-                                                <a className={cx('nav-sub-link')}>Kiến thức tập luyện</a>
+                                                <Link className={cx('nav-sub-link')}>Kiến thức tập luyện</Link>
                                             </div>
                                         </label>
                                         <ul className={cx('dropdown-sub-content-mobile')}></ul>
@@ -522,26 +549,26 @@ function Header() {
                                         />
                                         <label htmlFor="bai-tap" style={{ padding: '0' }}>
                                             <div className={cx('group-blog-cate')}>
-                                                <a className={cx('nav-sub-link')}>Bài tập</a>
+                                                <Link className={cx('nav-sub-link')}>Bài tập</Link>
                                             </div>
                                             <AiOutlineDown className={cx('icon-sub-sub-menu')} color="#fff" />
                                         </label>
                                         <ul className={cx('dropdown-sub-content-mobile')}>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a className={cx('dropdowm-submenu-item')}>Yoga</a>
+                                                <Link className={cx('dropdowm-submenu-item')}>Yoga</Link>
                                             </li>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a className={cx('dropdowm-submenu-item')}>Tăng cơ</a>
+                                                <Link className={cx('dropdowm-submenu-item')}>Tăng cơ</Link>
                                             </li>
                                             <li className={cx('dropdown-sub-content-item')}>
-                                                <a className={cx('dropdowm-submenu-item')}>Giảm cân</a>
+                                                <Link className={cx('dropdowm-submenu-item')}>Giảm cân</Link>
                                             </li>
                                         </ul>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
                                         <label htmlFor="yoga" style={{ padding: '0' }}>
                                             <div className={cx('group-blog-cate')}>
-                                                <a className={cx('nav-sub-link')}>Yoga</a>
+                                                <Link className={cx('nav-sub-link')}>Yoga</Link>
                                             </div>
                                         </label>
                                         <ul className={cx('dropdown-sub-content-mobile')}></ul>
@@ -549,7 +576,7 @@ function Header() {
                                     <li className={cx('dropdown-group-mobile')}>
                                         <label htmlFor="kickfit-mma" style={{ padding: '0' }}>
                                             <div className={cx('group-blog-cate')}>
-                                                <a className={cx('nav-sub-link')}>Kickfit & MMA</a>
+                                                <Link className={cx('nav-sub-link')}>Kickfit & MMA</Link>
                                             </div>
                                         </label>
                                         <ul className={cx('dropdown-sub-content-mobile')}></ul>
@@ -557,7 +584,7 @@ function Header() {
                                     <li className={cx('dropdown-group-mobile')}>
                                         <label htmlFor="dinh-duong" style={{ padding: '0' }}>
                                             <div className={cx('group-blog-cate')}>
-                                                <a className={cx('nav-sub-link')}>Dinh dưỡng</a>
+                                                <Link className={cx('nav-sub-link')}>Dinh dưỡng</Link>
                                             </div>
                                         </label>
                                         <ul className={cx('dropdown-sub-content-mobile')}></ul>
@@ -567,7 +594,7 @@ function Header() {
                             <li className={cx('main-item')}>
                                 <label htmlFor={3}>
                                     <div>
-                                        <a className={cx('navbar-item-header')}>LỊCH TẬP / SCHEDULE</a>
+                                        <Link className={cx('navbar-item-header')}>LỊCH TẬP / SCHEDULE</Link>
                                     </div>
                                 </label>
                             </li>
@@ -583,29 +610,29 @@ function Header() {
                                 />
                                 <label htmlFor={4}>
                                     <div>
-                                        <a className="navbar-item-header">HỘI VIÊN</a>
+                                        <Link className="navbar-item-header">HỘI VIÊN</Link>
                                     </div>
                                     <AiOutlineDown className={cx('icon-sub-menu')} color="#fff" />
                                 </label>
 
                                 <ul className={cx('dropdown-content-mobile')}>
                                     <li className={cx('dropdown-group-mobile')} style={{ padding: '5px 0' }}>
-                                        <a className={cx('nav-sub-link')}>HẠNG CENTURYON</a>
+                                        <Link className={cx('nav-sub-link')}>HẠNG CENTURYON</Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')} style={{ paddingBottom: '5px' }}>
-                                        <a className={cx('nav-sub-link')}>HẠNG ICONIC</a>
+                                        <Link className={cx('nav-sub-link')}>HẠNG ICONIC</Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')} style={{ paddingBottom: '5px' }}>
-                                        <a className={cx('nav-sub-link')}>HẠNG PLATINUM PLUS</a>
+                                        <Link className={cx('nav-sub-link')}>HẠNG PLATINUM PLUS</Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')} style={{ paddingBottom: '5px' }}>
-                                        <a className={cx('nav-sub-link')}>HẠNG GOLD</a>
+                                        <Link className={cx('nav-sub-link')}>HẠNG GOLD</Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')} style={{ paddingBottom: '5px' }}>
-                                        <a className={cx('nav-sub-link')}>HẠNG PRESTIGE</a>
+                                        <Link className={cx('nav-sub-link')}>HẠNG PRESTIGE</Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')} style={{ paddingBottom: '5px' }}>
-                                        <a className={cx('nav-sub-link')}>Hội viên California Active</a>
+                                        <Link className={cx('nav-sub-link')}>Hội viên California Active</Link>
                                     </li>
                                 </ul>
                             </li>

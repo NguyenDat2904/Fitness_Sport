@@ -1,0 +1,49 @@
+.yoga-global-standard {
+    position: relative;
+    .text-container {
+        position: absolute;
+        bottom: 0;
+        top: 80px;
+        color: var(--white);
+        left: 0;
+        right: 0;
+        margin-left: calc((100vw - 1200px) / 2);
+        max-width: 1200px;
+        z-index: 0;
+        width: fit-content;
+        .title {
+            width: fit-content;
+            h2 {
+                font-family: var(--Oswald-family);
+                font-style: normal;
+                font-weight: 500;
+                font-size: 60px;
+                line-height: 90px;
+                color: #ffffff;
+                max-width: 489px;
+                padding-bottom: 100px;
+            }
+        }
+        .sub-title {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 21px;
+            color: var(--white);
+            max-width: 374px;
+            margin-top: 24px;
+        }
+    }
+}
+.item {
+    position: relative;
+    .black-shadow {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: var(--black);
+        opacity: 20%;
+    }
+}

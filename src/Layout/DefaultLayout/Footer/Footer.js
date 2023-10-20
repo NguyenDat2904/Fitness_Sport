@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Fooder.module.scss';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(style);
 
 function Footer() {
@@ -14,22 +15,22 @@ function Footer() {
                         </div>
                         <ul className={cx('list-menu-item-footer')}>
                             <li>
-                                <a href="#"> Dance </a>
+                                <Link to="#"> Dance </Link>
                             </li>
                             <li>
-                                <a href="#"> Group X </a>
+                                <Link to="#"> Group X </Link>
                             </li>
                             <li>
-                                <a href="#"> Yoga </a>
+                                <Link to="#"> Yoga </Link>
                             </li>
                             <li>
-                                <a href="#"> Công nghệ giảm mỡ Hypoxi </a>
+                                <Link to="#"> Công nghệ giảm mỡ Hypoxi </Link>
                             </li>
                             <li>
-                                <a href="#"> Huấn luyện viên cá nhân </a>
+                                <Link to="#"> Huấn luyện viên cá nhân </Link>
                             </li>
                             <li>
-                                <a href="#"> Kickfit & MMA </a>
+                                <Link to="#"> Kickfit & MMA </Link>
                             </li>
                         </ul>
                     </div>
@@ -41,27 +42,27 @@ function Footer() {
                         </div>
                         <ul className={cx('list-menu-item-footer')}>
                             <li>
-                                <a href="#">Về chúng tôi</a>
+                                <Link to="#">Về chúng tôi</Link>
                             </li>
                             <li>
-                                <a href="">Điều kiện sử dụng</a>
+                                <Link to="">Điều kiện sử dụng</Link>
                             </li>
                             <li>
-                                <a href="">Chính sách bảo mật</a>
+                                <Link to="">Chính sách bảo mật</Link>
                             </li>
                             <li>
-                                <a href="">Chính sách thanh toán</a>
+                                <Link to="">Chính sách thanh toán</Link>
                             </li>
                             <li>
-                                <a href="">Chính sách giải quyết khiếu nại</a>
+                                <Link to="">Chính sách giải quyết khiếu nại</Link>
                             </li>
                             <li>
-                                <a href="" target="_blank">
+                                <Link to="" target="_blank">
                                     Tuyển dụng
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="">Liên hệ</a>
+                                <Link to="">Liên hệ</Link>
                             </li>
                         </ul>
                     </div>
@@ -69,70 +70,70 @@ function Footer() {
                         <div className={cx('phone-num-contain')}>
                             <h3>SUPPORT</h3>
                             <p>
-                                <a href="">1800 6995</a>
+                                <Link to="">1800 6995</Link>
                             </p>
                         </div>
                         <div className={cx('icon-contain')}>
-                            <a href="" target="_blank">
+                            <Link to="" target="_blank">
                                 <img
                                     className={cx('network-icon', 'lazy')}
                                     alt="https://cali.vn/storage/app/media/footer-icon/fb-icon.png"
                                     src="https://cali.vn/storage/app/media/footer-icon/fb-icon.png"
                                     style={{}}
                                 />
-                            </a>
-                            <a href="" target="_blank">
+                            </Link>
+                            <Link to="" target="_blank">
                                 <img
                                     className={cx('network-icon', 'lazy')}
                                     alt="https://cali.vn/storage/app/media/footer-icon/yt-1-white.png"
                                     src="https://cali.vn/storage/app/media/footer-icon/yt-1-white.png"
                                     style={{}}
                                 />
-                            </a>
-                            <a href="" target="_blank">
+                            </Link>
+                            <Link to="" target="_blank">
                                 <img
                                     className={cx('network-icon', 'lazy')}
                                     alt="https://cali.vn/storage/app/media/footer-icon/instagram-icon-white.png"
                                     src="https://cali.vn/storage/app/media/footer-icon/instagram-icon-white.png"
                                     style={{}}
                                 />
-                            </a>
-                            <a href="" target="_blank">
+                            </Link>
+                            <Link to="" target="_blank">
                                 <img
                                     className={cx('network-icon', 'lazy')}
                                     alt="https://cali.vn/storage/app/media/old/icon/social_spotify.svg"
                                     src="https://cali.vn/storage/app/media/old/icon/social_spotify.svg"
                                     style={{}}
                                 />
-                            </a>
-                            <a href="" target="_blank">
+                            </Link>
+                            <Link to="" target="_blank">
                                 <img
                                     className={cx('network-icon', 'lazy')}
                                     alt="https://cali.vn/storage/app/media/2023/System/tiktok-icon.svg"
                                     src="https://cali.vn/storage/app/media/2023/System/tiktok-icon.svg"
                                     style={{}}
                                 />
-                            </a>
+                            </Link>
                         </div>
                         <div className={cx('logo-guinness')}>
-                            <a href="" target="_blank">
+                            <Link to="" target="_blank">
                                 <img
                                     alt="footer guinness"
                                     className={cx('lazy')}
                                     src="https://cali.vn/themes/cfyc/assets/static/image/Strap-GWR-White-Icon.png"
                                     style={{}}
                                 />
-                            </a>
+                            </Link>
                         </div>
                         <div className={cx('logo-footer')}>
-                            <a href="" target="_blank">
+                            <Link to="" target="_blank">
                                 <img
                                     alt="footer logo"
                                     className={cx('lazy')}
                                     src="https://cali.vn/themes/cfyc/assets/static/image/footer-logo.png"
                                     style={{}}
                                 />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                     <div className={cx('information-contain')}>
@@ -151,15 +152,15 @@ function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className={cx("logo-footer-mobile")}>
-                    <a href="http://online.gov.vn/Home/WebDetails/2697?AspxAutoDetectCookieSupport=1" target="_blank">
+                <div className={cx('logo-footer-mobile')}>
+                    <Link to="http://online.gov.vn/Home/WebDetails/2697?AspxAutoDetectCookieSupport=1" target="_blank">
                         <img
                             alt="footer logo"
-                            className={cx("lazy")}
+                            className={cx('lazy')}
                             src="https://cali.vn/themes/cfyc/assets/static/image/footer-logo.png"
                             style={{}}
                         />
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className={cx('end-footer-contain')}>

@@ -1,0 +1,118 @@
+
+.banner {
+    display: block;
+    object-fit: cover;
+    min-height: var(--breakpoint-sm);
+}
+
+.submit-contain-header{
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 1200px;
+    margin: auto 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.submit-header-content{
+    font-family: var(--Oswald-family);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 70px;
+    /* width: 45%; */
+    /* text-align: center; */
+    /* color: #FFFFFF; */
+}
+
+.submit-header-content-mobile{
+    font-family: var(--Oswald-family);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 70px;
+    display: none;
+}
+
+.btn-submit-banner {
+    font-family: var(--Montserrat-family);
+    font-style: normal;
+    font-size: 15px;
+    line-height: 18px;
+    border: unset;
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: bold;
+    display: flex;
+    text-align: center;
+    letter-spacing: -0.015em;
+    padding: 14px 89px;
+    background: #DA2128;
+    border-radius: 0;
+    color: #FFFFFF;
+    margin-top: 29px;
+    transition: background .3s ease-in-out;
+    cursor: pointer;
+}
+
+.btn-submit-banner:hover {
+    background: var(--black);
+}
+
+@media (max-width: 768px) {
+
+    .banner {
+        display: block;
+        object-fit: cover;
+        max-height: 650px;
+    }
+
+    .submit-contain-header{
+        /* position: unset; */
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0;
+        bottom: 10%;
+        padding-bottom: 101px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .submit-header-content{
+        width: 100%;
+        text-align: center;
+        margin-bottom:46px;
+        display: none;
+    }
+
+    .submit-header-content-mobile{
+        width: 100%;
+        text-align: center;
+        margin-bottom:46px;
+        line-height: 1.5;
+        display: block;
+    }
+
+    .btn-submit-banner{
+        /* display: none; */
+        position: unset;
+        margin: 0;
+        padding: 18px 37px;
+        font-size: 15px;
+        line-height: 18px;
+    }
+}
+
+@media (max-width: 1240px) {
+
+    .submit-contain-header {
+        padding: 20px;
+    }
+}

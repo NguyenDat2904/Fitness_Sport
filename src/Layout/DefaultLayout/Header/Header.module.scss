@@ -50,10 +50,10 @@
                 font-size: 1.6rem;
                 border-bottom: 2px solid transparent;
             }
+        }
 
-            a:hover {
-                border-bottom: 2px solid var(--red);
-            }
+        .downbtn:hover .header-item {
+            border-bottom: 2px solid var(--red);
         }
     }
 
@@ -69,7 +69,7 @@
     .downbtn:hover .dropdown_menu {
         display: block;
         position: absolute;
-        left: 30px;
+        left: 10px;
         top: 100%;
         background-color: var(--black);
         transition: all 0.3s ease;
@@ -309,26 +309,32 @@
     font-family: var(--Montserrat-family);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     height: 100%;
     width: 220.5px;
 
     .box-trying {
-        margin-left: 10px;
         border: 0;
-        padding: 10px 30px;
+        padding: 20px 55px;
         text-align: center;
         font-family: Montserrat;
         height: 100%;
         display: flex;
         align-items: center;
-        color: var(--white);
+        color: #fff;
         background: #da2128;
         font-style: normal;
         font-weight: bold;
         font-size: 16px;
         line-height: 20px;
-        transition: background 0.3s ease-in-out;
+        transition: background .3s ease-in-out;
+    
+        
+        a {
+            color: var(--white);
+            font-size: 16px;
+            
+        }
     }
 
     .box-trying:hover {
@@ -351,7 +357,7 @@
     }
     .contain-right {
         .box-trying {
-            padding: 10px 30px !important;
+            padding: 10px 40px !important;
         }
 
         .block-header-mobile {

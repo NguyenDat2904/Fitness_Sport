@@ -111,42 +111,42 @@ function Header() {
                             <div className={cx('dropdown_menu')}>
                                 <ul className={cx('dropdown-content-mobile')}>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link to="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Hà Nội' className={cx('nav-sub-link')}>
                                             Hà Nội
                                         </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link to="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Đà Nẵng' className={cx('nav-sub-link')}>
                                             Đà Nẵng
                                         </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link to="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Khánh Hòa' className={cx('nav-sub-link')}>
                                             Khánh Hòa
                                         </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link to="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Bình Dương' className={cx('nav-sub-link')}>
                                             Bình Dương
                                         </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link to="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Đồng Nai' className={cx('nav-sub-link')}>
                                             Đồng Nai
                                         </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link to="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Bà Rịa - Vũng Tàu' className={cx('nav-sub-link')}>
                                             Bà Rịa - Vũng Tàu
                                         </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link to="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Hồ Chí Minh' className={cx('nav-sub-link')}>
                                             Hồ Chí Minh
                                         </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link to="" className={cx('nav-sub-link')}>
+                                        <Link to='/club/Cần Thơ' className={cx('nav-sub-link')}>
                                             Cần Thơ
                                         </Link>
                                     </li>
@@ -350,7 +350,9 @@ function Header() {
                                 />
                                 <label htmlFor={0}>
                                     <div>
-                                        <div className={cx('navbar-item-header')}>DỊCH VỤ</div>
+                                        <Link href="" className={cx('navbar-item-header')}>
+                                            DỊCH VỤ
+                                        </Link>
                                     </div>
                                     <AiOutlineDown className={cx('icon-sub-menu')} color="#fff" />
                                 </label>
@@ -439,28 +441,44 @@ function Header() {
                                 </label>
                                 <ul className={cx('dropdown-content-mobile')}>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link className={cx('nav-sub-link')}>Hà Nội</Link>
+                                        <Link to="/club/Hà Nội" className={cx('nav-sub-link')}>
+                                            Hà Nội
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link className={cx('nav-sub-link')}>Đà Nẵng</Link>
+                                        <Link to="/club/Đà Nẵng" className={cx('nav-sub-link')}>
+                                            Đà Nẵng
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link className={cx('nav-sub-link')}>Khánh Hòa</Link>
+                                        <Link to="/club/Khánh Hòa" className={cx('nav-sub-link')}>
+                                            Khánh Hòa
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link className={cx('nav-sub-link')}>Bình Dương</Link>
+                                        <Link to="/club/Bình Dương" className={cx('nav-sub-link')}>
+                                            Bình Dương
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link className="nav-sub-link">Đồng Nai</Link>
+                                        <Link to="/club/Đồng Nai" className="nav-sub-link">
+                                            Đồng Nai
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link className={cx('nav-sub-link')}>Bà Rịa - Vũng Tàu</Link>
+                                        <Link to="/club/Bà Rịa - Vũng Tàu" className={cx('nav-sub-link')}>
+                                            Bà Rịa - Vũng Tàu
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link className={cx('nav-sub-link')}>Hồ Chí Minh</Link>
+                                        <Link to="/club/Hồ Chí Minh" className={cx('nav-sub-link')}>
+                                            Hồ Chí Minh
+                                        </Link>
                                     </li>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <Link className={cx('nav-sub-link')}>Cần Thơ</Link>
+                                        <Link to="/club/Cần Thơ" className={cx('nav-sub-link')}>
+                                            Cần Thơ
+                                        </Link>
                                     </li>
                                 </ul>
                             </li>

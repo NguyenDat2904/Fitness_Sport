@@ -10,6 +10,15 @@
     opacity: .9;
     max-width: var(--breakpoint-xl);
 
+    .list-cat {
+        a:hover {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+    }
+
+
     .logo-footer-mobile {
         display: none;
     }
@@ -56,6 +65,7 @@
                 text-align: justify;
                 max-width: 220px;
             }
+            
         }
 
         li:nth-child(n+2) {

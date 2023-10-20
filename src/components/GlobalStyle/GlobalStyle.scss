@@ -65,18 +65,21 @@ ul {
 
 .slick-dots {
     bottom: 20px;
-    z-index: 10;
-}
-.slick-dots li button {
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    border-radius: 50%;
-    color: transparent;
-    background-color: transparent;
-    opacity: 0.5;
-    outline: none;
-    transition: opacity 0.3s;
+
+    li button:hover, .slick-dots li button:focus {
+        outline: none;
+        color: var(--white);
+    }
+
+    li.slick-active button:before {
+        color: var(--light);
+        font-size: 10px;
+    }
+
+    li button:before {
+        font-size: 10px;
+        color: var(--white);
+    }
 }
 
 .slick-dots li button::before {

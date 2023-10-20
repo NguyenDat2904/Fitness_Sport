@@ -3,22 +3,19 @@ import classNames from 'classnames/bind';
 import style from './Club.module.scss';
 import axios from 'axios';
 import WhiteContain from '~/components/WhiteContain/WhiteContain';
+import { useContext } from 'react';
+import { AppContext } from '~/hook/context/AppContext';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(style);
 
 const Club = () => {
-    const [show, setShow] = useState('');
+    const values = useContext(AppContext);
 
-    const onShow = () => {
-        if (show == '') {
-            setShow('show');
-        } else {
-            setShow('');
-        }
-    };
+    const { show, onBlur, onShow, onMouseEnter, onMouseLeave } = values;
 
     return (
         <>
-            <div className={cx('black-contain')}>
+            <div className={cx('black-contain')} id="black">
                 <div className={cx('search-contain')}>
                     <div className={cx('clb-count')}>
                         <h1>37+ CÂU LẠC BỘ</h1>
@@ -32,10 +29,9 @@ const Club = () => {
                                 <img
                                     className={cx('lazy')}
                                     id="icon-search"
-                                    style={{ objectFit: 'contain', paddingLeft: 20, cursor: 'pointer', zIndex: 6 }}
+                                    style={{ objectFit: 'contain', paddingLeft: 20, zIndex: 6 }}
                                     alt="icon"
                                     src="https://cali.vn/themes/cfyc//assets/static/icon/search.svg"
-                                    onClick={onShow}
                                 />
                                 <input
                                     type="text"
@@ -43,42 +39,96 @@ const Club = () => {
                                     autoComplete="off"
                                     id={cx('myInput')}
                                     onClick={onShow}
+                                    onBlur={onBlur}
                                 />
                                 <div className={cx('drop-box-mobile', { show })} id={cx('myDropdown')}>
-                                    <div id={cx('myDropdown_inside')} className={cx('search-clb-dropdown-content')}>
+                                    <div
+                                        id={cx('myDropdown_inside')}
+                                        className={cx('search-clb-dropdown-content')}
+                                        onMouseEnter={onMouseEnter}
+                                        onMouseLeave={onMouseLeave}
+                                    >
                                         <p className={cx('mobile-header-search-box')}>Chọn thành phố</p>
-                                        <a href="#">
-                                            <input id="Hà Nội" type="radio" hidden name="check_box_search" />
+                                        <Link to="/club/Hà Nội">
+                                            <input
+                                                id="Hà Nội"
+                                                type="checkbox"
+                                                hidden
+                                                name="check_box_search"
+                                                defaultValue="Hà Nội"
+                                            />
                                             <label htmlFor="Hà Nội">Hà Nội</label>
-                                        </a>
-                                        <a href="#">
-                                            <input id="Đà Nẵng" type="radio" hidden name="check_box_search" />
+                                        </Link>
+                                        <Link to="/club/Đà Nẵng">
+                                            <input
+                                                id="Đà Nẵng"
+                                                type="checkbox"
+                                                hidden
+                                                name="check_box_search"
+                                                defaultValue="Đà Nẵng"
+                                            />
                                             <label htmlFor="Đà Nẵng">Đà Nẵng</label>
-                                        </a>
-                                        <a href="#">
-                                            <input id="Khánh Hòa" type="radio" hidden name="check_box_search" />
+                                        </Link>
+                                        <Link to="/club/Khánh Hòa">
+                                            <input
+                                                id="Khánh Hòa"
+                                                type="checkbox"
+                                                hidden
+                                                name="check_box_search"
+                                                defaultValue="Khánh Hòa"
+                                            />
                                             <label htmlFor="Khánh Hòa">Khánh Hòa</label>
-                                        </a>
-                                        <a href="#">
-                                            <input id="Bình Dương" type="radio" hidden name="check_box_search" />
+                                        </Link>
+                                        <Link to="/club/Bình Dương">
+                                            <input
+                                                id="Bình Dương"
+                                                type="checkbox"
+                                                hidden
+                                                name="check_box_search"
+                                                defaultValue="Bình Dương"
+                                            />
                                             <label htmlFor="Bình Dương">Bình Dương</label>
-                                        </a>
-                                        <a href="#">
-                                            <input id="Đồng Nai" type="radio" hidden name="check_box_search" />
+                                        </Link>
+                                        <Link to="/club/Đồng Nai">
+                                            <input
+                                                id="Đồng Nai"
+                                                type="checkbox"
+                                                hidden
+                                                name="check_box_search"
+                                                defaultValue="Đồng Nai"
+                                            />
                                             <label htmlFor="Đồng Nai">Đồng Nai</label>
-                                        </a>
-                                        <a href="#">
-                                            <input id="Bà Rịa - Vũng Tàu" type="radio" hidden name="check_box_search" />
+                                        </Link>
+                                        <Link to="/club/Bà Rịa - Vũng Tàu">
+                                            <input
+                                                id="Bà Rịa - Vũng Tàu"
+                                                type="checkbox"
+                                                hidden
+                                                name="check_box_search"
+                                                defaultValue="Bà Rịa - Vũng Tàu"
+                                            />
                                             <label htmlFor="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</label>
-                                        </a>
-                                        <a href="#">
-                                            <input id="Hồ Chí Minh" type="radio" hidden name="check_box_search" />
+                                        </Link>
+                                        <Link to="/club/Hồ Chí Minh">
+                                            <input
+                                                id="Hồ Chí Minh"
+                                                type="checkbox"
+                                                hidden
+                                                name="check_box_search"
+                                                defaultValue="Hồ Chí Minh"
+                                            />
                                             <label htmlFor="Hồ Chí Minh">Hồ Chí Minh</label>
-                                        </a>
-                                        <a href="#">
-                                            <input id="Cần Thơ" type="radio" hidden name="check_box_search" />
+                                        </Link>
+                                        <Link to="/club/Cần Thơ">
+                                            <input
+                                                id="Cần Thơ"
+                                                type="checkbox"
+                                                hidden
+                                                name="check_box_search"
+                                                defaultValue="Cần Thơ"
+                                            />
                                             <label htmlFor="Cần Thơ">Cần Thơ</label>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className={cx('mobile-shadow')} />
@@ -88,13 +138,11 @@ const Club = () => {
                                 id="icon-search-dropdown"
                                 style={{
                                     marginRight: 20,
-                                    cursor: 'pointer',
                                     transform: show == 'show' ? 'unset' : 'rotate(180deg)',
                                     transition: 'all 0.3s ease',
                                 }}
                                 alt="Vector-submenu.svg"
                                 src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-submenu.svg"
-                                onClick={onShow}
                             />
                         </div>
                     </div>
@@ -109,9 +157,9 @@ const Club = () => {
                                 <div className={cx('description')}>Thành phố Hà Nội</div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="/club/Hà Nội" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Hà Nội
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -140,9 +188,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="/club/Đà Nẵng" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Đà Nẵng
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -171,9 +219,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="/club/Khánh Hòa" className={cx('clb-link')}>
                                     Xem phòng tập tại Tỉnh Khánh Hòa
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -202,9 +250,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="/club/Bình Dương" className={cx('clb-link')}>
                                     Xem phòng tập tại Tỉnh Bình Dương
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -233,9 +281,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="/club/Đồng Nai" className={cx('clb-link')}>
                                     Xem phòng tập tại Tỉnh Đồng Nai
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -264,9 +312,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="/club/Bà Rịa - Vũng Tàu" className={cx('clb-link')}>
                                     Xem phòng tập tại Tỉnh Bà Rịa - Vũng Tàu
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -295,9 +343,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="/club/Hồ Chí Minh" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Hồ Chí Minh
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -326,9 +374,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="/club/Cần Thơ" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Cần Thơ
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -350,7 +398,6 @@ const Club = () => {
                     </div>
                 </div>
             </div>
-
             <WhiteContain />
         </>
     );

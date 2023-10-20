@@ -1,7 +1,9 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useState } from 'react';
 const AppContext = createContext();
 const AppProvider = (props) => {
-    const value = {};
+    const [courses, setCourses] = useState([]);
+
+    const value = { courses, setCourses };
     return <AppContext.Provider value={value} {...props}></AppContext.Provider>;
 };
 

@@ -7,7 +7,6 @@ export const Slick = (props) => {
     const { slider } = props;
 
     const settings = {
-        dots: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -22,7 +21,7 @@ export const Slick = (props) => {
         <Slider {...settings}>
             {slider
                 ? slider.map((item, index) => {
-                      return <ItemCart item={item} index={index} />;
+                      return <ItemCart item={item} index={index} key={index} />;
                   })
                 : ''}
         </Slider>

@@ -1,6 +1,7 @@
 import style from './ItemContainMobile.module.scss';
 import classNames from 'classnames/bind';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(style);
 
@@ -9,39 +10,39 @@ const ItemContainMobile = (props) => {
     const { urlImg, title, text } = item;
 
     return (
-        <div className={cx('item')} key={index} style={{height:'80%'}}>
+        <div className={cx('item')} key={index} style={{ height: '80%' }}>
             <div className={cx('item-img')}>
-                <a href="#">
+                <Link to="#">
                     <img
                         className={cx('lazy', 'service-image')}
                         width="100%"
                         height="100%"
                         src={urlImg}
-                        alt="pt image"
+                        alt="pt"
                     />
-                </a>
+                </Link>
             </div>
             <div className={cx('item-content')} style={{ position: 'absolute' }}>
                 <div className={cx('content')}>
                     <span className={cx('title')}>
-                        <a href="#">
+                        <Link to="#">
                             <h3>{title}</h3>
-                        </a>
+                        </Link>
                     </span>
                     <div className={cx('text')}>
-                        <a href="#">{text}</a>
+                        <Link to="#">{text}</Link>
                     </div>
                 </div>
             </div>
             <div className={cx('read_more_place')} style={{ position: 'absolute' }}>
-                <a href="#">
+                <Link to="#">
                     <span>Tìm hiểu thêm</span>
                     <img
                         src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore-white.svg"
                         className={cx('lazy', 'icon-readmore')}
                         alt="icon read more"
                     />
-                </a>
+                </Link>
             </div>
         </div>
     );

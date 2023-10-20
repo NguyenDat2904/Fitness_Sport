@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import style from './Club.module.scss';
-import axios from 'axios';
 import WhiteContain from '~/components/WhiteContain/WhiteContain';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(style);
 
 const Club = () => {
     const [show, setShow] = useState('');
 
     const onShow = () => {
-        if (show == '') {
+        if (show === '') {
             setShow('show');
         } else {
             setShow('');
@@ -47,38 +47,38 @@ const Club = () => {
                                 <div className={cx('drop-box-mobile', { show })} id={cx('myDropdown')}>
                                     <div id={cx('myDropdown_inside')} className={cx('search-clb-dropdown-content')}>
                                         <p className={cx('mobile-header-search-box')}>Chọn thành phố</p>
-                                        <a href="#">
+                                        <Link to="#">
                                             <input id="Hà Nội" type="radio" hidden name="check_box_search" />
                                             <label htmlFor="Hà Nội">Hà Nội</label>
-                                        </a>
-                                        <a href="#">
+                                        </Link>
+                                        <Link to="#">
                                             <input id="Đà Nẵng" type="radio" hidden name="check_box_search" />
                                             <label htmlFor="Đà Nẵng">Đà Nẵng</label>
-                                        </a>
-                                        <a href="#">
+                                        </Link>
+                                        <Link to="#">
                                             <input id="Khánh Hòa" type="radio" hidden name="check_box_search" />
                                             <label htmlFor="Khánh Hòa">Khánh Hòa</label>
-                                        </a>
-                                        <a href="#">
+                                        </Link>
+                                        <Link to="#">
                                             <input id="Bình Dương" type="radio" hidden name="check_box_search" />
                                             <label htmlFor="Bình Dương">Bình Dương</label>
-                                        </a>
-                                        <a href="#">
+                                        </Link>
+                                        <Link to="#">
                                             <input id="Đồng Nai" type="radio" hidden name="check_box_search" />
                                             <label htmlFor="Đồng Nai">Đồng Nai</label>
-                                        </a>
-                                        <a href="#">
+                                        </Link>
+                                        <Link to="#">
                                             <input id="Bà Rịa - Vũng Tàu" type="radio" hidden name="check_box_search" />
                                             <label htmlFor="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</label>
-                                        </a>
-                                        <a href="#">
+                                        </Link>
+                                        <Link to="#">
                                             <input id="Hồ Chí Minh" type="radio" hidden name="check_box_search" />
                                             <label htmlFor="Hồ Chí Minh">Hồ Chí Minh</label>
-                                        </a>
-                                        <a href="#">
+                                        </Link>
+                                        <Link to="#">
                                             <input id="Cần Thơ" type="radio" hidden name="check_box_search" />
                                             <label htmlFor="Cần Thơ">Cần Thơ</label>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className={cx('mobile-shadow')} />
@@ -89,7 +89,7 @@ const Club = () => {
                                 style={{
                                     marginRight: 20,
                                     cursor: 'pointer',
-                                    transform: show == 'show' ? 'unset' : 'rotate(180deg)',
+                                    transform: show === 'show' ? 'unset' : 'rotate(180deg)',
                                     transition: 'all 0.3s ease',
                                 }}
                                 alt="Vector-submenu.svg"
@@ -109,9 +109,9 @@ const Club = () => {
                                 <div className={cx('description')}>Thành phố Hà Nội</div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Hà Nội
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -125,7 +125,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/old/club/Hanoi_900x600.jpg"
                                 style={{}}
                             />
@@ -140,9 +140,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Đà Nẵng
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -156,7 +156,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/old/club/Danang_900x600.jpg"
                                 style={{}}
                             />
@@ -171,9 +171,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Tỉnh Khánh Hòa
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -187,7 +187,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/2021/City/NhaTrang_900x600.jpg"
                                 style={{}}
                             />
@@ -202,9 +202,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Tỉnh Bình Dương
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -218,7 +218,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/2021/City/BinhDuong_900x600.jpg"
                                 style={{}}
                             />
@@ -233,9 +233,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Tỉnh Đồng Nai
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -249,7 +249,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/2021/City/DongNai_900x600.jpg"
                                 style={{}}
                             />
@@ -264,9 +264,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Tỉnh Bà Rịa - Vũng Tàu
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -280,7 +280,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/2021/Club/Vung%20Tau/VTC_900x600.jpg"
                                 style={{}}
                             />
@@ -295,9 +295,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Hồ Chí Minh
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -311,7 +311,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/old/club/HCM_900x600.jpg"
                                 style={{}}
                             />
@@ -326,9 +326,9 @@ const Club = () => {
                                 <div className={cx('description')}></div>
                             </div>
                             <div className={cx('explore-more')}>
-                                <a href="#" className={cx('clb-link')}>
+                                <Link to="#" className={cx('clb-link')}>
                                     Xem phòng tập tại Thành phố Cần Thơ
-                                </a>
+                                </Link>
                                 <img
                                     className={cx('icon-readmore', 'lazy')}
                                     alt="icon read more"
@@ -342,7 +342,7 @@ const Club = () => {
                                 className="lazy"
                                 width="100%"
                                 height="100%"
-                                alt="image of club"
+                                alt="img of club"
                                 src="https://cali.vn/storage/app/media/2021/City/Cantho_900x600.jpg"
                                 style={{}}
                             />

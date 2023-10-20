@@ -246,6 +246,64 @@ div::-webkit-scrollbar-track {
     margin-bottom: 0.5rem;
 }
 
+.information-content {
+    margin-bottom: 22px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--white);
+    .address {
+        margin-bottom: 23px;
+    }
+    .price {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 16px;
+        .cost {
+            font-size: 1.6rem;
+            text-decoration: line-through;
+            color: var(--secondary);
+            align-self: center;
+        }
+        .sale-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+    }
+    .start {
+        margin-bottom: 16px;
+    }
+    .schedule {
+        display: flex;
+        justify-content: space-between;
+        .btn-submit {
+            align-self: center;
+            button {
+                background-color: var(--primary-red);
+                border-radius: 0;
+                max-width: 180px;
+                margin-right: 0;
+                color: #ffffff;
+                padding: 11px 30px;
+                font-size: 15px;
+                line-height: 18px;
+                font-style: normal;
+                font-weight: bold;
+                text-align: center;
+                letter-spacing: -0.015em;
+                border: none;
+                transition: all 0.15s;
+                &:hover {
+                    text-decoration: unset;
+                    background-color: var(--hover);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .search-contain {
         padding-top: 32px;

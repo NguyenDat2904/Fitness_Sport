@@ -1,0 +1,48 @@
+.br-sign-in{
+    height: 80vh;
+    position: relative;
+    background-image: url("https://cali.vn/storage/app/media/2021/Register/Register_head2_1900x800.jpg");
+    background-size: cover;
+}
+
+.form{
+    width: 30%;
+    position: absolute;
+    left: 50%;
+    top: 50%; 
+    transform: translate(-50%,-50%);
+    padding: 3rem 4rem 5rem 6rem ;
+    background-color: #fff;
+    input{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 2px solid #333;
+        outline: none;
+    }
+    // a{
+    //     position: absolute;
+    //     right: 3rem;
+    //     margin-bottom: 2rem;
+    // }
+    .nav-link{
+        position: absolute;
+        right: 3rem;
+        margin-bottom: 2rem;
+    }
+    .btn{  
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 7rem;
+    margin-top: 2rem;
+    /* margin-left: 30px; */
+    color: #d8e8d9;
+    font-size: 2rem;
+    padding: 1.6rem 3.2rem;
+    background-color: red;
+    text-decoration: none;
+
+    }
+}

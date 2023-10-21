@@ -53,6 +53,7 @@ const ClubProvince = () => {
     };
 
     const cityName = useParams();
+    console.log(cityName.city);
     const [locations, setLocations] = useState([]);
     const [districts, setDistricts] = useState([]);
     const [changeValue, setChangValue] = useState('');
@@ -203,8 +204,8 @@ const ClubProvince = () => {
                                         onMouseLeave={onMouseLeave}
                                     >
                                         <p className={cx('mobile-header-search-box')}>Chọn quận</p>
-                                        {districts.map((item, index) => {
-                                            return <ItemSelectDistrict district={item} index={index} />;
+                                        {districts.map((item) => {
+                                            return <ItemSelectDistrict district={item} key={item._id} />;
                                         })}
                                     </div>
                                 </div>

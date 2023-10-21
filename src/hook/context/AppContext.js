@@ -7,6 +7,7 @@ const AppProvider = (props) => {
     const [isCheckBlur, setIsCheckBlur] = useState(true);
     const [statusCode, setStatusCode] = useState('');
     const [dis, setDis] = useState('');
+    const [courses, setCourses] = useState([]);
 
     const onShow = () => {
         if (show == '') {
@@ -46,6 +47,8 @@ const AppProvider = (props) => {
         onMouseLeave,
         setStatusCode,
         setDis,
+        courses,
+        setCourses,
     };
 
     return <AppContext.Provider value={value} {...props}></AppContext.Provider>;

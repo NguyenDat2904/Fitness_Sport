@@ -1,114 +1,165 @@
+import classNames from 'classnames/bind';
+import style from './Signup.module.scss';
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { post } from '~/uliti/htppRequest';
+import { AiOutlineLoading } from 'react-icons/ai';
+
+const cx = classNames.bind(style);
 
 function Signup() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [cwPassword, setCwPassword]=useState('');
-    const [code,setCode]=useState('');
-    const [error,setError]=useState(false);
-    const [erroName,setErrorName]=useState('');
+    const [value, setValue] = useState({
+        name: '',
+        email: '',
+        password: '',
+        cfmPassword: '',
+        code: '',
+    });
+    const [errors, setErrors] = useState({
+        name: '',
+        email: '',
+        password: '',
+        cfmPassword: '',
+        code: '',
+    });
+    const [loading, setLoading] = useState(true);
+    const [loadingRegister, setLoadingRegister] = useState(true);
+
+    const navigate = useNavigate();
+    const submitCode = async () => {
+        const newErrors = {};
+        let hasError = false;
+        if (value.name === '') {
+            newErrors.name = 'Vui lòng không để trống tên của bạn';
+            hasError = true;
+        }
+        if (!validateEmail(value.email) || value.emai === '') {
+            newErrors.email = 'Vui lòng điền vào đúng Email của bạn';
+            hasError = true;
+        }
+        setErrors(newErrors);
+        if (!hasError) {
+            setLoading(false);
+            const codeEmail = await post('/auth/verify', {
+                name: value.name,
+                email: value.email,
+            });
+            setLoading(true);
+            if (codeEmail.status === 400) {
+                newErrors.email = 'Email đã được đăng ký';
+                hasError = true;
+            }
+            setErrors(newErrors);
+        }
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValue((prevValues) => ({
+            ...prevValues,
+            [name]: value,
+        }));
+    };
+
     const validateEmail = (ipemail) => {
         return /\S+@\S+\.\S+/.test(ipemail);
-            
-        
     };
-    const navigate = useNavigate();
-
 
     async function handleSubmit(e) {
         e.preventDefault();
-        if (password !== cwPassword){
-            setError(true);
+        const newErrors = {};
+        let hasError = false;
+
+        if (value.password !== value.cfmPassword || value.cfmPassword === '') {
+            newErrors.cfmPassword = 'Mật khẩu không trùng khớp';
+            hasError = true;
         }
-        if(name.length ===0){
-            setErrorName(true);
-           
+        if (value.name === '') {
+            newErrors.name = 'Vui lòng không để trống tên của bạn';
+            hasError = true;
         }
-        if (!validateEmail(email)) {
-            alert('valid');
-            return;
-        } else {
-            const user = await verify('https://fitness-sport.onrender.com/auth/register', {
-                name,
-                email,
-                password,
+
+        if (!validateEmail(value.email) || value.emai === '') {
+            newErrors.email = 'Vui lòng điền vào đúng Email của bạn';
+            hasError = true;
+        }
+
+        if (value.code === '') {
+            newErrors.code = 'Vui lòng điền vào đúng Mã xác thực';
+            hasError = true;
+        }
+
+        if (value.password === '') {
+            newErrors.password = 'Vui lòng điền vào mật khẩu đúng định dạng';
+            hasError = true;
+        }
+
+        setErrors(newErrors);
+
+        if (!hasError) {
+            setLoadingRegister(false);
+            const user = await post('/auth/register', {
+                name: value.name,
+                email: value.email,
+                password: value.password,
                 role: 'normal',
-                code,
+                code: value.code,
             });
-            console.log(user)
+            setLoadingRegister(true);
             if (user) {
                 navigate('/signin');
             }
         }
     }
-    
-    const verify = async (url, data) => {
-        // check data co hay k
-        const response = await fetch(url, {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            mode: 'cors', // no-cors, *cors, same-origin
-            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, *same-origin, omit
-            headers: {
-                'Content-Type': 'application/json',
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            redirect: 'follow', // manual, *follow, error
-            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-            body: JSON.stringify(data), // body data type must match "Content-Type" header
-        });
-        return response.json();
-
-    };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={cx('form-contact-trial')}>
             <div>
-        <input
-            className="input-infor"
-            type="text"
-            name="ten"
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Họ và tên*"
-        />
-        </div>
-       {erroName? <label>Tên Không Được Để Trống</label>:""}
-        <input
-            className="input-infor"
-            type="email"
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-        />
-        <input
-            className="input-infor"
-            type="password"
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Mật Khẩu"
-        />
-        <div>
-        <input
-            className="input-infor"
-            type="password"
-            name="confirm"
-            onChange={(e) => setCwPassword(e.target.value)}
-            placeholder="Xác Nhận Mật Khẩu"
-        />
-        </div>
-       {error? <label>Mật Khẩu Không Khớp</label>:""}
-        <div>
-            <button className="btn-take" type="button" onClick={() => verify('https://fitness-sport.onrender.com/auth/verify', { name, email })}>
-                Lấy Mã
+                <input type="text" name="name" value={value.name} onChange={handleChange} placeholder="Họ và tên *" />
+                {errors.name && <span>{errors.name}</span>}
+            </div>
+            <div>
+                <input type="email" name="email" value={value.email} onChange={handleChange} placeholder="Email" />
+                {errors.email && <span>{errors.email}</span>}
+            </div>
+            <div>
+                <input
+                    type="password"
+                    name="password"
+                    value={value.password}
+                    onChange={handleChange}
+                    placeholder="Mật Khẩu"
+                />
+                {errors.password && <span>{errors.password}</span>}
+            </div>
+            <div>
+                <input
+                    type="password"
+                    name="cfmPassword"
+                    value={value.cfmPassword}
+                    onChange={handleChange}
+                    placeholder="Xác Nhận Mật Khẩu"
+                />
+                {errors.cfmPassword && <span>{errors.cfmPassword}</span>}
+            </div>
+            <div>
+                <button className={cx('btn-take')} type="button" onClick={submitCode}>
+                    {loading ? 'Lấy Mã' : <AiOutlineLoading className={cx('loading-icon')} />}
+                </button>
+                <input
+                    onChange={handleChange}
+                    value={value.code}
+                    type="text"
+                    placeholder="Nhập Mã Code Ở Đây"
+                    name="code"
+                />
+                {errors.code && <span>{errors.code}</span>}
+            </div>
+            <button className={cx('btn')} type="submit">
+                {loadingRegister ? 'Đăng Ký ' : <AiOutlineLoading className={cx('loading-icon')} />}
             </button>
-            <input className="input-code" onChange={(e)=>setCode(e.target.value)} type="text" placeholder="Nhập Mã Code Ở Đây  " />
-        </div>
-        <button className="btn" type="submit">
-            Đăng Ký
-        </button>
-    </form>
+        </form>
     );
 }
 

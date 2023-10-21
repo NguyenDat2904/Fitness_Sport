@@ -66,7 +66,8 @@ ul {
 .slick-dots {
     bottom: 20px;
 
-    li button:hover, .slick-dots li button:focus {
+    li button:hover,
+    .slick-dots li button:focus {
         outline: none;
         color: var(--white);
     }

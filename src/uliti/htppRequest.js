@@ -30,3 +30,19 @@ export const remove = async (path, option = {}) => {
     const response = await httpRequest.delete(path, option);
     return response;
 };
+export const patch = async (path, option = {}) => {
+    try {
+        const response = await httpRequest.patch(path, option);
+        return response;
+    } catch (error) {
+        if (error.response) {
+            console.error('Lỗi:', error.response.status);
+            console.error('Thông tin lỗi:', error.response.data);
+        } else if (error.request) {
+            console.error('Không nhận được phản hồi từ máy chủ.');
+        } else {
+            console.error('Lỗi:', error.message);
+        }
+        return error.response;
+    }
+};

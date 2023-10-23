@@ -34,7 +34,7 @@ function Signup() {
             newErrors.name = 'Vui lòng không để trống tên của bạn';
             hasError = true;
         }
-        if (!validateEmail(value.email) || value.emai === '') {
+        if (!validateEmail(value.email) || value.email === '') {
             newErrors.email = 'Vui lòng điền vào đúng Email của bạn';
             hasError = true;
         }

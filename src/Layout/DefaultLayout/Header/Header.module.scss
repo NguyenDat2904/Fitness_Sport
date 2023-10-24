@@ -5,10 +5,6 @@
     position: fixed;
     z-index: 9999;
     width: 100%;
-
-    .group-input {
-        display: flex;
-    }
 }
 
 .header {
@@ -20,6 +16,129 @@
     justify-content: space-between;
     height: 60px;
     max-width: 1200px;
+    .group-input {
+        position: relative;
+        .user-img {
+            position: relative;
+
+            display: block;
+            height: 45px;
+            width: 45px;
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+            .user-icon-down {
+                position: absolute;
+                bottom: -2px;
+                right: 0;
+                font-size: 16px;
+                z-index: 100;
+                border-radius: 50%;
+                color: var(--black);
+                background-color: var(--white);
+            }
+        }
+        .scale-user {
+            animation: identifier 0.3s ease-in-out;
+        }
+        @keyframes identifier {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.98);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+.menu-container {
+    position: absolute;
+    background-color: var(--black);
+    padding: 8px 0;
+    right: 0;
+    top: 120%;
+    border-radius: 8px;
+    .menu-child {
+        display: flex;
+        flex-direction: column;
+        .menu-child-top {
+            margin: 4px 16px 16px 16px;
+            .list-menu {
+                margin: 8px 4px;
+                border-radius: 8px;
+                box-shadow: 0 2px 12px rgba($color: #000000, $alpha: 0.2);
+                .user-info {
+                    display: flex;
+                    gap: 6px;
+                    align-items: center;
+                    padding: 8px;
+                    .user-info-img {
+                        height: 36px;
+                        width: 36px;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: 50%;
+                        }
+                    }
+                    .big-title {
+                        flex: 1;
+                        color: var(--white);
+                        h3 {
+                            user-select: none;
+                            white-space: nowrap;
+                            font-size: 17px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+                &:hover {
+                    background-color: #282929;
+                    transition: all 0.5s ease;
+                }
+            }
+        }
+        .menu-child-bottom {
+            .list-menu {
+                padding: 0 8px;
+                .list-item {
+                    display: flex;
+                    align-items: center;
+                    padding: 0 8px;
+                    border-radius: 8px;
+                    &:hover {
+                        background-color: #282929;
+                        transition: all 0.5s ease;
+                    }
+                    .list-item-icon {
+                        margin: 8px 12px 8px 0;
+                        width: 36px;
+                        height: 36px;
+                        display: flex;
+                        align-items: center;
+                        border-radius: 50%;
+                        background-color: #3a3b3c;
+                        .icon-logout {
+                            flex: 1;
+                        }
+                    }
+                    .list-item-text {
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: #f0f8ff;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .logo_header {
@@ -327,13 +446,11 @@
         font-weight: bold;
         font-size: 16px;
         line-height: 20px;
-        transition: background .3s ease-in-out;
-    
-        
+        transition: background 0.3s ease-in-out;
+
         a {
             color: var(--white);
             font-size: 16px;
-            
         }
     }
 

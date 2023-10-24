@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import style from './Signin.module.scss';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import Member from '../Register/Member/Member';
 import { post } from '~/uliti/htppRequest';
 import { AiOutlineLoading } from 'react-icons/ai';
+import { AppContext } from '~/hook/context/AppContext';
 
 const cx = classNames.bind(style);
 
@@ -21,6 +22,13 @@ function Signin() {
     });
 
     const [loadingLogin, setLoadingLogin] = useState(true);
+    const { userInfo, setUserInfo } = useContext(AppContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setUserInfo(localStorage.getItem('user'));
+    }, [location]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -30,7 +38,6 @@ function Signin() {
         }));
     };
 
-    const navigate = useNavigate();
     const validateEmail = (ipemail) => {
         return /\S+@\S+\.\S+/.test(ipemail);
     };
@@ -56,7 +63,7 @@ function Signin() {
                 password: value.password,
             });
             if (user.status === 200) {
-                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('user', JSON.stringify(user.data));
                 navigate('/');
             }
             if (user.status === 400) {

@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import style from './Header.module.scss';
 import classnames from 'classnames/bind';
 import { AiOutlineDown, AiOutlineRight, AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { publicRoutes } from '~/routes/routes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleChevronDown, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { patch } from '~/uliti/htppRequest';
+import { AppContext } from '~/hook/context/AppContext';
 
 const cx = classnames.bind(style);
 
@@ -11,6 +15,16 @@ function Header() {
     const [active, setActive] = useState('');
     const [showMenu, setShowMenu] = useState('');
     const [selectedOption, setSelectedOption] = useState('');
+    const [toggleImg, setToggleImg] = useState(false);
+    const [toggleMenuUser, setToggleMenuUser] = useState(false);
+    const { userInfo, setUserInfo } = useContext(AppContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setUserInfo(localStorage.getItem('user'));
+    }, [location]);
 
     const publicRoute = publicRoutes[1];
 
@@ -42,6 +56,16 @@ function Header() {
         });
     };
 
+    const handleLogOut = async () => {
+        setToggleMenuUser(false);
+        localStorage.removeItem('user');
+        const User = JSON.parse(userInfo);
+        const userLogOut = await patch(`https://fitness-sport.onrender.com/auth/logout/${User._id}`, {});
+        if (userLogOut.status === 200) {
+            navigate('/signin');
+        }
+    };
+
     const handleOptionChangeSub = (event) => {
         const value = event.target.value || '';
         console.log(value);
@@ -52,6 +76,14 @@ function Header() {
                 return value;
             }
         });
+    };
+
+    const handleToggleUser = () => {
+        setToggleImg(true);
+        setTimeout(() => {
+            setToggleImg(false);
+        }, 200);
+        setToggleMenuUser(!toggleMenuUser);
     };
 
     return (
@@ -298,9 +330,65 @@ function Header() {
                         }}
                     >
                         <div className={cx('group-input')}>
-                            <div className={cx('box-trying')}>
-                                <Link to="signin">ĐĂNG NHẬP</Link>
-                            </div>
+                            <>
+                                {!userInfo ? (
+                                    <Link to="/signin">
+                                        <div className={cx('box-trying')}>ĐĂNG NHẬP</div>
+                                    </Link>
+                                ) : (
+                                    <div
+                                        className={cx('user-img', toggleImg && 'scale-user')}
+                                        onClick={handleToggleUser}
+                                    >
+                                        <img
+                                            src="https://scontent.fhan18-1.fna.fbcdn.net/v/t1.6435-9/157193579_1117396188778855_678820558290613174_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7a1959&_nc_ohc=-Sm58RG0KW0AX8LBWxx&_nc_ht=scontent.fhan18-1.fna&oh=00_AfAmdk8hAxKBsQoD1cOEaWTtyQVkUa7FzOjBzGgZ0ksObw&oe=655EA304"
+                                            alt=""
+                                        />
+                                        <FontAwesomeIcon icon={faCircleChevronDown} className={cx('user-icon-down')} />
+                                    </div>
+                                )}
+                            </>
+
+                            {toggleMenuUser && (
+                                <div className={cx('menu-container')}>
+                                    <div className={cx('menu-child')}>
+                                        <div className={cx('menu-child-top')}>
+                                            <div className={cx('list-menu')}>
+                                                <div className={cx('list-item')}>
+                                                    <Link to="/profile">
+                                                        <div className={cx('user-info')}>
+                                                            <div className={cx('user-info-img')}>
+                                                                <img
+                                                                    src="https://scontent.fhan18-1.fna.fbcdn.net/v/t1.6435-9/157193579_1117396188778855_678820558290613174_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7a1959&_nc_ohc=-Sm58RG0KW0AX8LBWxx&_nc_ht=scontent.fhan18-1.fna&oh=00_AfAmdk8hAxKBsQoD1cOEaWTtyQVkUa7FzOjBzGgZ0ksObw&oe=655EA304"
+                                                                    alt=""
+                                                                />
+                                                            </div>
+                                                            <div className={cx('big-title')}>
+                                                                <h3>Nguyễn Thành Đạt</h3>
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className={cx('menu-child-bottom')}>
+                                            <div className={cx('list-menu')}>
+                                                <div className={cx('list-item')}>
+                                                    <div className={cx('list-item-icon')}>
+                                                        <FontAwesomeIcon
+                                                            icon={faRightFromBracket}
+                                                            className={cx('icon-logout')}
+                                                        />
+                                                    </div>
+                                                    <div className={cx('list-item-text')} onClick={handleLogOut}>
+                                                        Đăng xuất
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </Link>
                     <div className={cx('block-header-mobile')}>

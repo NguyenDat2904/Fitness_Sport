@@ -272,8 +272,8 @@ function Header() {
                                 </ul>
                             </div>
                         </li>
-                        <li>
-                            <Link to="">LỊCH TẬP / SCHEDULE</Link>
+                        <li className={cx('downbtn')}>
+                            <Link to="" className={cx('header-item')}>LỊCH TẬP / SCHEDULE</Link>
                         </li>
                         <li className={cx('downbtn')}>
                             <Link to="" className={cx('header-item')}>
@@ -451,9 +451,6 @@ function Header() {
                                             type="checkbox"
                                             id="training"
                                             hidden
-                                            // value={'1'}
-                                            // checked={selectedOption === '1'}
-                                            // onchange={handleOptionChangeSub}
                                             name="drop-down-sub-content-mobile"
                                         />
                                         <label htmlFor="training">
@@ -478,9 +475,6 @@ function Header() {
                                             type="checkbox"
                                             id="coaching"
                                             hidden
-                                            // value={"2"}
-                                            // checked={selectedOption === "2"}
-                                            // onchange={handleOptionChangeSub}
                                             name="drop-down-sub-content-mobile"
                                         />
                                         <label htmlFor="coaching">
@@ -593,9 +587,6 @@ function Header() {
                                             type="checkbox"
                                             id="news"
                                             hidden
-                                            // value={'3'}
-                                            // checked={selectedOption === '3'}
-                                            // onChange={handleOptionChangeSub}
                                             name="drop-down-sub-content-mobile"
                                         />
                                         <label htmlFor="news" style={{ padding: '0' }}>
@@ -626,9 +617,6 @@ function Header() {
                                             type="checkbox"
                                             id="bai-tap"
                                             hidden
-                                            // value={'4'}
-                                            // checked={selectedOption === '4'}
-                                            // onChange={handleOptionChangeSub}
                                             name="drop-down-sub-content-mobile"
                                         />
                                         <label htmlFor="bai-tap" style={{ padding: '0' }}>

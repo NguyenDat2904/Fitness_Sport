@@ -7,11 +7,12 @@ import ForgotPassWord from '~/pages/ForgorPassword/ForgotPassWord';
 import VerifyEmail from '~/pages/VerifyEmail/VerifyEmail';
 import ClubProvince from '~/pages/Club/ClubProvince/ClubProvince';
 import Error from '~/pages/Error/Error';
-import ProductDetails from '~/pages/ProductDetails/ProductDetails';
 import ListBlogContain from '~/pages/ListBlogContain/ListBlogContain';
 import Course from '~/pages/Course/Course';
 import CourseDance from '~/pages/CourseDance/CourseDance';
 import CourseAll from '~/pages/CourseAll/CourseAll';
+import ClubDetails from '~/pages/ClubDetails/ClubDetails';
+import BlogDetails from '~/pages/BlogDetails/BlogDetails';
 
 const publicRoutes = [
     {
@@ -27,12 +28,16 @@ const publicRoutes = [
         component: ClubProvince,
     },
     {
-        path: '/product-details',
-        component: ProductDetails,
+        path: '/club-details',
+        component: ClubDetails,
     },
     {
         path: '/blog',
         component: ListBlogContain,
+    },
+    {
+        path: '/blog-details',
+        component: BlogDetails,
     },
     {
         path: '/error',

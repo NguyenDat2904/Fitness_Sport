@@ -15,102 +15,33 @@ const cx = classNames.bind(style);
 const ClubProvince = () => {
     const navigate = useNavigate();
 
-    const district = {
-        'Hà Nội': [
-            'Quận Cầu Giấy',
-            'Quận Hà Đông',
-            'Quận Hai Bà Trưng',
-            'Quận Hoàn Kiếm',
-            'Quận Long Biên',
-            'Quận Nam Từ Liêm',
-            'Quận Tây Hồ',
-            'Quận Thanh Xuân',
-            'Quận Đống Đa',
-        ],
-        'Đằ Nẵng': ['Quận Thanh Khê'],
-        'Khánh Hòa': ['Thành Phố Nha Trang'],
-        'Bình Dương': ['Thành Phố Thủ Dầu Một'],
-        'Đồng Nai': ['Thành Phố Biên Hòa'],
-        'Bà Rịa - Vũng Tàu': ['Thành Phố Vũng Tàu'],
-        'Hồ Chí Minh': [
-            'Quận 1',
-            'Quận 11',
-            'Quận 2',
-            'Quận 3',
-            'Quận 4',
-            'Quận 5',
-            'Quận 6',
-            'Quận 7',
-            'Quận Bình Tân',
-            'Quận Bình Thạch',
-            'Quận Gò Vấp',
-            'Quận Phú Nhuận',
-            'Quận Tân Bình',
-            'Quận Tân Phú',
-            'Thành Phố Thủ Đức',
-        ],
-        'Cần Thơ': ['Quận Ninh Kiều'],
-    };
-
     const cityName = useParams();
-    console.log(cityName.city);
     const [locations, setLocations] = useState([]);
     const [districts, setDistricts] = useState([]);
     const [changeValue, setChangValue] = useState('');
 
-    // const districtCount = {};
-    // for (const obj of locations) {
-    //     const district = obj.district;
-    //     if (districtCount[district]) {
-    //         districtCount[district]++;
-    //     } else {
-    //         districtCount[district] = 1;
-    //     }
-    // }
-
-    // const handleFilterDistrict = Object.keys(districtCount).filter((district) => districtCount[district] === 1);
-    // setDistricts(handleDistrict);
-    // console.log(handleFilterDistrict);
+    
+    const handleFilterDistrict = () => {
+        const districtCount = {};
+        for (const obj of locations) {
+            const district = obj.district;
+            if (districtCount[district]) {
+                districtCount[district]++;
+            } else {
+                districtCount[district] = 1;
+            }
+        }
+        const filter = Object.keys(districtCount).filter((district) => districtCount[district] === 1);
+        return setDistricts(filter);
+    };
 
     const onChangeValue = (item) => {
         setChangValue(item.target.value);
-        // console.log(changeValue);
     };
 
-    const onSubmitHandle = () => {
-        console.log(dis);
-        setDis(changeValue);
-    };
-
-    const handleDistrict = (cityName) => {
-        switch (cityName) {
-            case 'Hà Nội':
-                setDistricts(district['Hà Nội']);
-                break;
-            case 'Đằ Nẵng':
-                setDistricts(district['Đằ Nẵng']);
-                break;
-            case 'Khánh Hòa':
-                setDistricts(district['Khánh Hòa']);
-                break;
-            case 'Bình Dương':
-                setDistricts(district['Bình Dương']);
-                break;
-            case 'Đồng Nai':
-                setDistricts(district['Đồng Nai']);
-                break;
-            case 'Bà Rịa - Vũng Tàu':
-                setDistricts(district['Bà Rịa - Vũng Tàu']);
-                break;
-            case 'Hồ Chí Minh':
-                setDistricts(district['Hồ Chí Minh']);
-                break;
-            case 'Cần Thơ':
-                setDistricts(district['Cần Thơ']);
-                break;
-            default:
-                console.log('Error!');
-                break;
+    const onKeyDownHandle = (e) => {
+        if (e.key === 'Enter') {
+            setDis(changeValue);
         }
     };
 
@@ -134,14 +65,13 @@ const ClubProvince = () => {
         setLoading(true);
         getLocationData(cityName.city, dis)
             .then((result) => {
-                console.log(result);
-                handleDistrict(cityName.city);
+                handleFilterDistrict();
                 setLocations(result);
             })
             .catch((error) => {
                 if (error.response) {
                     setStatusCode(error.response.status);
-                    navigate('error');
+                    navigate('/error');
                     console.error(error);
                 }
                 console.error(error);
@@ -194,7 +124,7 @@ const ClubProvince = () => {
                                     onClick={onShow}
                                     onBlur={onBlur}
                                     onChange={onChangeValue}
-                                    onKeyDown={onSubmitHandle}
+                                    onKeyDown={onKeyDownHandle}
                                 />
                                 <div className={cx('drop-box-mobile', { show })} id={cx('myDropdown')}>
                                     <div

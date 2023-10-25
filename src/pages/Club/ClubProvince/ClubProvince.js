@@ -32,7 +32,8 @@ const ClubProvince = () => {
             }
         }
         const filter = Object.keys(districtCount).filter((district) => districtCount[district] === 1);
-        return setDistricts(filter);
+        setDistricts(filter);
+        console.log(filter);
     };
 
     const onChangeValue = (item) => {
@@ -65,8 +66,8 @@ const ClubProvince = () => {
         setLoading(true);
         getLocationData(cityName.city, dis)
             .then((result) => {
-                handleFilterDistrict();
                 setLocations(result);
+                handleFilterDistrict();
             })
             .catch((error) => {
                 if (error.response) {

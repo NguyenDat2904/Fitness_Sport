@@ -32,7 +32,7 @@ const ClubProvince = () => {
             }
         }
         const filter = Object.keys(districtCount).filter((district) => districtCount[district] === 1);
-        return setDistricts(filter);
+        setDistricts(filter);
     };
 
     const onChangeValue = (item) => {

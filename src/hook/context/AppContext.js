@@ -9,6 +9,7 @@ const AppProvider = (props) => {
     const [dis, setDis] = useState('');
     const [courses, setCourses] = useState([]);
     const [userInfo, setUserInfo] = useState(localStorage.getItem('user'));
+    const [userParse, setUserParse] = useState(JSON.parse(localStorage.getItem('user')));
 
     const onShow = () => {
         if (show == '') {
@@ -52,6 +53,8 @@ const AppProvider = (props) => {
         setCourses,
         userInfo,
         setUserInfo,
+        userParse,
+        setUserParse,
     };
 
     return <AppContext.Provider value={value} {...props}></AppContext.Provider>;

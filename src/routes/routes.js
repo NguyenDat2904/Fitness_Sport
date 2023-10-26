@@ -12,6 +12,7 @@ import ListBlogContain from '~/pages/ListBlogContain/ListBlogContain';
 import Course from '~/pages/Course/Course';
 import CourseDance from '~/pages/CourseDance/CourseDance';
 import CourseAll from '~/pages/CourseAll/CourseAll';
+import Profile from '~/pages/Profile/Profile';
 
 const publicRoutes = [
     {
@@ -71,6 +72,10 @@ const publicRoutes = [
     {
         path: '/course',
         component: CourseAll,
+    },
+    {
+        path: '/profile',
+        component: Profile,
     },
 ];
 // Cần đăng nhập

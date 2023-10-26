@@ -8,6 +8,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import ItemContainMobile from '~/components/ItemContainMobile/ItemContainMobile.js';
+import GreyContain from '~/components/GreyContain/GreyContain';
 
 const cx = classNames.bind(style);
 
@@ -87,6 +88,7 @@ function Home() {
     const [post, setPost] = useState(['', '', '', '', '', '', '', '']);
 
     const mapPost = post.map((post) => <PostItem />);
+
     const mapItemContain = sliderContainMobile.map((item, index) => {
         return <ItemContainMobile item={item} index={index} />;
     });
@@ -419,7 +421,7 @@ function Home() {
                 </div>
             </div>
             {/* đăng ký */}
-            <div className={cx('grey-contain')}>
+            {/* <div className={cx('grey-contain')}>
                 <div className={cx('post-usefull')}>
                     <div className={cx('post-usefull-left')}>
                         <div className={cx('title-big')}>
@@ -441,7 +443,8 @@ function Home() {
                         <div className={cx('post-usefull-contain')}>{mapPost}</div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+            <GreyContain />
         </div>
     );
 }

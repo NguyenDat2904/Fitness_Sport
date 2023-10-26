@@ -1,4 +1,4 @@
-import style from './ProductDetails.module.scss';
+import style from './ClubDetails.module.scss';
 import React from 'react';
 import classNames from 'classnames/bind';
 import Slider from 'react-slick';
@@ -23,7 +23,7 @@ const settings = {
     adaptiveHeight: true,
 };
 
-const ProductDetails = () => {
+const ClubDetails = () => {
     return (
         <div className={cx('body-contain')}>
             <div className={cx('info-contain')}>
@@ -313,4 +313,4 @@ const ProductDetails = () => {
     );
 };
 
-export default ProductDetails;
+export default ClubDetails;

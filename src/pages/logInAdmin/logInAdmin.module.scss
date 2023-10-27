@@ -1,0 +1,67 @@
+.login{
+    height:100vh;
+    background-image: url("https://antimatter.vn/wp-content/uploads/2022/05/background-dep-hd-thien-nhien.jpg");
+    background-size: 100% 100%;
+    position: relative;
+    .bgrtranparen{
+        background: rgba(6, 4, 4, 0.5);
+        position: absolute;
+        top:0;
+        left: 0;
+        right:0;
+        bottom: 0;
+       
+     
+         .formLogin{
+            border-radius: 10px;
+        padding: 30px 50px;
+        background:#fff;
+        width: 500px;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+       
+          
+            button{
+                color: #fff;
+                background-color: gray;
+                font-family: 'Roboto', sans-serif;
+                font-size: 18px;
+               border-radius: 5px;
+           margin-top: 20px;
+            padding: 10px 40px;
+            width: 100%;
+            &:hover{
+                background-color: #362FD9;
+            }
+        
+        }
+        
+        h1{
+           
+            font-family: 'Roboto', sans-serif;
+        }
+      
+        .input{
+            margin-top: 10px;
+            position: relative;
+            input{
+                
+                outline: none;
+                border-radius: 5px;
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+                font-family: 'Roboto', sans-serif;
+            }
+            p{
+                color: red;
+                font-family: 'Roboto', sans-serif;
+                
+            }
+        }
+    }
+    }
+   
+}

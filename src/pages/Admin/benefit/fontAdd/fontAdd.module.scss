@@ -1,0 +1,89 @@
+
+.formAddOrder{
+    height:100vh;
+    border-radius: 5px;
+    padding: 10px;
+    
+    h2{
+        text-align: center;
+        font-size: 32px;
+        font-family: 'Roboto', sans-serif;
+    }
+    .formInputSelect{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+         .input{
+        margin: 0 auto;
+        margin-top: 30px;
+        width: 100%;
+        background-color: #fff;
+        padding-right: 10px;
+        border-radius: 5px;
+        border: 1px solid black;
+        display: grid;
+        grid-template-columns: 0.3fr 10fr;
+       position: relative;
+        .error{
+            width: 55%;
+           margin-left: 25px;
+            border-radius: 5px;
+           padding: 0 10px;
+            background-color: #fff;
+            position: absolute;
+            top:-12px;
+
+            .pError{
+                padding: 0;
+                color: red;
+            
+            font-family: 'Roboto', sans-serif;
+             }
+            
+        } .icon{
+                margin: 15px 0 0 10px;
+
+                font-size: 14px;
+                color: red;
+        
+            }
+            select,
+            input{
+                height:45px;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                 padding: 0px 0px 0px 10px;
+                 font-size: 18px;
+                 font-family: 'Roboto', sans-serif;
+                width: 100%;
+                .opacity{
+                    color: gray;
+                }
+                
+             }
+             
+    }
+    }
+   
+   
+    .buttonAddNew{
+        margin-top: 20px;
+        display: flex;
+        justify-content:flex-end;
+        gap:10px;
+        .buttonSave,
+        .buttonCal{
+            font-weight: 600;
+            background-color: #fff;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            padding: 8px 25px;
+            &:hover{
+                background-color: gray;
+                color: #fff;
+            }
+        }
+    }
+}

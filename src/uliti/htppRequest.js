@@ -18,9 +18,9 @@ export const get = async (path, option = {}) => {
         return error.response;
     }
 };
-export const post = async (path, option = {}) => {
+export const post = async (path, option = {},headers={}) => {
     try {
-        const response = await httpRequest.post(path, option);
+        const response = await httpRequest.post(path, option,headers);
         return response;
     } catch (error) {
         if (error.response) {
@@ -34,10 +34,18 @@ export const post = async (path, option = {}) => {
         return error.response;
     }
 };
-export const put = async (path, option = {}) => {
-    const response = await httpRequest.put(path, option);
+
+
+export const put=async(path,option={},headers={})=>{
+    const response= await httpRequest.put(path,option,headers);
     return response;
-};
+}
+export const detete=async(path,option={})=>{
+    const response =await httpRequest.delete(path,option);
+    return response;
+}
+
+
 export const remove = async (path, option = {}) => {
     const response = await httpRequest.delete(path, option);
     return response;

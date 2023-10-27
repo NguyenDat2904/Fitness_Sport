@@ -1,0 +1,207 @@
+.overView {
+    .cardProduct {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 10px;
+        .card {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 10px;
+            .bgrIcon {
+                border-radius: 5px;
+                height: 100%;
+                position: relative;
+                .icon {
+                    color: #fff;
+                    font-size: 30px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            h6 {
+                color: black;
+                font-size: 20px;
+                font-family: 'Roboto', sans-serif;
+            }
+            p {
+                color: black;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 600;
+                font-size: 28px;
+            }
+        }
+    }
+    .chartPir {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+
+        .pir {
+            padding: 5%;
+            width: 100%;
+            background-color: #fff;
+        }
+        .clientCoach {
+            background-color: #fff;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            .Coach,
+            .client {
+                h3 {
+                    font-family: 'Roboto', sans-serif;
+                }
+                padding: 10px;
+                .clientProduct,
+                .coachProduct {
+                    border-right: 1px solid black;
+                    padding: 10px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 10px;
+                    .mapClient {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        img {
+                            width: 60%;
+                            height: auto;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+
+                h4 {
+                    cursor: pointer;
+                    margin: 10px 0;
+                    text-align: center;
+                    font-family: 'Roboto', sans-serif;
+                    &:hover {
+                        color: #362fd9;
+                    }
+                }
+            }
+        }
+    }
+    .charPirCourse {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        .infoPir {
+            background-color: #fff;
+            padding: 10px;
+            h4 {
+                text-align: end;
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                color: #362fd9;
+                &:hover {
+                    color: black;
+                }
+            }
+            h3 {
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+            }
+            .course {
+                margin-top: 10px;
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 5px;
+                }
+                .info {
+                    padding: 30px 10px;
+                    .infoDetail {
+                        font-family: 'Roboto', sans-serif;
+                        display: flex;
+                        justify-content: space-between;
+                        h5 {
+                            color: #362fd9;
+                            font-family: 'Roboto', sans-serif;
+                        }
+                        button {
+                            color: #fff;
+                            padding: 5px;
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+        .pirCourse {
+            padding: 2%;
+            width: 100%;
+            background-color: #fff;
+        }
+    }
+    .chartColumn {
+        margin-top: 10px;
+        border-radius: 10px;
+
+        width: 100%;
+        .chartColumn {
+            padding: 10px;
+
+            width: 100%;
+            background-color: #fff;
+
+            .asd {
+                width: 1140px;
+                margin: 0 auto;
+            }
+        }
+        .infoColumn {
+            padding: 40px 20px;
+            background-color: #fff;
+            h4 {
+                cursor: pointer;
+                margin-top: 40px;
+                text-align: end;
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                color: #362fd9;
+                &:hover {
+                    color: black;
+                }
+            }
+            h3 {
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                margin: 10px 0;
+            }
+            hr {
+                width: 15%;
+            }
+            table {
+                margin-top: 10px;
+                width: 100%;
+                thead {
+                    th {
+                        border-bottom: 1px solid black;
+                        font-family: 'Roboto', sans-serif;
+                    }
+                }
+                tbody {
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                    }
+                    td {
+                        border-bottom: 1px solid black;
+                        font-family: 'Roboto', sans-serif;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -10,13 +10,19 @@ import { faUserXmark, faUserCheck, faX, faEllipsis } from '@fortawesome/free-sol
 const cx = classNames.bind(styles);
 
 const Order = () => {
-    const {userDataOrder, setUserOrder,
-        tableUserOrder, setTacbleUserOrder,handleTurnOnDetailOrder,handleTableStyleOrder,tableDetailId}=useContext(AppContext)
+    const {
+        userDataOrder,
+        setUserOrder,
+        tableUserOrder,
+        setTacbleUserOrder,
+        handleTurnOnDetailOrder,
+        handleTableStyleOrder,
+        tableDetailId,
+    } = useContext(AppContext);
     const [selectCourse, setSelectCourse] = useState('');
 
-    
     const [courseData, setCourseData] = useState([]);
-    
+
     //callAPI ALL User
 
     useEffect(() => {
@@ -150,7 +156,10 @@ const Order = () => {
                                                     </button>
                                                 </div>
 
-                                                <button className={cx('buttonDetail')} onClick={()=>handleTurnOnDetailOrder(product._id)}>
+                                                <button
+                                                    className={cx('buttonDetail')}
+                                                    onClick={() => handleTurnOnDetailOrder(product._id)}
+                                                >
                                                     <FontAwesomeIcon icon={faUserCheck} />
                                                     <h5>Chi tiết</h5>
                                                 </button>

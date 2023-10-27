@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from 'react';
-import { number } from 'yup';
 const AppContext = createContext();
 const AppProvider = (props) => {
     // admin
@@ -8,7 +7,6 @@ const AppProvider = (props) => {
     const [tableUser, setTacbleUser] = useState(userData);
     const [modal, setModel] = useState(true);
     const [modalDetail, setModalDetail] = useState(true);
-   
     const [profileDetail, setProfileDetai] = useState([]);
     const [tableDetailId,setTableDetailId]=useState("")
     const [idDetail, setIdDetail] = useState('');

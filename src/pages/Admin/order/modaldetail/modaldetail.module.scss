@@ -1,119 +1,108 @@
-.modalDetail{
+.modalDetail {
     width: 70%;
     background-color: #fff;
-    border: 3px solid #00ADB5;
+    border: 3px solid #00adb5;
     display: grid;
     grid-template-columns: 1fr 3fr;
-   
+
     position: absolute;
-    top:40%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     animation-name: example;
-  animation-duration: 1s;
-  @keyframes example {
-    0%   {left:50%; top:0px;} 
-  50% {left:50%; top:50%;}
-  }
-    .leftDetail{
-        padding-top:40px ;
-        background-color: #00ADB5;
-        h3{
+    animation-duration: 1s;
+    @keyframes example {
+        0% {
+            left: 50%;
+            top: 0px;
+        }
+        50% {
+            left: 50%;
+            top: 50%;
+        }
+    }
+    .leftDetail {
+        padding-top: 40px;
+        background-color: #00adb5;
+        h3 {
             font-size: 26px;
             text-align: center;
             font-family: 'Roboto', sans-serif;
         }
-        hr{
+        hr {
             margin-bottom: 30px;
         }
-        .img{
-          
+        .img {
             width: 80%;
             margin: 0 auto;
-             img{
+            img {
                 border-radius: 5px;
-            width: 100%;
-            
+                width: 100%;
+            }
+            p {
+                margin-top: 5px;
+                font-size: 16px;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+            }
         }
-        p{
-            margin-top: 5px;
-            font-size: 16px; 
-            font-family: 'Roboto', sans-serif;
-            font-weight: 500;
-        }
-        }
-       
     }
-    .rightDetail{
-      
-        .infoCourse{
+    .rightDetail {
+        .infoCourse {
             padding: 40px 20px;
-            h3{
+            h3 {
                 font-size: 28px;
                 font-family: 'Roboto', sans-serif;
             }
-           .p{
-            margin-top: 5px;
-            font-size: 16px; 
-            font-family: 'Roboto', sans-serif;
-            span{
-             font-weight: 600;
-             font-size: 18px;
-            
-
+            .p {
+                margin-top: 5px;
+                font-size: 16px;
+                font-family: 'Roboto', sans-serif;
+                span {
+                    font-weight: 600;
+                    font-size: 18px;
+                }
             }
-           }
-           
-         
         }
-            .infoUser{
-                padding: 40px 20px;
-                h3{
-                    font-size: 28px;
+        .infoUser {
+            padding: 40px 20px;
+            h3 {
+                font-size: 28px;
+                font-family: 'Roboto', sans-serif;
+            }
+            .user {
+                display: grid;
+                grid-template-columns: 1.5fr 2fr;
+
+                .p {
+                    margin-top: 5px;
+                    font-size: 16px;
                     font-family: 'Roboto', sans-serif;
+                    span {
+                        font-weight: 600;
+                        font-size: 18px;
+                        font-family: 'Roboto', sans-serif;
+                    }
                 }
-                .user{
-                      
-                    display: grid;
-                    grid-template-columns: 1.5fr 2fr;
-                     
-                        .p{
-                            margin-top: 5px;
-                         font-size: 16px;
-                           font-family: 'Roboto', sans-serif;
-                           span{
-                            font-weight: 600;
-                            font-size: 18px;
-                            font-family: 'Roboto', sans-serif;
-
-                           }
-                        }
-
-                      
+            }
+        }
+        .button {
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end;
+            button {
+                background-color: gray;
+                color: #fff;
+                padding: 10px 20px;
+                font-size: 18px;
+                border: none;
+                border-radius: 5px;
+                font-weight: 600;
+                font-family: 'Roboto', sans-serif;
+                &:hover {
+                    background-color: red;
                 }
-        
-      
+            }
+        }
     }
-     .button{
-        padding: 20px;
-        display: flex;
-        justify-content: flex-end;
-         button{
-        background-color: gray;
-        color: #fff;
-        padding: 10px 20px;
-        font-size: 18px;
-        border:none;
-        border-radius: 5px;
-        font-weight: 600;
-    font-family: 'Roboto', sans-serif;
-    &:hover{
-        background-color: red;
-    }
-    }
-    }
-    }
-  
-
-
 }

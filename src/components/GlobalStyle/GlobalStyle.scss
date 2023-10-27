@@ -52,22 +52,48 @@ html {
 
 body {
     font-size: 1.6rem;
-    font-family: var(--font-family-Montserrat);
+    font-family: var(--Montserrat-family);
     line-height: 1.5;
     font-weight: 400;
     text-align: left;
     color: #212529;
 }
 
-ul{
+ul {
     margin: 0;
 }
 
 .slick-dots {
     bottom: 20px;
+
+    li button:hover,
+    .slick-dots li button:focus {
+        outline: none;
+        color: var(--white);
+    }
+
+    li.slick-active button:before {
+        color: var(--light);
+        font-size: 10px;
+    }
+
+    li button:before {
+        font-size: 10px;
+        color: var(--white);
+    }
 }
 
-.slick-slider{
+.slick-dots li button::before {
+    color: var(--white);
+    opacity: 0.25;
+    font-size: 11px;
+}
+.slick-dots li.slick-active button::before {
+    color: var(--white);
+    opacity: 1;
+    font-size: 11px;
+}
+.slick-slider {
     max-width: 100vw;
     width: 100%;
     overflow: hidden !important;
@@ -86,4 +112,44 @@ ul{
 
 #slick .slick-slide img {
     object-fit: cover;
+}
+
+.btn-course {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    font-size: 18px;
+    color: var(--white);
+    border: none;
+    background-color: var(--black);
+    position: absolute;
+    z-index: 100;
+}
+.btn-next-course {
+    top: 40%;
+    transform: translateY(-50%);
+    right: 0;
+}
+.btn-prev-course {
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.big-title {
+    font-family: var(--Oswald-family);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 90px;
+    color: var(--white);
+    width: 80%;
+    margin-bottom: 16px;
+    h1 {
+        font-weight: 500;
+        font-size: 60px;
+        line-height: 90px;
+        color: #ffffff;
+        max-width: 370px;
+    }
 }

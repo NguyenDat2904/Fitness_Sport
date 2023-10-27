@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import * as apiLogout from "~/services/getData/getDataUser"
+import * as apiLogout from '~/services/getData/getDataUser';
 import Overview from './overview/overview';
 import Location from './location/location';
 import Order from './order/order';
@@ -37,15 +37,25 @@ const cx = classNames.bind(styles);
 
 function Admin() {
     const navigate = useNavigate();
-    const {statusLogout,idLogout,modal,modalCourse,modalSaveLocation,modalLocation,modalDetail,modalDetailOrder,modalSaveCourse}=useContext(AppContext)
+    const {
+        statusLogout,
+        idLogout,
+        modal,
+        modalCourse,
+        modalSaveLocation,
+        modalLocation,
+        modalDetail,
+        modalDetailOrder,
+        modalSaveCourse,
+    } = useContext(AppContext);
     const [active, setactive] = useState(true);
     const [menu, setMenu] = useState(true);
     const [activeText, setActiveText] = useState(true);
-    const [activeTitle,setActiveTitle]=useState(true)
+    const [activeTitle, setActiveTitle] = useState(true);
 
     const [value, setValue] = useState('');
     const [search, setSearch] = useState([]);
-    
+
     const user = [
         { name: 'Tổng quan' },
         { name: 'Khách hàng' },
@@ -67,20 +77,18 @@ function Admin() {
             setTimeout(() => {
                 setActiveText(false);
             }, 300);
-          
-                setActiveTitle(false);
-            
-            
+
+            setActiveTitle(false);
+
             setMenu(false);
         } else {
             setTimeout(() => {
                 setActiveText(true);
             }, 300);
-            setTimeout(()=>{
-                 setActiveTitle(true);
-            },500)
-               
-            
+            setTimeout(() => {
+                setActiveTitle(true);
+            }, 500);
+
             setMenu(true);
         }
     };
@@ -100,52 +108,48 @@ function Admin() {
     const hendleValue = (value) => {
         setValue(value);
     };
-  
-    console.log(idLogout);
-    console.log(statusLogout)
-        const hendleLogout=async()=>{
-            try {
-                await  apiLogout.logOut(idLogout)
-                 navigate("/login/admin");
-                if(statusLogout===200){
-                localStorage.removeItem("accessToken");
-                localStorage.removeItem("refresh_token");
-                }
-                
-            } catch (error) {
-                console.log("error Logout")
-            }
-            
 
+    console.log(idLogout);
+    console.log(statusLogout);
+    const hendleLogout = async () => {
+        try {
+            await apiLogout.logOut(idLogout);
+            navigate('/login/admin');
+            if (statusLogout === 200) {
+                localStorage.removeItem('accessToken');
+                localStorage.removeItem('refresh_token');
+            }
+        } catch (error) {
+            console.log('error Logout');
         }
+    };
 
     const activeClass = (params) => {
         return params.isActive ? cx('active2') : cx('categories');
     };
     return (
         <div className={cx('admin')}>
-            
-            <div className={cx(modalSaveLocation?"noneModal":"modal")}>
-                <ModalSaveLocation/>
-              </div>
-             <div className={cx(modalLocation?"noneModal":"modal")}>
-                <ModalDetailLocation/>
-              </div>
-              <div className={cx(modalCourse?"noneModal":"modal")}>
-                <ModalDetailCourse/>
-              </div>
-            <div className={cx(modalSaveCourse?"noneModal":"modal")}>
-                <ModalSaveCourse/>
+            <div className={cx(modalSaveLocation ? 'noneModal' : 'modal')}>
+                <ModalSaveLocation />
             </div>
-              <div className={cx(modalDetailOrder?"noneModal":"modal")}>
-                <ModalDetailOrder/>
+            <div className={cx(modalLocation ? 'noneModal' : 'modal')}>
+                <ModalDetailLocation />
             </div>
-            <div className={cx(modalDetail?"noneModal":"modal")}>
-                <ModalDetail/>
+            <div className={cx(modalCourse ? 'noneModal' : 'modal')}>
+                <ModalDetailCourse />
             </div>
-         <div className={cx(modal?"noneModal":"modal")}>
-           <ModalSave/>
-        </div>
+            <div className={cx(modalSaveCourse ? 'noneModal' : 'modal')}>
+                <ModalSaveCourse />
+            </div>
+            <div className={cx(modalDetailOrder ? 'noneModal' : 'modal')}>
+                <ModalDetailOrder />
+            </div>
+            <div className={cx(modalDetail ? 'noneModal' : 'modal')}>
+                <ModalDetail />
+            </div>
+            <div className={cx(modal ? 'noneModal' : 'modal')}>
+                <ModalSave />
+            </div>
             <div className={cx('informationTitle')}>
                 <div
                     className={cx('mainCategories')}
@@ -160,7 +164,6 @@ function Admin() {
                             <span
                                 style={{
                                     display: activeTitle ? 'block' : 'none',
-                                  
                                 }}
                             >
                                 FITNESS
@@ -169,113 +172,99 @@ function Admin() {
 
                         <div className={cx('main')}>
                             <NavLink to={''} className={activeClass}>
-                               
-                                    <div className={cx('categoriCss')}>
-                                        <FontAwesomeIcon icon={faHouse} className={cx('icon')} />
-                                        <h3
-                                            style={{
-                                                display: activeText ? 'block' : 'none',
-                                                transition: activeText ? '1s' : '1s',
-                                            }}
-                                        >
-                                            Tổng quan
-                                        </h3>
-                                    </div>
-                            
+                                <div className={cx('categoriCss')}>
+                                    <FontAwesomeIcon icon={faHouse} className={cx('icon')} />
+                                    <h3
+                                        style={{
+                                            display: activeText ? 'block' : 'none',
+                                            transition: activeText ? '1s' : '1s',
+                                        }}
+                                    >
+                                        Tổng quan
+                                    </h3>
+                                </div>
                             </NavLink>
 
                             <NavLink to={'client'} className={activeClass}>
-                               
-                                    <div className={cx('categoriCss')}>
-                                        <FontAwesomeIcon icon={faUserGroup} className={cx('icon')} />
-                                        <h3
-                                            style={{
-                                                display: activeText ? 'block' : 'none',
-                                                transition: activeText ? '1s' : '',
-                                            }}
-                                        >
-                                            Khách hàng
-                                        </h3>
-                                    </div>
-                              
+                                <div className={cx('categoriCss')}>
+                                    <FontAwesomeIcon icon={faUserGroup} className={cx('icon')} />
+                                    <h3
+                                        style={{
+                                            display: activeText ? 'block' : 'none',
+                                            transition: activeText ? '1s' : '',
+                                        }}
+                                    >
+                                        Khách hàng
+                                    </h3>
+                                </div>
                             </NavLink>
                             <NavLink to={'order'} className={activeClass}>
-                               
-                                    <div className={cx('categoriCss')}>
-                                        <FontAwesomeIcon icon={faCartPlus} className={cx('icon')} />
-                                        <h3
-                                            style={{
-                                                display: activeText ? 'block' : 'none',
-                                                transition: activeText ? '1s' : '',
-                                            }}
-                                        >
-                                            Đặt hàng
-                                        </h3>
-                                    </div>
-                             
+                                <div className={cx('categoriCss')}>
+                                    <FontAwesomeIcon icon={faCartPlus} className={cx('icon')} />
+                                    <h3
+                                        style={{
+                                            display: activeText ? 'block' : 'none',
+                                            transition: activeText ? '1s' : '',
+                                        }}
+                                    >
+                                        Đặt hàng
+                                    </h3>
+                                </div>
                             </NavLink>
                             <NavLink to={'coach'} className={activeClass}>
-                                
-                                    <div className={cx('categoriCss')}>
-                                        <FontAwesomeIcon icon={faPersonWalkingWithCane} className={cx('icon')} />
-                                        <h3
-                                            style={{
-                                                display: activeText ? 'block' : 'none',
-                                                transition: activeText ? '1s' : '',
-                                            }}
-                                        >
-                                            Giáo viên
-                                        </h3>
-                                    </div>
-                               
+                                <div className={cx('categoriCss')}>
+                                    <FontAwesomeIcon icon={faPersonWalkingWithCane} className={cx('icon')} />
+                                    <h3
+                                        style={{
+                                            display: activeText ? 'block' : 'none',
+                                            transition: activeText ? '1s' : '',
+                                        }}
+                                    >
+                                        Giáo viên
+                                    </h3>
+                                </div>
                             </NavLink>
 
                             <NavLink to={'course'} className={activeClass}>
-                              
-                                    <div className={cx('categoriCss')}>
-                                        <FontAwesomeIcon icon={faCalendarMinus} className={cx('icon')} />
-                                        <h3
-                                            style={{
-                                                display: activeText ? 'block' : 'none',
-                                                transition: activeText ? '1s' : '',
-                                            }}
-                                        >
-                                            Các khóa học
-                                        </h3>
-                                    </div>
-                             
+                                <div className={cx('categoriCss')}>
+                                    <FontAwesomeIcon icon={faCalendarMinus} className={cx('icon')} />
+                                    <h3
+                                        style={{
+                                            display: activeText ? 'block' : 'none',
+                                            transition: activeText ? '1s' : '',
+                                        }}
+                                    >
+                                        Các khóa học
+                                    </h3>
+                                </div>
                             </NavLink>
 
                             <NavLink to={'branch'} className={activeClass}>
-                              
-                                    <div className={cx('categoriCss')}>
-                                        <FontAwesomeIcon icon={faLocationDot} className={cx('icon')} />
-                                        <h3
-                                            style={{
-                                                display: activeText ? 'block' : 'none',
-                                                transition: activeText ? '1s' : '',
-                                            }}
-                                        >
-                                            Chi nhánh
-                                        </h3>
-                                    </div>
-                                
+                                <div className={cx('categoriCss')}>
+                                    <FontAwesomeIcon icon={faLocationDot} className={cx('icon')} />
+                                    <h3
+                                        style={{
+                                            display: activeText ? 'block' : 'none',
+                                            transition: activeText ? '1s' : '',
+                                        }}
+                                    >
+                                        Chi nhánh
+                                    </h3>
+                                </div>
                             </NavLink>
 
                             <NavLink to={'benefit'} className={activeClass}>
-                              
-                                    <div className={cx('categoriCss')}>
-                                        <FontAwesomeIcon icon={faGift} className={cx('icon')} />
-                                        <h3
-                                            style={{
-                                                display: activeText ? 'block' : 'none',
-                                                transition: activeText ? '1s' : '',
-                                            }}
-                                        >
-                                            Ưu đãi
-                                        </h3>
-                                    </div>
-                                
+                                <div className={cx('categoriCss')}>
+                                    <FontAwesomeIcon icon={faGift} className={cx('icon')} />
+                                    <h3
+                                        style={{
+                                            display: activeText ? 'block' : 'none',
+                                            transition: activeText ? '1s' : '',
+                                        }}
+                                    >
+                                        Ưu đãi
+                                    </h3>
+                                </div>
                             </NavLink>
                         </div>
                     </div>
@@ -338,8 +327,8 @@ function Admin() {
                     </div>
                     <div className={cx('infoCategori')}>
                         <Routes>
-                            <Route path="/" element={<Overview  activeClass={activeClass} />} />
-                            <Route path="/client" element={<Client  />} />
+                            <Route path="/" element={<Overview activeClass={activeClass} />} />
+                            <Route path="/client" element={<Client />} />
                             <Route path="/coach" element={<Coach />} />
                             <Route path="/order" element={<Order />} />
                             <Route path="/course" element={<Course />} />

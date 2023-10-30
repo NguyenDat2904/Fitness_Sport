@@ -1,181 +1,174 @@
-
-.formAddOrder{
-    height:100vh;
+.formAddOrder {
+    height: 100vh;
     border-radius: 5px;
     padding: 10px;
-    
-    h2{
+
+    h2 {
         text-align: center;
         font-size: 32px;
         font-family: 'Roboto', sans-serif;
     }
-    
-    .formAddInput{
+
+    .formAddInput {
         margin-top: 20px;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap:10px;
+        gap: 10px;
         .formAddInPutRight,
-        .formAddInPutLeft{
-          
+        .formAddInPutLeft {
             display: flex;
             flex-direction: column;
-            gap:15px;
-            
-            .buttonSchedule{
+            gap: 15px;
+
+            .buttonSchedule {
                 height: 53px;
                 display: flex;
                 justify-content: flex-end;
-                gap:20px;
-                p{
+                gap: 20px;
+                p {
                     color: blue;
                     font-size: 18px;
                     font-family: 'Roboto', sans-serif;
                 }
-                button{
+                button {
                     font-weight: 600;
-                background-color: #fff;
-                border-radius: 5px;
-                font-family: 'Roboto', sans-serif;
-                font-size: 18px;
-                padding: 5px ;
-                height: 35px;
-                &:hover{
-                background-color: gray;
-                color: #fff;
-            }
+                    background-color: #fff;
+                    border-radius: 5px;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 18px;
+                    padding: 5px;
+                    height: 35px;
+                    &:hover {
+                        background-color: gray;
+                        color: #fff;
+                    }
                 }
             }
-            .input{
+            .input {
                 background-color: #fff;
                 padding-right: 10px;
                 border-radius: 5px;
                 border: 1px solid black;
                 display: grid;
                 grid-template-columns: 0.3fr 10fr;
-               position: relative;
-                .error{
+                position: relative;
+                .error {
                     width: 55%;
-                   margin-left: 25px;
+                    margin-left: 25px;
                     border-radius: 5px;
-                   padding: 0 10px;
+                    padding: 0 10px;
                     background-color: #fff;
                     position: absolute;
-                    top:-12px;
+                    top: -12px;
 
-                    .pError{
+                    .pError {
                         padding: 0;
                         color: red;
-                    
-                    font-family: 'Roboto', sans-serif;
+
+                        font-family: 'Roboto', sans-serif;
+                    }
                 }
-                }
-                
-                .icon{
+
+                .icon {
                     margin: 18px 0 0 10px;
 
                     font-size: 14px;
                     color: red;
-            
                 }
-                .textares{
+                .textares {
                     border: none;
                     outline: none;
                     font-size: 18px;
                     padding: 15px 10px 15px 10px;
-                     font-family: 'Roboto', sans-serif;
+                    font-family: 'Roboto', sans-serif;
                 }
-                input{
-                    height:50px;
+                input {
+                    height: 50px;
                     border-radius: 5px;
                     border: none;
                     outline: none;
-                     padding: 15px 10px 15px 10px;
-                     font-size: 18px;
-                     font-family: 'Roboto', sans-serif;
+                    padding: 15px 10px 15px 10px;
+                    font-size: 18px;
+                    font-family: 'Roboto', sans-serif;
                     width: 100%;
- 
-                 }
-                 select{
-                    height:50px;
+                }
+                select {
+                    height: 50px;
                     border-radius: 5px;
                     border: none;
                     outline: none;
-                     padding: 15px 10px 15px 0;
-                     font-size: 18px;
-                     font-family: 'Roboto', sans-serif;
+                    padding: 15px 10px 15px 0;
+                    font-size: 18px;
+                    font-family: 'Roboto', sans-serif;
                     width: 100%;
-                    .opacity{
+                    .opacity {
                         color: gray;
                     }
-                 }
+                }
             }
-           
-            .inputSpan{
+
+            .inputSpan {
                 background-color: #fff;
                 border: 1px solid black;
                 border-radius: 5px;
-               display: grid;
-               grid-template-columns: 0.2fr 1.1fr 2.8fr;
-             
+                display: grid;
+                grid-template-columns: 0.2fr 1.1fr 2.8fr;
+
                 position: relative;
-                .error{
+                .error {
                     width: 55%;
-                   margin-left: 25px;
+                    margin-left: 25px;
                     border-radius: 5px;
-                   padding: 0 10px;
+                    padding: 0 10px;
                     background-color: #fff;
                     position: absolute;
-                    top:-12px;
+                    top: -12px;
 
-                    .pError{
+                    .pError {
                         font-size: 16px;
                         padding: 0;
                         color: red;
-                    
-                    font-family: 'Roboto', sans-serif;
-                }}
-                span{
-                    margin-top: 13px;
-                   font-size: 18px;
-                   font-family: 'Roboto', sans-serif;
+
+                        font-family: 'Roboto', sans-serif;
+                    }
                 }
-                .icon{
-                    
+                span {
+                    margin-top: 13px;
+                    font-size: 18px;
+                    font-family: 'Roboto', sans-serif;
+                }
+                .icon {
                     margin: 18px 0 0 10px;
                     font-size: 14px;
                     color: red;
-            
                 }
-                input{
-                    height:50px;
+                input {
+                    height: 50px;
                     border-radius: 5px;
-                   border: none;
-                   outline: none;
-                   padding: 15px 10px 15px 10px;
+                    border: none;
+                    outline: none;
+                    padding: 15px 10px 15px 10px;
                     font-size: 18px;
                     font-family: 'Roboto', sans-serif;
-                   width: 100%;
-
+                    width: 100%;
                 }
             }
-
         }
     }
-    .buttonAddNew{
+    .buttonAddNew {
         margin-top: 20px;
         display: flex;
         justify-content: flex-end;
-        gap:10px;
+        gap: 10px;
         .buttonSave,
-        .buttonCal{
+        .buttonCal {
             font-weight: 600;
             background-color: #fff;
             border-radius: 5px;
             font-family: 'Roboto', sans-serif;
             font-size: 18px;
             padding: 10px 25px;
-            &:hover{
+            &:hover {
                 background-color: gray;
                 color: #fff;
             }

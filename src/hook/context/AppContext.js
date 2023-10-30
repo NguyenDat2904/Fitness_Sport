@@ -36,15 +36,11 @@ const AppProvider = (props) => {
     // admin
     //client
     const [userData, setUser] = useState([]);
-    const [tableUser, setTacbleUser] = useState(userData);
     const [modal, setModel] = useState(true);
     const [modalDetail, setModalDetail] = useState(true);
     const [profileDetail, setProfileDetai] = useState([]);
     const [tableDetailId,setTableDetailId]=useState("")
     const [idDetail, setIdDetail] = useState('');
-    const [nameCourse, setNameCourse] = useState('');
-    const [priceCourse, setPriceCourse] = useState('');
-    const [timeRegisterCourse, setTimeRegister] = useState('');
     const [benefitCourse, setBenefitCourse] = useState('');
   
   
@@ -58,35 +54,14 @@ const AppProvider = (props) => {
 
 
     const handleDetaiUSer = () => {
-        const result = tableUser?.filter((product) => product._id === idDetail);
+        const result = userData?.filter((product) => product._id === idDetail);
         setProfileDetai(result);
-        const resultName = result
-            ?.map((product) => {
-                return product.courseID.map((item) => item.name);
-            })
-            .join(',');
-        setNameCourse(resultName);
-        const resultTimeRegester = result
-            ?.map((product) => {
-                return product.courseID.map((item) => item.updatedAt.slice(0, 10));
-            })
-            .join(',');
-        setTimeRegister(resultTimeRegester);
         const resultbenefit = result
             ?.map((product) => {
                 return product.benefitID.map((item) => item.name);
             })
             .join(',');
         setBenefitCourse(resultbenefit);
-        setTimeRegister(resultTimeRegester);
-        const resultPrice = result
-            ?.map((product) => {
-                return product.courseID.reduce((accumulator, currentValue) => {
-                    return accumulator + currentValue.price;
-                }, 0);
-            })
-            .join('');
-        setPriceCourse(resultPrice);
     };
     useEffect(() => {
         handleDetaiUSer();
@@ -110,13 +85,10 @@ const AppProvider = (props) => {
     };
     //course
     const [modalSaveCourse,setModalSaveCourse]=useState(true)
-    const [displayTable,setDisplayTable]=useState(true);
-    const [displayFontAdd,setDisplayFontAdd]=useState(true);
-    const [displayFontPut,setDisplayFontPut]=useState(true);
-    const [idPutCourse,setIdPutCourse]=useState("");
     const [idCOurseDetail,setIdCourseDetail]=useState("");
     const [locationIDCourse,setLocationIDCourse]=useState("")
     const [dataCourse,setDataCourse]=useState([]);
+    const [tableDatatCourse,setTableDataCourse]=useState(dataCourse)
     const [dataCourseDetail,setDataCourseDetail]=useState([]);
     const [location,setLocation]=useState([]);
     const [addressCourse,setAddressCourse]=useState([]);
@@ -129,30 +101,6 @@ const AppProvider = (props) => {
             setModalSaveCourse(true);
         }
     };
-    const handleStyleFontAdd=()=>{
-        if(displayFontAdd===true)
-        {
-            setDisplayFontAdd(false)
-            setDisplayTable(false)
-            setDisplayFontPut(true)
-        }else{
-            setDisplayFontAdd(true)
-            setDisplayTable(true)
-        }
-    }
-    const handleStyleFontPut=(id)=>{
-        setIdPutCourse(id)
-        if(displayFontPut===true)
-        {
-            setDisplayFontAdd(true)
-            setDisplayTable(false)
-            setDisplayFontPut(false)
-        }else{
-            setDisplayFontPut(true)
-            setDisplayTable(true)
-        }
-    }
-    
     const handleCourseId=(id)=>{
         setIdDetailCourse(id)
 
@@ -171,7 +119,6 @@ const AppProvider = (props) => {
         const detail= dataCourse.filter((product)=>product._id===idCOurseDetail)
        
         detail.forEach((product)=>{
-            console.log(product.locationID)
             setLocationIDCourse(product.locationID)
         })
       
@@ -193,14 +140,9 @@ const AppProvider = (props) => {
 // order 
 const [modalDetailOrder,setModalDetailOrder]=useState(true)
 const [userDataOrder, setUserOrder] = useState([]);
-const [tableUserOrder, setTacbleUserOrder] = useState(userDataOrder);
 const [profileDetailOrder,setProfileDetailOrder]=useState([])
 const [idDetailOrder,setIdDetailOrder]=useState("");
-const [nameCourseOrder,setNameCourseOrder]=useState("");
-const [priceCourseOrder,setPriceCourseOrder]=useState("");
-const [timeRegisterOrder,setTimeRegisterOrder]=useState("");
-const [statusCourseOrder,setStatusCourseOrder]=useState("");
-const [timePayment,setTimePayment]=useState("")
+
     const handleTableStyleOrder=(id)=>{
         setTableDetailId(id)
     }
@@ -218,39 +160,12 @@ const [timePayment,setTimePayment]=useState("")
     }
 
     const handleDetaiOrder=()=>{
-        const redult=tableUserOrder?.filter((product)=>product._id===idDetailOrder);
+        const redult=userDataOrder?.filter((product)=>product._id===idDetailOrder);
         setProfileDetailOrder(redult);
-        const nameCourseOrder=redult.map((product)=>{
-            return product.courseID.map((item)=>item.name)
-        }).join(",")
-        setNameCourseOrder(nameCourseOrder)
-
-        const resultPriceOrder = redult
-        ?.map((product) => {
-            return product.courseID.reduce((accumulator, currentValue) => {
-                return accumulator + currentValue.price;
-            }, 0);
-        })
-        .join('');
-        setPriceCourseOrder(resultPriceOrder)
-        const resultTimeRegester = redult
-            ?.map((product) => {
-                return product.courseID.map((item) => item.updatedAt.slice(0, 10));
-            })
-            .join(',');
-            setTimeRegisterOrder(resultTimeRegester);
-        const statusCourseOrder=redult.map((product)=>product.status).join(" ")
-        setStatusCourseOrder(statusCourseOrder)
-        const timePaymentOrder=redult.map((product)=>{
-            return product.courseID.map((item)=>item.updatedAt.slice(0,10))
-        }).join("")
-        setTimePayment(timePaymentOrder)
-
     }
     useEffect(()=>{
         handleDetaiOrder()
     },[idDetailOrder])
-    
     //location
     const [modalLocation,setModalLocation]=useState(true)
     const [userDataLocation, setUserLocation] = useState([]);
@@ -259,7 +174,7 @@ const [timePayment,setTimePayment]=useState("")
     const [displayFontPutLocation,setDisplayFontPutLocation]=useState(true);
     const [idDetailLocation,setIdDetailLocation]=useState("");
     const [idLocationDetail,setIdLocationDetail]=useState("");
-    const [idputLocation,setIdPutLocation]=useState("")
+    const [idputLocation,setIdPutLocation]=useState({})
     const [detailLocation,setDetailLocation]=useState([])
     const [modalSaveLocation,setModalSaveLocation]=useState(true)
 
@@ -367,39 +282,22 @@ const [timePayment,setTimePayment]=useState("")
         modal,
         userData,
         setUser,
-        tableUser,
-        setTacbleUser,
         profileDetail,
         handleTurnOnDetail,
         modalDetail,
-        nameCourse,
-        priceCourse,
-        timeRegisterCourse,
         benefitCourse,
         tableDetailId,
         handleTableStyle,
       
 //order
         userDataOrder, setUserOrder,
-        tableUserOrder, setTacbleUserOrder,
         handleTableStyleOrder,
         profileDetailOrder,
         modalDetailOrder,
-        nameCourseOrder,
-        priceCourseOrder,
-        timeRegisterOrder,
-        statusCourseOrder,
-        timePayment,
          handleTurnOnDetailOrder,
         //course
         handleModelSaveCourse,
         modalSaveCourse,
-        displayTable,
-        displayFontAdd,
-        displayFontPut,
-        handleStyleFontAdd,
-        handleStyleFontPut,
-        idPutCourse,
         callAPICourseDetail,
         dataCourse,setDataCourse,
         dataCourseDetail,
@@ -407,6 +305,7 @@ const [timePayment,setTimePayment]=useState("")
         addressCourse,idDetailCourse,
         handleCourseId,
         modalCourse,
+        tableDatatCourse,setTableDataCourse,
         //location
         setUserLocation,
         userDataLocation,

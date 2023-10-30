@@ -1,21 +1,21 @@
-import React, { useState,useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import * as getdata from "~/services/getData/getUserClient"
-import { AppContext } from "~/hook/context/AppContext";
+import * as getdata from '~/services/getData/getUserClient';
+import { AppContext } from '~/hook/context/AppContext';
 import * as postUser from '~/services/getData/postData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStarOfLife } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import styles from './fontAdd.module.scss';
-// import { AppContext } from "~/hook/context/AppContext";
+
 const cx = classNames.bind(styles);
 
-const FormAddCourse = ({location}) => {
-  const {handleModelSaveCourse,setDataCourse,modalSaveCourse,handleStyleFontAdd}=useContext(AppContext)
-  const [notification,setNotification]=useState("")
-  const [schedule,]=useState([]);
-  const [idLocation,setIdLocation]=useState("")
+const FormAddCourse = ({ location, handleStyleFontAdd }) => {
+    const { handleModelSaveCourse, setDataCourse, modalSaveCourse } = useContext(AppContext);
+    const [notification, setNotification] = useState('');
+    const [schedule] = useState([]);
+    const [idLocation, setIdLocation] = useState('');
     //fake Api
     const week = [
         {
@@ -59,8 +59,8 @@ const FormAddCourse = ({location}) => {
             day: '',
             startTimeCourse: '',
             endTimeCourse: '',
-            location:"",
-            img:""
+            location: '',
+            img: '',
         },
         validationSchema: Yup.object({
             name: Yup.string().required('Bạn vui lòng nhập tên khóa học'),
@@ -68,87 +68,96 @@ const FormAddCourse = ({location}) => {
             start: Yup.date().required('Bạn vui lòng chọn thời gian bắt đầu'),
             end: Yup.date().required('Bạn vui lòng chọn thời gian kết thúc'),
             status: Yup.string().required('Bạn vui lòng chọn trạng thái lớp'),
-             img:Yup.mixed().required("Bạn vui lòng chọn ảnh"),
+            img: Yup.mixed().required('Bạn vui lòng chọn ảnh'),
             day: Yup.string().required('Bạn vui lòng chọn thứ'),
             startTimeCourse: Yup.string().required('Bạn vui lòng chọn thời gian bắt đầu học'),
             endTimeCourse: Yup.string().required('Bạn vui lòng chọn thời gian kết thúc học'),
-            location:Yup.string().required("Bạn vui lòng chọn địa chỉ")
+            location: Yup.string().required('Bạn vui lòng chọn địa chỉ'),
         }),
-        onSubmit: async(value) => {
-          const result={
-            name:value.name,
-            price:value.price,
-            start:value.start,
-            end :value.end,
-            status:value.status,
-            locationID:idLocation,
-            shedule:schedule,
-            img:value.img
-            
-          }
-          console.log(result)
-       try {
-        await handleModelSaveCourse()
-        const accessToken = localStorage.getItem('accessToken');
-        const refresh_token = localStorage.getItem('refresh_token');
-        await postUser.postDataCourse(idLocation,value.name,
-            value.price,value.start,
-            value.end,value.status,
-          schedule,value.img,accessToken,refresh_token
-          )
-          if(modalSaveCourse){
-            const result=   await getdata.getCourse()
-            setDataCourse(result.data.courses)
-               await handleStyleFontAdd()
-          }
-       
-        
-       } catch (error) {
-            console.log("error data post course")
-        }
+        onSubmit: async (value) => {
+            const result = {
+                name: value.name,
+                price: value.price,
+                start: value.start,
+                end: value.end,
+                status: value.status,
+                locationID: idLocation,
+                shedule: schedule,
+                img: value.img,
+            };
+            console.log(result);
+            try {
+                await handleModelSaveCourse();
+                const accessToken = localStorage.getItem('accessToken');
+                const refresh_token = localStorage.getItem('refresh_token');
+                await postUser.postDataCourse(
+                    idLocation,
+                    value.name,
+                    value.price,
+                    value.start,
+                    value.end,
+                    value.status,
+                    schedule,
+                    value.img,
+                    accessToken,
+                    refresh_token,
+                );
+                if (modalSaveCourse) {
+                    const result = await getdata.getCourse();
+                    setDataCourse(result.data.courses);
+                    await handleStyleFontAdd();
+                }
+            } catch (error) {
+                console.log('error data post course');
+            }
         },
     });
-    const handleSubmitSchedule=()=>{
-        const result={
-        start:formick.values.startTimeCourse,
-        day:formick.values.day,
-        end:formick.values.endTimeCourse
-      }
-      if(formick.values.startTimeCourse!==""&&formick.values.day!==""&&
-      formick.values.endTimeCourse!==""
-      ){
-        schedule.push(result)
-        setNotification("Đã thêm vào lịch tập")
-        setTimeout(()=>{
-          setNotification("")
-        },2000)
-      }
-    }
-    const handlIdLocation=()=>{
-        const locationData=location.filter((product)=>{
-           return `${product.city}-${product.district}-${product.ward}-${product.street}`===formick.values.location
-        })
-       
+    const handleSubmitSchedule = () => {
+        const result = {
+            start: formick.values.startTimeCourse,
+            day: formick.values.day,
+            end: formick.values.endTimeCourse,
+        };
+        if (formick.values.startTimeCourse !== '' && formick.values.day !== '' && formick.values.endTimeCourse !== '') {
+            schedule.push(result);
+            setNotification('Đã thêm vào lịch tập');
+            setTimeout(() => {
+                setNotification('');
+            }, 2000);
+        }
+    };
+    const handlIdLocation = () => {
+        const locationData = location.filter((product) => {
+            return `${product.city}-${product.district}-${product.ward}-${product.street}` === formick.values.location;
+        });
+
         locationData.forEach((product) => {
-                 setIdLocation(product._id)
-            
-        })
-    }
-    useEffect(()=>{
-        handlIdLocation()
-    },[formick.values.location])
+            setIdLocation(product._id);
+        });
+    };
+    useEffect(() => {
+        handlIdLocation();
+    }, [formick.values.location]);
     return (
         <form action="" onSubmit={formick.handleSubmit} className={cx('formAddOrder')}>
             <h2>Thêm mới khóa học</h2>
             <div className={cx('formAddInput')}>
                 <div className={cx('formAddInPutLeft')}>
                     <div className={cx('input')}>
-                        {formick.errors.name && formick.touched.name &&( <div className={cx("error")}><p className={cx("pError")}>{formick.errors.name}</p></div> )}
+                        {formick.errors.name && formick.touched.name && (
+                            <div className={cx('error')}>
+                                <p className={cx('pError')}>{formick.errors.name}</p>
+                            </div>
+                        )}
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <input name="name" type="text" placeholder="Tên khóa học..." onChange={formick.handleChange} />
                     </div>
                     <div className={cx('input')}>
-                        {formick.errors.price && formick.touched.price &&( <div className={cx("error")}><p className={cx("pError")}>{formick.errors.price}</p></div> )}
+                        {formick.errors.price && formick.touched.price && (
+                            <div className={cx('error')}>
+                                <p className={cx('pError')}>{formick.errors.price}</p>
+                            </div>
+                        )}
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <input
                             name="price"
@@ -159,19 +168,31 @@ const FormAddCourse = ({location}) => {
                     </div>
 
                     <div className={cx('inputSpan')}>
-                        {formick.errors.start && formick.touched.start &&( <div className={cx("error")}><p className={cx("pError")}>{formick.errors.start}</p></div> )}
+                        {formick.errors.start && formick.touched.start && (
+                            <div className={cx('error')}>
+                                <p className={cx('pError')}>{formick.errors.start}</p>
+                            </div>
+                        )}
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <span>Thời gian bắt đầu:</span>
                         <input name="start" type="date" onChange={formick.handleChange} />
                     </div>
                     <div className={cx('inputSpan')}>
-                        {formick.errors.end && formick.touched.end &&( <div className={cx("error")}><p className={cx("pError")}>{formick.errors.end}</p></div> )}
+                        {formick.errors.end && formick.touched.end && (
+                            <div className={cx('error')}>
+                                <p className={cx('pError')}>{formick.errors.end}</p>
+                            </div>
+                        )}
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <span>Thời gian kết thúc:</span>
                         <input name="end" type="date" onChange={formick.handleChange} />
                     </div>
                     <div className={cx('input')}>
-                        {formick.errors.status && formick.touched.status && ( <div className={cx("error")}><p className={cx("pError")}>{formick.errors.status}</p></div> )}
+                        {formick.errors.status && formick.touched.status && (
+                            <div className={cx('error')}>
+                                <p className={cx('pError')}>{formick.errors.status}</p>
+                            </div>
+                        )}
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <select name="status" id="" onChange={formick.handleChange}>
                             <option value="" className={cx('opacity')}>
@@ -183,10 +204,12 @@ const FormAddCourse = ({location}) => {
                     </div>
                 </div>
                 <div className={cx('formAddInPutRight')}>
-                    
-                   
-                      <div className={cx('input')}>
-                        {formick.errors.day && formick.touched.day && ( <div className={cx("error")}><p className={cx("pError")}>{formick.errors.day}</p></div> )}
+                    <div className={cx('input')}>
+                        {formick.errors.day && formick.touched.day && (
+                            <div className={cx('error')}>
+                                <p className={cx('pError')}>{formick.errors.day}</p>
+                            </div>
+                        )}
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <select name="day" id="" onChange={formick.handleChange}>
                             <option value="" className={cx('opacity')}>
@@ -204,8 +227,9 @@ const FormAddCourse = ({location}) => {
 
                     <div className={cx('inputSpan')}>
                         {formick.errors.startTimeCourse && formick.touched.startTimeCourse && (
-                            <div className={cx("error")}><p className={cx("pError")}>{formick.errors.startTimeCourse}</p></div> 
-                            
+                            <div className={cx('error')}>
+                                <p className={cx('pError')}>{formick.errors.startTimeCourse}</p>
+                            </div>
                         )}
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <span>Bắt đầu giờ học:</span>
@@ -213,42 +237,52 @@ const FormAddCourse = ({location}) => {
                     </div>
                     <div className={cx('inputSpan')}>
                         {formick.errors.endTimeCourse && formick.touched.endTimeCourse && (
-                           <div className={cx("error")}><p className={cx("pError")}>{formick.errors.endTimeCourse}</p></div>
+                            <div className={cx('error')}>
+                                <p className={cx('pError')}>{formick.errors.endTimeCourse}</p>
+                            </div>
                         )}
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <span>Kết thúc giời học:</span>
                         <input name="endTimeCourse" type="time" onChange={formick.handleChange} />
                     </div>
-                    <div className={cx("buttonSchedule")}>
-                      <p>{notification}</p>
-                       <button type='button' onClick={handleSubmitSchedule} > Lưu lịch tập</button>
+                    <div className={cx('buttonSchedule')}>
+                        <p>{notification}</p>
+                        <button type="button" onClick={handleSubmitSchedule}>
+                            {' '}
+                            Lưu lịch tập
+                        </button>
                     </div>
-                   
+
                     <div className={cx('input')}>
-                        {formick.errors.location&&formick.touched.location&&(
-                            <div className={cx("error")}><p className={cx("pError")}>{formick.errors.location}</p></div>
+                        {formick.errors.location && formick.touched.location && (
+                            <div className={cx('error')}>
+                                <p className={cx('pError')}>{formick.errors.location}</p>
+                            </div>
                         )}
-                    <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
+                        <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <select name="location" id="" onChange={formick.handleChange}>
-                            <option className={cx('opacity')} value="">Địa chỉ...</option>
-                            {
-                            location?.map((product)=>{
-                                return <option  key={product._id} value={`${product.city}-${product.district}-${product.ward}-${product.street}`}>{`${product.city}-${product.district}-${product.ward}`}</option>
-                            })
-                            }
+                            <option className={cx('opacity')} value="">
+                                Địa chỉ...
+                            </option>
+                            {location?.map((product) => {
+                                return (
+                                    <option
+                                        key={product._id}
+                                        value={`${product.city}-${product.district}-${product.ward}-${product.street}`}
+                                    >{`${product.city}-${product.district}-${product.ward}`}</option>
+                                );
+                            })}
                         </select>
                     </div>
-                    <div className={cx("input")}>
-                        {formick.errors.img&&formick.touched.img&&(
-                             <div className={cx("error")}><p className={cx("pError")}>{formick.errors.img}</p></div>
+                    <div className={cx('input')}>
+                        {formick.errors.img && formick.touched.img && (
+                            <div className={cx('error')}>
+                                <p className={cx('pError')}>{formick.errors.img}</p>
+                            </div>
                         )}
-                           <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
-                        <input name='img' type="file" onChange={formick.handleChange} />
+                        <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
+                        <input name="img" type="file" onChange={formick.handleChange} />
                     </div>
-                    
-                    
-
-                    
                 </div>
             </div>
             <div className={cx('buttonAddNew')}>

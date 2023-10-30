@@ -53,6 +53,7 @@ const publicRoutes = [
         layout: null,
     },
     {
+        layout: null,
         path: '/login/admin',
         component: LoginAdmin,},
 

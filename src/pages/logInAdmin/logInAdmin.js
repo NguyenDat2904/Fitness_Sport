@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useState} from "react";
 import classNames from "classnames/bind";
 import * as login from "../../services/getData/getDataUser"
 import styles from "./logInAdmin.module.scss";
@@ -6,11 +6,13 @@ import { AppContext } from "~/hook/context/AppContext";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { AiOutlineLoading } from "react-icons/ai";
 const cx=classNames.bind(styles);
 
 const LoginAdmin=()=>{
     const navigate=useNavigate()
     const {setIdLogOut,setStatusLogout}=useContext(AppContext)
+    const [loadingLogIn,setLoadingLogIn]=useState(false)
     const formick=useFormik({
         initialValues:{
             email:"",
@@ -25,6 +27,7 @@ const LoginAdmin=()=>{
             const email=value.email;
             const password=value.password
             try {
+                setLoadingLogIn(true)
                 const response=await login.getUserData(email,password)
                 const accessToken = response.data.accessToken;
                 const refresh_token=response.data.refreshToken;
@@ -39,11 +42,18 @@ const LoginAdmin=()=>{
             } catch (error) {
                 console.log("Error Login!!!")
             }
+            finally{
+                setLoadingLogIn(false)
+            }
         }
     })
 
     return(
-        <div className={cx("login")}>
+        <div className={cx("loginLoading")}>
+            {
+                loadingLogIn?<div className={cx("loading")}>
+                <h3>Loading.....{<AiOutlineLoading className={cx('loading-icon')}/>}</h3>
+                </div>: <div className={cx("login")}>
                 <div className={cx("bgrtranparen")}>
                     <form onSubmit={formick.handleSubmit} className={cx("formLogin")}>
                     <h1>LOGIN</h1>
@@ -68,6 +78,9 @@ const LoginAdmin=()=>{
                 </div>
                 
         </div>
+            }
+        </div>
+       
     )
 }
 export default LoginAdmin;

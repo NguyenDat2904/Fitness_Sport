@@ -5,7 +5,7 @@ import { AppContext } from '~/hook/context/AppContext';
 const cx = classNames.bind(styles);
 
 const ModalDetailLocation = () => {
-    const { detailLocation,callAPILocationDetail } = useContext(AppContext);
+    const { detailLocation, callAPILocationDetail } = useContext(AppContext);
 
     return detailLocation.map((product) => {
         return (
@@ -69,7 +69,7 @@ const ModalDetailLocation = () => {
                     </div>
                     <hr />
                     <div className={cx('button')}>
-                        <button onClick={callAPILocationDetail} >Trở lại</button>
+                        <button onClick={callAPILocationDetail}>Trở lại</button>
                     </div>
                 </div>
             </div>

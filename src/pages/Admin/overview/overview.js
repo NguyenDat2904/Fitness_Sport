@@ -1,105 +1,66 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { NavLink } from 'react-router-dom';
+import * as apiUser from '~/services/getData/getUserClient';
+import { AiOutlineLoading } from 'react-icons/ai';
+import { formatCurrencyVND } from '../numBerToPrice/currency';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCartPlus,
-    faUserGroup,
-    faPersonWalkingWithCane,
-    faMoneyBill,
-    faCalendarMinus,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus, faUserGroup, faMoneyBill, faCalendarMinus } from '@fortawesome/free-solid-svg-icons';
 import styles from './overview.module.scss';
 import CanvasJSReact from '@canvasjs/react-charts';
 const cx = classNames.bind(styles);
 const Overview = ({ activeClass }) => {
     const CanvasJSChart = CanvasJSReact.CanvasJSChart;
-    const user = [
-        {
-            id: 1,
-            name: 'Tu',
-            img: 'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg',
-            time: 'Chủ nhật',
-            course: 'Gym',
-            status: 'Đã thanh toán',
-            price: '300',
-        },
-        {
-            id: 2,
-            name: 'Tu',
-            img: 'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg',
-            time: 'Chủ nhật',
-            course: 'Gym',
-            status: 'Đã thanh toán',
-            price: '300',
-        },
-        {
-            id: 3,
-            name: 'Tu',
-            img: 'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg',
-            time: 'Chủ nhật',
-            course: 'Gym',
-            status: 'Đã thanh toán',
-            price: '300',
-        },
-        {
-            id: 4,
-            name: 'Tu',
-            img: 'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg',
-            time: 'Chủ nhật',
-            course: 'Gym',
-            status: 'Đã thanh toán',
-            price: '300',
-        },
-        {
-            id: 5,
-            name: 'Tu',
-            img: 'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg',
-            time: 'Chủ nhật',
-            course: 'Gym',
-            status: 'Đã thanh toán',
-            price: '300',
-        },
-        {
-            id: 6,
-            name: 'Tu',
-            img: 'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg',
-            time: 'Chủ nhật',
-            course: 'Gym',
-            status: 'Đã thanh toán',
-            price: '300',
-        },
-    ];
-    const options = {
-        animationEnabled: true,
-        title: {
-            text: 'Tỉ lệ giáo viên & khách hàng',
-            fontSize: 24,
-            fontFamily: 'Roboto',
-        },
 
-        data: [
-            {
-                type: 'pie',
-                startAngle: 75,
-                toolTipContent: '<b>{label}</b>: {y}%',
-                showInLegend: 'true',
-                legendText: '{label}',
-                indexLabelFontSize: 16,
-                indexLabel: '{label} - {y}%',
-                dataPoints: [
-                    { y: 75, label: 'Khách hàng', color: '#FF9A00' },
-                    { y: 25, label: 'Giáo viên', color: '#FF165D' },
-                ],
-            },
-        ],
-    };
+    const [dataCourse, setDataCourse] = useState([]);
+    const [dataClient, setDataClient] = useState([]);
+    const [dataOrder, setDataOrder] = useState([]);
+    const [isloadingOverView,setIsloatdingOverView]=useState(false)
+    useEffect(() => {
+        const apiUsers = async () => {
+            try {
+                setIsloatdingOverView(true)
+                const accessToken = localStorage.getItem('accessToken');
+                const refresh_token = localStorage.getItem('refresh_token');
+                const course = await apiUser.getCourse();
+                setDataCourse(course.data.courses);
+                const client = await apiUser.getUserClien(accessToken, refresh_token);
+                setDataClient(client.data.users);
+                const order = await apiUser.getOrder(accessToken, refresh_token);
+                setDataOrder(order.data.orders);
+            } catch (error) {
+                console.log('error data Overview');
+            }
+            finally{
+                setIsloatdingOverView(false)
+            }
+        };
+        apiUsers();
+    }, []);
+
+    const sliceDataClient = dataClient.slice(dataClient.length - 6, dataClient.length);
+    const silcedataOrder = dataOrder.slice(dataOrder.length - 6, dataOrder.length);
+    const silcedataCourses = dataCourse.slice(dataCourse.length - 3, dataCourse.length);
+    const total = dataOrder.reduce((a, b) => a + b.totalPrice, 0);
+    const yogaNewPeople = dataClient.filter((product) => {
+        return product.courseID.filter((item) => item.name === 'Yoga cho người mới bắt đầu').length > 0;
+    });
+    const dance = dataClient.filter((product) => {
+        return product.courseID.filter((item) => item.name === 'SEXY DANCE - NỔI BẬT ĐƯỜNG CONG').length > 0;
+    });
+    const yogaPeople = dataClient.filter((product) => {
+        return product.courseID.filter((item) => item.name === 'Khóa học yoga cho người làm văn phòng').length > 0;
+    });
+
+    console.log('1', yogaNewPeople);
+    console.log('2', dance);
+    console.log('3', yogaPeople);
     const options1 = {
         animationEnabled: true,
         title: {
             text: 'Tỉ lệ thang gia các khóa học',
             fontSize: 24,
-            fontFamily: 'Roboto',
+            fontFamily: 'sans-serif',
         },
         data: [
             {
@@ -111,9 +72,18 @@ const Overview = ({ activeClass }) => {
                 indexLabelFontSize: 16,
                 indexLabel: '{label} - {y}%',
                 dataPoints: [
-                    { y: 18, label: 'Gym' },
-                    { y: 49, label: 'Yoga' },
-                    { y: 9, label: 'Boxing' },
+                    {
+                        y: (yogaPeople.length * 100) / (yogaNewPeople.length + dance.length + yogaPeople.length),
+                        label: 'YOGA  cho người văn phòng',
+                    },
+                    {
+                        y: (yogaNewPeople.length * 100) / (yogaNewPeople.length + dance.length + yogaPeople.length),
+                        label: 'YOGA cho người mới',
+                    },
+                    {
+                        y: (dance.length * 100) / (yogaNewPeople.length + dance.length + yogaPeople.length),
+                        label: 'SEXY DANCE',
+                    },
                 ],
             },
         ],
@@ -122,7 +92,7 @@ const Overview = ({ activeClass }) => {
         title: {
             text: 'Biểu đồ thể hiện doanh thu hàng tháng',
             fontSize: 24,
-            fontFamily: 'Roboto',
+            fontFamily: 'sans-serif',
         },
 
         dataPointWidth: 50,
@@ -135,25 +105,89 @@ const Overview = ({ activeClass }) => {
                 // Change type to "doughnut", "line", "splineArea", etc.
                 type: 'column',
                 dataPoints: [
-                    { label: 'January', y: 10 },
-                    { label: 'February ', y: 15 },
-                    { label: 'March ', y: 25 },
-                    { label: 'April ', y: 30 },
-                    { label: 'May ', y: 22 },
-                    { label: 'June  ', y: 36 },
-                    { label: 'July ', y: 70 },
-                    { label: 'August  ', y: 79 },
-                    { label: ' September ', y: 35 },
-
-                    { label: 'October ', y: 96 },
-                    { label: 'November ', y: 23 },
-                    { label: ' December ', y: 25 },
+                    {
+                        label: 'January',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '1')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: 'February ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '2')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: 'March ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '3')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: 'April ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '4')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: 'May ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '5')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: 'June  ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '6')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: 'July ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '7')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: 'August  ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '8')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: ' September ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '9')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: 'October ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '10')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: 'November ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '11')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
+                    {
+                        label: ' December ',
+                        y: dataOrder
+                            .filter((product) => product.createdAt.slice(5, 7) === '12')
+                            .reduce((a, b) => a + b.totalPrice, 0),
+                    },
                 ],
             },
         ],
     };
+
     return (
-        <div className={cx('overView')}>
+        <div className={cx("view")}>  
+        {isloadingOverView?<div className={cx("loading")}>
+            <h3>Loading.....{<AiOutlineLoading className={cx('loading-icon')}/>}</h3>
+            </div>:
+         <div className={cx('overView')}>
             <div className={cx('cardProduct')}>
                 <NavLink to={'client'} className={activeClass}>
                     <div className={cx('card')}>
@@ -163,22 +197,11 @@ const Overview = ({ activeClass }) => {
 
                         <div>
                             <h6> Khách hàng</h6>
-                            <p>10</p>
+                            <p>{dataClient.length}</p>
                         </div>
                     </div>
                 </NavLink>
-                <NavLink to={'coach'} className={activeClass}>
-                    <div className={cx('card')}>
-                        <div className={cx('bgrIcon')} style={{ backgroundColor: '#08D9D6' }}>
-                            <FontAwesomeIcon icon={faPersonWalkingWithCane} className={cx('icon')} />
-                        </div>
 
-                        <div>
-                            <h6>Giáo viên</h6>
-                            <p>10</p>
-                        </div>
-                    </div>
-                </NavLink>
                 <NavLink to={'course'} className={activeClass}>
                     <div className={cx('card')}>
                         <div className={cx('bgrIcon')} style={{ backgroundColor: '#252A34' }}>
@@ -187,7 +210,7 @@ const Overview = ({ activeClass }) => {
 
                         <div>
                             <h6>Khóa học</h6>
-                            <p>6</p>
+                            <p>{dataCourse.length}</p>
                         </div>
                     </div>
                 </NavLink>
@@ -199,7 +222,7 @@ const Overview = ({ activeClass }) => {
 
                         <div>
                             <h6> Đơn hàng</h6>
-                            <p>100k</p>
+                            <p>{dataOrder.length}</p>
                         </div>
                     </div>
                 </NavLink>
@@ -211,86 +234,87 @@ const Overview = ({ activeClass }) => {
 
                     <div>
                         <h6>Doanh thu</h6>
-                        <p>1M</p>
+                        <p>{formatCurrencyVND(total)}</p>
                     </div>
                 </div>
             </div>
             <div className={cx('chartPir')}>
                 <div className={cx('pir')}>
-                    <CanvasJSChart options={options} />
+                    <h3>Khách hàng gần nhất </h3>
+                  
+                      <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên</th>
+                                <th>Tuổi</th>
+                                <th>Địa chỉ email</th>
+                                <th>Số điện thoại</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {sliceDataClient.map((product, index) => {
+                                return (
+                                    <tr key={product._id}>
+                                        <td>{index}</td>
+                                        <td>{product.name}</td>
+                                        <td>{product.age ? product.age : 'null'}</td>
+                                        <td>{product.email}</td>
+                                        <td>{product.phone ? product.phone : 'null'}</td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                    
+                  
                 </div>
 
                 <div className={cx('clientCoach')}>
                     <div className={cx('client')}>
                         <h3>Khách hàng</h3>
-                        <div className={cx('clientProduct')}>
-                            {user.map((product) => {
-                                return (
-                                    <div className={cx('mapClient')} key={product.id}>
-                                        <img src={product.img} alt="" />
-                                        <p>{product.name}</p>
-                                        <p>{product.time}</p>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <h4>Xem tất cả khách hàng</h4>
-                    </div>
 
-                    <div className={cx('Coach')}>
-                        <h3>Giáo viên</h3>
-                        <div className={cx('coachProduct')}>
-                            {user.map((product) => {
+                        <div className={cx('clientProduct')}>
+                            {sliceDataClient.map((product) => {
                                 return (
-                                    <div className={cx('mapClient')} key={product.id}>
-                                        <img src={product.img} alt="" />
+                                    <div className={cx('mapClient')} key={product._id}>
+                                        <img
+                                            src="https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg"
+                                            alt=""
+                                        />
                                         <p>{product.name}</p>
-                                        <p>{product.time}</p>
+                                        <p>{product.createdAt.slice(0, 10)}</p>
                                     </div>
                                 );
                             })}
                         </div>
-                        <h4>Xem tất cả giáo viên</h4>
+                        <NavLink to={'client'}>
+                            <h4>Xem tất cả khách hàng</h4>
+                        </NavLink>
                     </div>
                 </div>
             </div>
             <div className={cx('charPirCourse')}>
                 <div className={cx('infoPir')}>
                     <h3>Khóa học</h3>
-                    <div className={cx('course')}>
-                        <img src="https://thethaodonga.com/wp-content/uploads/2022/01/Sergi-Constance-2.jpg" alt="" />
-                        <div className={cx('info')}>
-                            <div className={cx('infoDetail')}>
-                                <h5>GYM</h5>
-                                <button style={{ backgroundColor: 'red' }}>600k</button>
+                    {silcedataCourses.map((product) => {
+                        return (
+                            <div key={product._id} className={cx('course')}>
+                                <img src={product.img} alt="" />
+                                <div className={cx('info')}>
+                                    <div className={cx('infoDetail')}>
+                                        <h5>{product.name}</h5>
+                                        <button>{formatCurrencyVND(product.price)}</button>
+                                    </div>
+                                    {product.desc?product.desc.slice(0, 40):" "}...
+                                </div>
                             </div>
-                            Body chuẩn dáng đẹp...
-                        </div>
-                    </div>
-                    <div className={cx('course')}>
-                        <img src="https://img.lovepik.com/photo/50771/8447.jpg_wh860.jpg" alt="" />
-                        <div className={cx('info')}>
-                            <div className={cx('infoDetail')}>
-                                <h5>YOGA</h5>
-                                <button style={{ backgroundColor: '#001524' }}>600k</button>
-                            </div>
-                            Ngăn ngừa thoái hóa khớp...
-                        </div>
-                    </div>
-                    <div className={cx('course')}>
-                        <img
-                            src="https://danviet.mediacdn.vn/upload/3-2017/images/2017-07-22/150071143025408-diemmy1.jpg"
-                            alt=""
-                        />
-                        <div className={cx('info')}>
-                            <div className={cx('infoDetail')}>
-                                <h5>BOXING</h5>
-                                <button style={{ backgroundColor: 'blue' }}>600k</button>
-                            </div>
-                            Rèn luyện bản thân...
-                        </div>
-                    </div>
-                    <h4>Xem tất cả Khóa học</h4>
+                        );
+                    })}
+
+                    <NavLink to={'course'}>
+                        <h4>Xem tất cả Khóa học</h4>
+                    </NavLink>
                 </div>
                 <div className={cx('pirCourse')}>
                     <CanvasJSChart options={options1} />
@@ -309,26 +333,36 @@ const Overview = ({ activeClass }) => {
                                 <th>Khóa học </th>
                                 <th>Trạng thái</th>
                                 <th>Giá tiền</th>
+                                <th>Thời gian đăng ký</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {user.map((product, indext) => {
+                            {silcedataOrder.map((product, indext) => {
                                 return (
                                     <tr key={indext}>
                                         <td>{indext}</td>
                                         <td>
-                                            <img src={product.img} alt="" />
+                                            {product.courseID.map((item) => {
+                                                return (
+                                                    <div key={item._id} className={cx('imgOrder')}>
+                                                        <img src={item.img} alt="" />
+                                                    </div>
+                                                );
+                                            })}
                                         </td>
-                                        <td>{product.name}</td>
-                                        <td>{product.course}</td>
+                                        <td>{product.name ? product.name : 'null'}</td>
+                                        <td>{product.courseID.map((item) => item.name)}</td>
                                         <td>{product.status}</td>
-                                        <td>{product.price}</td>
+                                        <td>{product.totalPrice}</td>
+                                        <td>{product.timePrice.slice(0, 10)}</td>
                                     </tr>
                                 );
                             })}
                         </tbody>
                     </table>
-                    <h4>Xem tất cả các đơn đặt hàng</h4>
+                    <NavLink to={'order'}>
+                        <h4>Xem tất cả các đơn đặt hàng</h4>
+                    </NavLink>
                 </div>
                 <div className={cx('chartColumn')}>
                     <div className={cx('asd')}>
@@ -337,6 +371,10 @@ const Overview = ({ activeClass }) => {
                 </div>
             </div>
         </div>
+        }
+       
+        </div>
+      
     );
 };
 export default Overview;

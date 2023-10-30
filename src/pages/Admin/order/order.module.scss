@@ -1,4 +1,7 @@
-.client {
+
+.order{
+    position: relative;
+    .client {
     height: 100%;
 
     .tagBar {
@@ -160,4 +163,35 @@
             }
         }
     }
+}
+.loading {
+    background-color: #fff;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        .loading-icon {
+            font-size: 30px;
+            animation: spin 0.85s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
 }

@@ -5,7 +5,7 @@ import Overview from './overview/overview';
 import Location from './location/location';
 import Order from './order/order';
 import Client from './client/client';
-import Coach from './coach/coach';
+
 import Course from './course/course';
 import Benefit from './benefit/benefit';
 import ModalDetailLocation from './location/modal/modalDetail/modalDetail';
@@ -24,7 +24,6 @@ import {
     faCartPlus,
     faHouse,
     faUserGroup,
-    faPersonWalkingWithCane,
     faArrowRightFromBracket,
     faMagnifyingGlass,
     faCalendarMinus,
@@ -33,6 +32,7 @@ import {
     faBars,
 } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from '~/hook/context/AppContext';
+import { AiOutlineLoading } from 'react-icons/ai';
 const cx = classNames.bind(styles);
 
 function Admin() {
@@ -52,17 +52,15 @@ function Admin() {
     const [menu, setMenu] = useState(true);
     const [activeText, setActiveText] = useState(true);
     const [activeTitle, setActiveTitle] = useState(true);
-
-    const [value, setValue] = useState('');
-    const [search, setSearch] = useState([]);
-
-    const user = [
-        { name: 'Tổng quan' },
-        { name: 'Khách hàng' },
-        { name: 'Huấn luyện viên' },
-        { name: 'Các khóa học' },
-        { name: 'Chi nhánh' },
-        { name: 'Benefit' },
+    const [isLoadingLogout,setIsLoadingLogout]=useState(false)
+    const boolModal = [
+        { bool: modal },
+        { bool: modalCourse },
+        { bool: modalSaveLocation },
+        { bool: modalLocation },
+        { bool: modalDetail },
+        { bool: modalDetailOrder },
+        { bool: modalSaveCourse },
     ];
 
     const hendlerProfile = () => {
@@ -92,27 +90,10 @@ function Admin() {
             setMenu(true);
         }
     };
-    const hendlerSearch = (value) => {
-        const result = user.filter((user) => {
-            return value && user && user.name && user.name.toLowerCase().includes(value);
-        });
 
-        setSearch(result);
-    };
-    const onChangSearch = (e) => {
-        setValue(e.target.value);
-        setSearch(e.target.value);
-        hendlerSearch(e.target.value);
-    };
-    const noBar = user.findIndex((product) => product.name === value);
-    const hendleValue = (value) => {
-        setValue(value);
-    };
-
-    console.log(idLogout);
-    console.log(statusLogout);
     const hendleLogout = async () => {
         try {
+            setIsLoadingLogout(true)
             await apiLogout.logOut(idLogout);
             navigate('/login/admin');
             if (statusLogout === 200) {
@@ -122,13 +103,31 @@ function Admin() {
         } catch (error) {
             console.log('error Logout');
         }
+        finally{
+            setIsLoadingLogout(false)
+        }
     };
 
     const activeClass = (params) => {
         return params.isActive ? cx('active2') : cx('categories');
     };
+    const arrayModal = boolModal.filter((product) => product.bool === false);
+    if (arrayModal.length > 0) {
+        arrayModal.forEach((element) => {
+            if (element.bool === false) {
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    } else {
+        document.body.style.overflowY = 'auto';
+    }
+
     return (
-        <div className={cx('admin')}>
+        <div className={cx("adminLogOut")}>
+            {
+                isLoadingLogout?<div className={cx("loading")}>
+                <h3>Loading.....{<AiOutlineLoading className={cx('loading-icon')}/>}</h3>
+                </div>: <div className={cx('admin')}>
             <div className={cx(modalSaveLocation ? 'noneModal' : 'modal')}>
                 <ModalSaveLocation />
             </div>
@@ -171,7 +170,7 @@ function Admin() {
                         </div>
 
                         <div className={cx('main')}>
-                            <NavLink to={''} className={activeClass}>
+                            <NavLink to={'overView'} className={activeClass}>
                                 <div className={cx('categoriCss')}>
                                     <FontAwesomeIcon icon={faHouse} className={cx('icon')} />
                                     <h3
@@ -208,19 +207,6 @@ function Admin() {
                                         }}
                                     >
                                         Đặt hàng
-                                    </h3>
-                                </div>
-                            </NavLink>
-                            <NavLink to={'coach'} className={activeClass}>
-                                <div className={cx('categoriCss')}>
-                                    <FontAwesomeIcon icon={faPersonWalkingWithCane} className={cx('icon')} />
-                                    <h3
-                                        style={{
-                                            display: activeText ? 'block' : 'none',
-                                            transition: activeText ? '1s' : '',
-                                        }}
-                                    >
-                                        Giáo viên
                                     </h3>
                                 </div>
                             </NavLink>
@@ -279,23 +265,8 @@ function Admin() {
 
                         <div className={cx('searchTitleBar')}>
                             <div className={cx('search')}>
-                                <input
-                                    type="text"
-                                    placeholder="Search here..."
-                                    className={cx('input')}
-                                    value={value}
-                                    onChange={onChangSearch}
-                                />
+                                <input type="text" placeholder="Search here..." className={cx('input')} />
                                 <FontAwesomeIcon icon={faMagnifyingGlass} className={cx('iconSearch')} />
-                            </div>
-                            <div className={cx(noBar >= 0 || value === '' ? 'noSearchBar' : 'searchBar')}>
-                                {search.map((products, index) => {
-                                    return (
-                                        <div key={index} className={cx('name')}>
-                                            <h4 onClick={() => hendleValue(products.name)}>{products.name}</h4>
-                                        </div>
-                                    );
-                                })}
                             </div>
                         </div>
                         <div className={cx('informationAdmin')}>
@@ -327,9 +298,9 @@ function Admin() {
                     </div>
                     <div className={cx('infoCategori')}>
                         <Routes>
-                            <Route path="/" element={<Overview activeClass={activeClass} />} />
+                            <Route path="/overView" element={<Overview activeClass={activeClass}  />} />
                             <Route path="/client" element={<Client />} />
-                            <Route path="/coach" element={<Coach />} />
+
                             <Route path="/order" element={<Order />} />
                             <Route path="/course" element={<Course />} />
                             <Route path="/branch" element={<Location />} />
@@ -339,6 +310,9 @@ function Admin() {
                 </div>
             </div>
         </div>
+            }
+        </div>
+       
     );
 }
 

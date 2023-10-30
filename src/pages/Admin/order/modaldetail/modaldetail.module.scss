@@ -6,7 +6,7 @@
     grid-template-columns: 1fr 3fr;
 
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     animation-name: example;
@@ -49,7 +49,8 @@
     }
     .rightDetail {
         .infoCourse {
-            padding: 40px 20px;
+            border-bottom: 1px solid black;
+            padding: 10px 20px;
             h3 {
                 font-size: 28px;
                 font-family: 'Roboto', sans-serif;
@@ -63,9 +64,24 @@
                     font-size: 18px;
                 }
             }
+            .table {
+                height: 150px;
+                overflow: auto;
+                table {
+                    width: 100%;
+
+                    font-family: 'Roboto', sans-serif;
+                    th,
+                    td {
+                        line-height: 20px;
+                        border-bottom: 1px solid black;
+                    }
+                }
+            }
         }
         .infoUser {
-            padding: 40px 20px;
+            border-bottom: 1px solid black;
+            padding: 10px 20px;
             h3 {
                 font-size: 28px;
                 font-family: 'Roboto', sans-serif;

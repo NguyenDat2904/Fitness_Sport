@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-
+import { AiOutlineLoading } from 'react-icons/ai';
 import * as apiUser from '~/services/getData/getUserClient';
 import * as deleteData from '~/services/getData/deleteData';
 import { AppContext } from '~/hook/context/AppContext';
@@ -13,14 +13,12 @@ const Order = () => {
     const {
         userDataOrder,
         setUserOrder,
-        tableUserOrder,
-        setTacbleUserOrder,
         handleTurnOnDetailOrder,
         handleTableStyleOrder,
         tableDetailId,
     } = useContext(AppContext);
     const [selectCourse, setSelectCourse] = useState('');
-
+    const [isloadingOrder,setIsloadingOrder]=useState(true)
     const [courseData, setCourseData] = useState([]);
 
     //callAPI ALL User
@@ -28,6 +26,7 @@ const Order = () => {
     useEffect(() => {
         const callApi = async () => {
             try {
+                setIsloadingOrder(true)
                 const accessToken = localStorage.getItem('accessToken');
                 const refresh_token = localStorage.getItem('refresh_token');
                 const user = await apiUser.getOrder(accessToken, refresh_token);
@@ -37,30 +36,27 @@ const Order = () => {
             } catch (error) {
                 console.log('error Api Admin');
             }
+            finally{
+                setIsloadingOrder(false)
+            }
         };
         callApi();
     }, []);
-
-    useEffect(() => {
-        setTacbleUserOrder(userDataOrder);
-    }, [userDataOrder]);
-
     const onChangeCourse = (e) => {
         setSelectCourse(e.target.value);
     };
-    const handleSelectCourse = () => {
-        if (selectCourse !== '') {
-            const result = userDataOrder.filter((product) => {
-                return product.courseID.filter((item) => item.name === selectCourse).length !== 0;
-            });
-            setTacbleUserOrder(result);
-        } else setTacbleUserOrder(userDataOrder);
-    };
-    useEffect(() => {
-        handleSelectCourse();
-    }, [selectCourse]);
+    const tableOrder=userDataOrder.filter((product)=>{
+        if(selectCourse !== ''){
+            return product.courseID.filter((item) => item.name === selectCourse).length !== 0;
+        }
+        return true
+    })
     return (
-        <div className={cx('client')}>
+        <div className={cx("order")}>
+             {isloadingOrder?<div className={cx("loading")}>
+            <h3>Loading.....{<AiOutlineLoading className={cx('loading-icon')}/>}</h3>
+            </div>:
+             <div className={cx('client')}>
             <div className={cx('tagBar')}>
                 <div className={cx('courseLever')}>
                     <select name="" id="" onChange={onChangeCourse}>
@@ -94,12 +90,12 @@ const Order = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {tableUserOrder.length === 0 ? (
+                        {tableOrder.length === 0 ? (
                             <tr>
                                 <td className={cx('error')}> Không có thông tin cho loại dữ liệu này...</td>
                             </tr>
                         ) : (
-                            tableUserOrder.map((product, indext) => {
+                            tableOrder.map((product, indext) => {
                                 const handleDedete = async (id) => {
                                     try {
                                         const accessToken = localStorage.getItem('accessToken');
@@ -179,7 +175,9 @@ const Order = () => {
                     </tbody>
                 </table>
             </div>
+        </div>}
         </div>
+       
     );
 };
 

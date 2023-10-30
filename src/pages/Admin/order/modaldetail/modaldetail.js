@@ -1,18 +1,11 @@
 import React, { useContext } from 'react';
 import { AppContext } from '~/hook/context/AppContext';
+import { formatCurrencyVND } from '../../numBerToPrice/currency';
 import classNames from 'classnames/bind';
 import styles from './modaldetail.module.scss';
 const cx = classNames.bind(styles);
 const ModalDetailOrder = () => {
-    const {
-        nameCourseOrder,
-        priceCourseOrder,
-        timeRegisterOrder,
-        statusCourseOrder,
-        timePayment,
-        handleTurnOnDetailOrder,
-        profileDetailOrder,
-    } = useContext(AppContext);
+    const { handleTurnOnDetailOrder, profileDetailOrder } = useContext(AppContext);
 
     return (
         <div className={cx('modalDetail')}>
@@ -73,24 +66,38 @@ const ModalDetailOrder = () => {
                 <hr />
                 <div className={cx('infoCourse')}>
                     <h3>Thông tin khóa học</h3>
-
-                    <p className={cx('p')}>
-                        <span>Tên khóa học:</span> {nameCourseOrder}.{' '}
-                    </p>
-                    <p className={cx('p')}>
-                        <span>Giá khóa học:</span> {priceCourseOrder}.
-                    </p>
-                    <p className={cx('p')}>
-                        <span>Thời gian đăng ký:</span> {timeRegisterOrder}.
-                    </p>
-                    <p className={cx('p')}>
-                        <span>Trạng thái thanh toán:</span> {statusCourseOrder}.
-                    </p>
-                    <p className={cx('p')}>
-                        <span>Thời gian thanh toán:</span> {timePayment}.
-                    </p>
+                    <div className={cx('table')}>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên khóa học</th>
+                                    <th>Giá</th>
+                                    <th>Ngày đăng ký</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ngày thanh toán</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {profileDetailOrder.map((product) => {
+                                    return product.courseID.map((item, index) => {
+                                        return (
+                                            <tr key={index}>
+                                                <td>{index}</td>
+                                                <td>{item.name}</td>
+                                                <td>{formatCurrencyVND(item.price)}</td>
+                                                <td>{item.updatedAt.slice(0, 10)}</td>
+                                                <td>{item.status}</td>
+                                                <td>{product.timePrice.slice(0, 10)}</td>
+                                            </tr>
+                                        );
+                                    });
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <hr />
+
                 <div className={cx('button')}>
                     <button onClick={handleTurnOnDetailOrder}>Trở lại</button>
                 </div>

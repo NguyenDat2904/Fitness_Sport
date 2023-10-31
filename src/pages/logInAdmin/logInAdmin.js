@@ -37,7 +37,7 @@ const LoginAdmin=()=>{
                 if (accessToken&&refresh_token) {
                     localStorage.setItem('accessToken', accessToken);
                     localStorage.setItem("refresh_token",refresh_token)
-                    navigate('/admin');
+                    navigate('/admin/overView');
                   }
             } catch (error) {
                 console.log("Error Login!!!")

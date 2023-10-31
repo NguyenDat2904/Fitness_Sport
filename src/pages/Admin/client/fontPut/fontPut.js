@@ -109,6 +109,8 @@ const FormPut = ({ setUser, courseData, locationData, handlePutNew, benefitData,
     useEffect(() => {
         handleCourseId();
     }, [formick.values.course]);
+    console.log(idPut.name);
+    console.log(formick.values.name)
     return (
         <form action="" onSubmit={formick.handleSubmit} className={cx('form')}>
             <h2>Sửa Thông tin khách hàng</h2>
@@ -248,7 +250,7 @@ const FormPut = ({ setUser, courseData, locationData, handlePutNew, benefitData,
                 <button type="submit" className={cx('buttonSave')}>
                     Lưu
                 </button>
-                <button className={cx('buttonCal')} onClick={handlePutNew}>
+                <button type='button' className={cx('buttonCal')} onClick={handlePutNew}>
                     Trở lại
                 </button>
             </div>

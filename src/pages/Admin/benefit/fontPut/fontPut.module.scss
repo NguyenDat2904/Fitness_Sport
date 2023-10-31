@@ -25,6 +25,7 @@
             position: relative;
             .error {
                 width: 55%;
+
                 margin-left: 25px;
                 border-radius: 5px;
                 padding: 0 10px;
@@ -33,6 +34,7 @@
                 top: -12px;
 
                 .pError {
+                    margin: 0;
                     padding: 0;
                     color: red;
 

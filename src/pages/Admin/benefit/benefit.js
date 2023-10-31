@@ -119,7 +119,7 @@ const Benefit = () => {
 
                                                 <button
                                                     className={cx('buttonFix')}
-                                                    onClick={() => handleStyleFontPutBenefit(product._id)}
+                                                    onClick={() => handleStyleFontPutBenefit(product)}
                                                 >
                                                     <FontAwesomeIcon icon={faToolbox} />
                                                     <h5>Sửa</h5>

@@ -1,3 +1,4 @@
+import { faBullseye } from '@fortawesome/free-solid-svg-icons';
 import { createContext, useEffect, useState } from 'react';
 const AppContext = createContext();
 const AppProvider = (props) => {
@@ -88,7 +89,7 @@ const AppProvider = (props) => {
     const [idCOurseDetail,setIdCourseDetail]=useState("");
     const [locationIDCourse,setLocationIDCourse]=useState("")
     const [dataCourse,setDataCourse]=useState([]);
-    const [tableDatatCourse,setTableDataCourse]=useState(dataCourse)
+
     const [dataCourseDetail,setDataCourseDetail]=useState([]);
     const [location,setLocation]=useState([]);
     const [addressCourse,setAddressCourse]=useState([]);
@@ -123,20 +124,13 @@ const AppProvider = (props) => {
         })
       
        setDataCourseDetail(detail);
+       const addressLocation=location.filter((product)=>product._id===locationIDCourse);
+       setAddressCourse( addressLocation);
     }
-    const addressDetail=()=>{
-          const addressLocation=location.filter((product)=>product._id===locationIDCourse);
-
-        setAddressCourse( addressLocation);
-    }
-   
-    
     useEffect(()=>{
         CourseDetail()
     },[idCOurseDetail])
-   useEffect(()=>{
-        addressDetail()
-    },[locationIDCourse])
+
 // order 
 const [modalDetailOrder,setModalDetailOrder]=useState(true)
 const [userDataOrder, setUserOrder] = useState([]);
@@ -177,7 +171,7 @@ const [idDetailOrder,setIdDetailOrder]=useState("");
     const [idputLocation,setIdPutLocation]=useState({})
     const [detailLocation,setDetailLocation]=useState([])
     const [modalSaveLocation,setModalSaveLocation]=useState(true)
-
+    const [loadFrom,setLoadForm]=useState(false)
 
     const handleSaveLocation=()=>{
         if(modalSaveLocation===true)
@@ -209,17 +203,19 @@ const [idDetailOrder,setIdDetailOrder]=useState("");
     const handleLocationId=(id)=>{
         setIdDetailLocation(id)
     }
-    const handleStyleFontPutLocation=(id)=>{
+    const handleStyleFontPutLocation=(product)=>{
 
-        setIdPutLocation(id)
+        setIdPutLocation(product)
         if(displayFontPutLocation===true)
         {
+            setLoadForm(true)
             setDisplayFontAddLocation(true)
             setDisplayTableLocation(false)
             setDisplayFontPutLocation(false)
         }else{
             setDisplayFontPutLocation(true)
             setDisplayTableLocation(true)
+            setLoadForm(false)
         }
     }
     const handleStyleFontAddLocation=()=>{
@@ -242,22 +238,24 @@ const [idDetailOrder,setIdDetailOrder]=useState("");
     const [displayFontAddBenefit,setDisplayFontAddBenefit]=useState(true);
     const [displayFontPutBenefit,setDisplayFontPutBenefit]=useState(true);
     const [idDetailBenefit,setIdDetailBenefit]=useState("");
-    const [idPutBenefit,setIdPutBenefit]=useState("")
-
+    const [idPutBenefit,setIdPutBenefit]=useState({})
+    const [loadFromBenefit,setLoadFromBenefit]=useState(faBullseye)
     const handleBenefitId=(id)=>{
         setIdDetailBenefit(id)
     }
-    const handleStyleFontPutBenefit=(id)=>{
+    const handleStyleFontPutBenefit=(product)=>{
 
-        setIdPutBenefit(id)
+        setIdPutBenefit(product)
         if(displayFontPutBenefit===true)
         {
+            setLoadFromBenefit(true)
             setDisplayFontAddBenefit(true)
             setDisplayTableBenefit(false)
             setDisplayFontPutBenefit(false)
         }else{
             setDisplayFontPutBenefit(true)
             setDisplayTableBenefit(true)
+            setLoadFromBenefit(false)
         }
     }
     const handleStyleFontAddBenefit=()=>{
@@ -305,7 +303,7 @@ const [idDetailOrder,setIdDetailOrder]=useState("");
         addressCourse,idDetailCourse,
         handleCourseId,
         modalCourse,
-        tableDatatCourse,setTableDataCourse,
+    
         //location
         setUserLocation,
         userDataLocation,
@@ -321,6 +319,7 @@ const [idDetailOrder,setIdDetailOrder]=useState("");
         handleStyleFontPutLocation,
         idputLocation,
         detailLocation,
+        loadFrom,
         //benefit
         dataBenefit,setdataBenefit,
         handleStyleFontAddBenefit,
@@ -333,6 +332,7 @@ const [idDetailOrder,setIdDetailOrder]=useState("");
         idPutBenefit,
         handleSaveLocation,
         modalSaveLocation,
+        loadFromBenefit,
 
         //logOut
         idLogout,setIdLogOut,

@@ -52,9 +52,7 @@ const Overview = ({ activeClass }) => {
         return product.courseID.filter((item) => item.name === 'Khóa học yoga cho người làm văn phòng').length > 0;
     });
 
-    console.log('1', yogaNewPeople);
-    console.log('2', dance);
-    console.log('3', yogaPeople);
+    
     const options1 = {
         animationEnabled: true,
         title: {

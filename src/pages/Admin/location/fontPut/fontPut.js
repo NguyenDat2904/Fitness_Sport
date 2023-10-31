@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext,useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import * as putdata from '~/services/getData/putData';
@@ -10,7 +10,7 @@ import classNames from 'classnames/bind';
 import styles from './fontPut.module.scss';
 const cx = classNames.bind(styles);
 const FormPutLocation = () => {
-    const { handleStyleFontPutLocation, setUserLocation, modalSaveLocation, idputLocation, handleSaveLocation } =
+    const {loadFrom, handleStyleFontPutLocation, setUserLocation, modalSaveLocation, idputLocation, handleSaveLocation } =
         useContext(AppContext);
     const week = [
         {
@@ -44,51 +44,114 @@ const FormPutLocation = () => {
     ];
     const [notification, setNotification] = useState('');
     const [times_days] = useState([]);
-    const formick = useFormik({
-        initialValues: {
-            name: '',
-            city:'',
-            district: '',
-            ward:  '',
-            street:  '',
-            desc: '',
+    const [value,setvalue]=useState({
+        name: '',
+        city:'',
+        district: '',
+        ward:  '',
+        street:  '',
+        desc: '',
+        start_time: '',
+        end_time: '',
+        start_day: '',
+        end_day: '',
+        phone:  '',
+        img:  '',
+    })
+    const [errorValue,setErrorValue]=useState({
+        name:'',
+        price: '',
+        start:  '',
+        end:'',
+        status:'',
+        day: '',
+        startTimeCourse: '',
+        endTimeCourse: '',
+        location: '',
+        img: '',
+    })
+    useEffect(() => {
+        if(loadFrom){
+           setvalue({
+            name:idputLocation.name,
+            city:idputLocation.city,
+            district:idputLocation.district,
+            ward:idputLocation.ward,
+            street:idputLocation.street,
+            desc:idputLocation.desc,
             start_time: '',
             end_time: '',
             start_day: '',
             end_day: '',
-            phone:  '',
-            img:  '',
-        },
-        validationSchema: Yup.object({
-            name: Yup.string().required('Bạn vui lòng nhập tên cho chi nhánh'),
-            city: Yup.string().required('Bạn vui lòng nhập tên Thành Phố'),
-            district: Yup.string().required('Bạn vui lòng nhập tên Quận'),
-            ward: Yup.string().required('Bạn vui lòng nhập tên Phường'),
-            street: Yup.string().required('Bạn vui lòng nhập tên Đường'),
-            desc: Yup.string().required('Bạn vui lòng ghi nội dung mô tả'),
-            start_time: Yup.string().required('Bạn vui lòng chọn giờ mở cửa'),
-            end_time: Yup.string().required('Bạn vui lòng chọn giờ đóng cửa'),
-            start_day: Yup.string().required('Bạn vui lòng chọn thứ bắt đầu trong tuần'),
-            end_day: Yup.string().required('Bạn vui lòng chọn thứ kết thúc trong tuần'),
-            phone: Yup.string()
-                .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/, 'Bạn vui lòng nhập đúng số điện thoại')
-                .required('Bạn vui lòng nhập số điện thoại'),
-            img: Yup.mixed().required('Bạn vui lòng chọn ảnh'),
-        }),
-        onSubmit: async (value) => {
-            const result = {
-                name: value.name,
-                city: value.city,
-                district: value.district,
-                ward: value.ward,
-                street: value.street,
-                phone: value.phone,
-                img: value.img,
-                desc: value.desc,
-                times_days: times_days,
-                _id: idputLocation._id,
-            };
-            console.log(result);
+            phone: idputLocation.phone,
+            img:"",
+              });
+        }
+      },[loadFrom]);
+
+      const handleOnchang=(e)=>{
+        const {name,value} =e.target;
+        setvalue((values)=>({
+            ...values,
+            [name]:value,
+        })) 
+    }
+    const handleSubmit=async(e)=>{
+        e.preventDefault();
+        const newErrors = {};
+        const regexPhone = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
+        let hasError = false;
+        if(value.name===""){
+            hasError=true;
+            newErrors.name='Bạn vui lòng nhập tên cho chi nhánh'
+        }
+        if(value.city===""){
+            hasError=true;
+            newErrors.city='Bạn vui lòng nhập tên Thành Phố'
+        }
+        if(value.district===""){
+            hasError=true;
+            newErrors.district='Bạn vui lòng nhập tên Quận'
+        }
+        if(value.ward===""){
+            hasError=true;
+            newErrors.ward='Bạn vui lòng nhập tên Phường'
+        }
+        if(value.street===""){
+            hasError=true;
+            newErrors.street='Bạn vui lòng nhập tên Đường'
+        }
+        if(value.desc===""){
+            hasError=true;
+            newErrors.desc='Bạn vui lòng ghi nội dung mô tả'
+        }
+        if(value.start_time===""){
+            hasError=true;
+            newErrors.start_time='Bạn vui lòng chọn giờ mở cửa'
+        }
+        if(value.end_time===""){
+            hasError=true;
+            newErrors.end_time='Bạn vui lòng chọn giờ đóng cửa'
+        }
+        if(value.start_day===""){
+            hasError=true;
+            newErrors.start_day='Bạn vui lòng chọn thứ bắt đầu trong tuần'
+        }
+        if(value.end_day===""){
+            hasError=true;
+            newErrors.end_day='Bạn vui lòng chọn thứ kết thúc trong tuần'
+        }
+       
+        if(!regexPhone.test(value.phone)||value.phone===""){
+            hasError=true;
+            newErrors.phone='Bạn vui lòng nhập đúng số điện thoại'
+        }
+        if(value.img===""){
+            hasError=true;
+            newErrors.img='Bạn vui lòng chọn ảnh'
+        }
+        setErrorValue(newErrors)
+        if(!hasError){
             try {
                 await handleSaveLocation();
                 const accessToken = localStorage.getItem('accessToken');
@@ -115,18 +178,21 @@ const FormPutLocation = () => {
             } catch (error) {
                 console.log("error put location")
             }
-        },
-    });
+        }
+
+
+    }
+
     const handleSubmitSchedule = () => {
         const result = {
-            time: `${formick.values.start_time} - ${formick.values.end_time}`,
-            day: `${formick.values.start_day} - ${formick.values.end_day}`,
+            time: `${value.start_time} - ${value.end_time}`,
+            day: `${value.start_day} - ${value.end_day}`,
         };
         if (
-            formick.values.start_time !== '' &&
-            formick.values.end_time !== '' &&
-            formick.values.start_day !== '' &&
-            formick.values.end_day !== ''
+            value.start_time !== '' &&
+            value.end_time !== '' &&
+            value.start_day !== '' &&
+            value.end_day !== ''
         ) {
             times_days.push(result);
             setNotification('Đã thêm');
@@ -135,147 +201,148 @@ const FormPutLocation = () => {
             }, 2000);
         }
     };
-    console.log(idputLocation);
     return (
-        <form action="" onSubmit={formick.handleSubmit} className={cx('formAddOrder')}>
+        <form action="" onSubmit={handleSubmit} className={cx('formAddOrder')}>
             <h2>Sửa thông tin chi nhánh</h2>
             <div className={cx('formAddInput')}>
                 <div className={cx('formAddInPutLeft')}>
                     <div className={cx('input')}>
-                        {formick.errors.name && formick.touched.name && (
+                       
                             <div className={cx('error')}>
-                                <p className={cx('pError')}>{formick.errors.name}</p>
+                                <p className={cx('pError')}>{errorValue.name}</p>
                             </div>
-                        )}
+                        
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <input
-                            value={formick.values.name}
+                            value={value.name}
                             name="name"
                             type="text"
                             placeholder="Tên chi nhánh mới..."
-                            onChange={formick.handleChange}
+                            onChange={handleOnchang}
                         />
-                    </div>
+                    </div> 
                     <div className={cx('input')}>
-                        {formick.errors.city && formick.touched.city && (
+                        
                             <div className={cx('error')}>
-                                <p className={cx('pError')}>{formick.errors.city}</p>
+                                <p className={cx('pError')}>{errorValue.city}</p>
                             </div>
-                        )}
+                      
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <input
-                            value={formick.values.city}
+                            value={value.city}
                             name="city"
                             type="text"
                             placeholder="Tại thành phố..."
-                            onChange={formick.handleChange}
+                            onChange={handleOnchang}
                         />
                     </div>
 
                     <div className={cx('input')}>
-                        {formick.errors.district && formick.touched.district && (
+                        
                             <div className={cx('error')}>
-                                <p className={cx('pError')}>{formick.errors.district}</p>
+                                <p className={cx('pError')}>{errorValue.district}</p>
                             </div>
-                        )}
+                        
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
 
                         <input
-                            value={formick.values.district}
+                            value={value.district}
                             name="district"
                             type="text"
                             placeholder="Tại Quận/Huyện..."
-                            onChange={formick.handleChange}
+                            onChange={handleOnchang}
                         />
                     </div>
                     <div className={cx('input')}>
-                        {formick.errors.ward && formick.touched.ward && (
+                      
                             <div className={cx('error')}>
-                                <p className={cx('pError')}>{formick.errors.ward}</p>
+                                <p className={cx('pError')}>{errorValue.ward}</p>
                             </div>
-                        )}
+                        
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
 
                         <input
-                            value={formick.values.ward}
+                            value={value.ward}
                             name="ward"
                             type="text"
                             placeholder="Tại phường..."
-                            onChange={formick.handleChange}
+                            onChange={handleOnchang}
                         />
                     </div>
                     <div className={cx('input')}>
-                        {formick.errors.street && formick.touched.street && (
+                       
                             <div className={cx('error')}>
-                                <p className={cx('pError')}>{formick.errors.street}</p>
+                                <p className={cx('pError')}>{errorValue.street}</p>
                             </div>
-                        )}
+                       
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <input
-                            value={formick.values.street}
+                            value={value.street}
+                            type='text'
                             name="street"
                             id=""
                             placeholder="Tại đường..."
-                            onChange={formick.handleChange}
+                            onChange={handleOnchang}
                         />
                     </div>
                     <div className={cx('input')}>
-                        {formick.errors.phone && formick.touched.phone && (
+                       
                             <div className={cx('error')}>
-                                <p className={cx('pError')}>{formick.errors.phone}</p>
+                                <p className={cx('pError')}>{errorValue.phone}</p>
                             </div>
-                        )}
+                       
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <input
-                            value={formick.values.phone}
+                            value={value.phone}
+                            type='number'
                             name="phone"
                             id=""
                             placeholder="Số điện thoại của chi nhánh..."
-                            onChange={formick.handleChange}
+                            onChange={handleOnchang}
                         />
                     </div>
                 </div>
                 <div className={cx('formAddInPutRight')}>
                     <div className={cx('inputSpan')}>
-                        {formick.errors.start_time && formick.touched.start_time && (
+                      
                             <div className={cx('error')}>
-                                <p className={cx('pError')}>{formick.errors.start_time}</p>
+                                <p className={cx('pError')}>{errorValue.start_time}</p>
                             </div>
-                        )}
+                      
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <span>Thời gian mở cửa:</span>
                         <input
-                            value={formick.values.start_time}
+                            value={value.start_time}
                             name="start_time"
                             type="time"
-                            onChange={formick.handleChange}
+                            onChange={handleOnchang}
                         />
                     </div>
                     <div className={cx('inputSpan')}>
-                        {formick.errors.end_time && formick.touched.end_day && (
+                     
                             <div className={cx('error')}>
                                 {' '}
-                                <p className={cx('pError')}>{formick.errors.end_time}</p>
+                                <p className={cx('pError')}>{errorValue.end_time}</p>
                             </div>
-                        )}
+                       
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <span>Thời gian kết thúc:</span>
                         <input
-                            value={formick.values.end_time}
+                            value={value.end_time}
                             name="end_time"
                             type="time"
-                            onChange={formick.handleChange}
+                            onChange={handleOnchang}
                         />
                     </div>
                     <div className={cx('input')}>
-                        {formick.errors.start_day && formick.touched.start_day && (
+                     
                             <div className={cx('error')}>
                                 {' '}
-                                <p className={cx('pError')}>{formick.errors.start_day}</p>
+                                <p className={cx('pError')}>{errorValue.start_day}</p>
                             </div>
-                        )}
+                     
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
-                        <select value={formick.values.start_day} name="start_day" id="" onChange={formick.handleChange}>
+                        <select value={value.start_day} name="start_day" id="" onChange={handleOnchang}>
                             <option className={cx('opacity')} value="">
                                 Bắt đầu từ thứ...
                             </option>
@@ -289,13 +356,13 @@ const FormPutLocation = () => {
                         </select>
                     </div>
                     <div className={cx('input')}>
-                        {formick.errors.end_day && formick.touched.end_day && (
+                       
                             <div className={cx('error')}>
-                                <p className={cx('pError')}>{formick.errors.end_day}</p>
+                                <p className={cx('pError')}>{errorValue.end_day}</p>
                             </div>
-                        )}
+                       
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
-                        <select value={formick.values.end_day} name="end_day" id="" onChange={formick.handleChange}>
+                        <select value={value.end_day} name="end_day" id="" onChange={handleOnchang}>
                             <option className={cx('opacity')} value="">
                                 Kết thúc từ thứ...
                             </option>
@@ -317,39 +384,40 @@ const FormPutLocation = () => {
                         </button>
                     </div>
                     <div className={cx('input')}>
-                        {formick.errors.img && formick.touched.img && (
+                       
                             <div className={cx('error')}>
-                                <p className={cx('pError')}>{formick.errors.img}</p>
+                                <p className={cx('pError')}>{errorValue.img}</p>
                             </div>
-                        )}
+                       
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <input
-                            value={formick.values.img}
-                            onChange={formick.handleChange}
+                          
                             type="file"
                             name="img"
                             id=""
+                              value={value.img}
                             placeholder="Chọn ảnh"
+                              onChange={handleOnchang}
                         />
                     </div>
 
                     <div className={cx('input')}>
-                        {formick.errors.desc && formick.touched.desc && (
+                   
                             <div className={cx('error')}>
                                 {' '}
-                                <p className={cx('pError')}>{formick.errors.desc}</p>
-                            </div>
-                        )}
+                                <p className={cx('pError')}>{errorValue.desc}</p>
+                            </div> 
+
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         <textarea
-                            value={formick.values.desc}
+                            value={value.desc}
                             className={cx('textares')}
                             name="desc"
                             id=""
                             cols="30"
                             rows="5"
                             placeholder="Mô tả..."
-                            onChange={formick.handleChange}
+                            onChange={handleOnchang}
                         />
                     </div>
                 </div>

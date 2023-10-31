@@ -28,7 +28,8 @@ const Course = () => {
     const [displayTable, setDisplayTable] = useState(true);
     const [displayFontAdd, setDisplayFontAdd] = useState(true);
     const [displayFontPut, setDisplayFontPut] = useState(true);
-    const [isLoadingCourse,setIsLoadingCourse]=useState(false)
+    const [isLoadingCourse,setIsLoadingCourse]=useState(false);
+    const [loadFrom,setLoadForm]=useState(false)
     //callAPI ALL User
 
     useEffect(() => {
@@ -54,7 +55,7 @@ const Course = () => {
         if (displayFontAdd === true) {
             setDisplayFontAdd(false);
             setDisplayTable(false);
-            setDisplayFontPut(true);
+           
         } else {
             setDisplayFontAdd(true);
             setDisplayTable(true);
@@ -62,13 +63,15 @@ const Course = () => {
     };
     const handleStyleFontPut = (product) => {
         setIdPutCourse(product);
+        
         if (displayFontPut === true) {
-            setDisplayFontAdd(true);
+            setLoadForm(true)
             setDisplayTable(false);
             setDisplayFontPut(false);
         } else {
             setDisplayFontPut(true);
             setDisplayTable(true);
+            setLoadForm(false)
         }
     };
     return (
@@ -84,7 +87,7 @@ const Course = () => {
                 </button>
             </div>
             <div className={cx(displayFontPut ? 'noneFontAdd' : 'fontAdd')}>
-                <FormPutCourse location={location} handleStyleFontPut={handleStyleFontPut} idPutCourse={idPutCourse} />
+                <FormPutCourse location={location} handleStyleFontPut={handleStyleFontPut} loadFrom={loadFrom} idPutCourse={idPutCourse} />
             </div>
             <div className={cx(displayFontAdd ? 'noneFontAdd' : 'fontAdd')}>
                 <FormAddCourse location={location} handleStyleFontAdd={handleStyleFontAdd} />

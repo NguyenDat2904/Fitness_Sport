@@ -352,7 +352,7 @@ const Overview = ({ activeClass }) => {
                                         <td>{product.courseID.map((item) => item.name)}</td>
                                         <td>{product.status}</td>
                                         <td>{product.totalPrice}</td>
-                                        <td>{product.timePrice.slice(0, 10)}</td>
+                                        <td>{product.createdAt?product.createdAt.slice(0, 10):""}</td>
                                     </tr>
                                 );
                             })}

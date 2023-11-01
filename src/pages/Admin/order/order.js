@@ -130,7 +130,7 @@ const Order = () => {
                                         </td>
 
                                         <td>{product.status}</td>
-                                        <td>{product.timePrice.slice(0, 10)}</td>
+                                        <td>{product.createdAt?product.createdAt.slice(0, 10):""}</td>
                                         <td className={cx('detail')}>
                                             <button
                                                 className={cx('buttonview')}

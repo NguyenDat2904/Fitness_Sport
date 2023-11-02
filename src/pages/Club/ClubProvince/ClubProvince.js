@@ -20,22 +20,6 @@ const ClubProvince = () => {
     const [districts, setDistricts] = useState([]);
     const [changeValue, setChangValue] = useState('');
 
-    
-    const handleFilterDistrict = () => {
-        const districtCount = {};
-        for (const obj of locations) {
-            const district = obj.district;
-            if (districtCount[district]) {
-                districtCount[district]++;
-            } else {
-                districtCount[district] = 1;
-            }
-        }
-        const filter = Object.keys(districtCount).filter((district) => districtCount[district] === 1);
-        setDistricts(filter);
-        console.log(filter);
-    };
-
     const onChangeValue = (item) => {
         setChangValue(item.target.value);
     };
@@ -62,12 +46,32 @@ const ClubProvince = () => {
         setDis,
     } = values;
 
+    const mapDis = districts.map((item) => {
+        return <ItemSelectDistrict district={item} key={item._id} />;
+    });
+
     useEffect(() => {
         setLoading(true);
         getLocationData(cityName.city, dis)
             .then((result) => {
                 setLocations(result);
+                const handleFilterDistrict = () => {
+                    const districtCount = {};
+                    for (const obj of result) {
+                        const district = obj.district;
+                        if (districtCount[district]) {
+                            districtCount[district]++;
+                        } else {
+                            districtCount[district] = 1;
+                        }
+                    }
+                    const filter = Object.keys(districtCount).filter((district) => districtCount[district] === 1);
+                    setDistricts(filter);
+                };
                 handleFilterDistrict();
+                if (locations.length === 0) {
+                    setDis('');
+                }
             })
             .catch((error) => {
                 if (error.response) {
@@ -80,7 +84,7 @@ const ClubProvince = () => {
         setShow('');
         setTimeout(() => {
             setLoading(false);
-        }, 1000);
+        }, 2000);
     }, [cityName, dis]);
 
     return (
@@ -135,9 +139,7 @@ const ClubProvince = () => {
                                         onMouseLeave={onMouseLeave}
                                     >
                                         <p className={cx('mobile-header-search-box')}>Chọn quận</p>
-                                        {districts.map((item) => {
-                                            return <ItemSelectDistrict district={item} key={item._id} />;
-                                        })}
+                                        {mapDis}
                                     </div>
                                 </div>
                                 <div className={cx('mobile-shadow')} />

@@ -46,7 +46,6 @@ function Header() {
 
     const handleOptionChange = (event) => {
         const value = event.target.value || '';
-        console.log(value);
         setSelectedOption((prevSelectedOption) => {
             if (prevSelectedOption === value) {
                 return '';

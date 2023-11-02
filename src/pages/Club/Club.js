@@ -10,7 +10,8 @@ const cx = classNames.bind(style);
 const Club = () => {
     const values = useContext(AppContext);
 
-    const { show, onBlur, onShow, onMouseEnter, onMouseLeave } = values;
+    const { show, onBlur, onShow, onMouseEnter, onMouseLeave, setDis, dis } = values;
+    setDis('');
 
     return (
         <>

@@ -1,0 +1,130 @@
+.modalDetail {
+    width: 70%;
+    background-color: #fff;
+    border: 3px solid #00adb5;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: example;
+    animation-duration: 1s;
+    @keyframes example {
+        0% {
+            left: 50%;
+            top: 0px;
+        }
+        50% {
+            left: 50%;
+            top: 50%;
+        }
+    }
+    .leftDetail {
+        padding-top: 40px;
+        background-color: #00adb5;
+        h3 {
+            font-size: 26px;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+        hr {
+            margin-bottom: 30px;
+        }
+        .img {
+            width: 80%;
+            margin: 0 auto;
+            img {
+                border-radius: 5px;
+                width: 100%;
+            }
+            p {
+                text-align: center;
+                margin-top: 5px;
+                font-size: 16px;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+            }
+        }
+    }
+    .rightDetail {
+        .infoCourse {
+            border-bottom: 1px solid black;
+            padding: 40px 20px 10px 20px;
+            h3 {
+                font-size: 28px;
+                font-family: 'Roboto', sans-serif;
+            }
+            .p {
+                margin-top: 5px;
+                font-size: 16px;
+                font-family: 'Roboto', sans-serif;
+                span {
+                    font-weight: 600;
+                    font-size: 18px;
+                }
+            }
+        }
+        .infoUser {
+            border-bottom: 1px solid black;
+            padding: 40px 20px 10px 20px;
+            h3 {
+                font-size: 28px;
+                font-family: 'Roboto', sans-serif;
+            }
+            .user {
+                display: grid;
+                grid-template-columns: 1.5fr 2fr;
+
+                .infoUserLeft,
+                .infoUserRight {
+                    .p {
+                        margin-top: 5px;
+                        font-size: 16px;
+                        font-family: 'Roboto', sans-serif;
+                        span {
+                            font-weight: 600;
+                            font-size: 18px;
+                            font-family: 'Roboto', sans-serif;
+                        }
+                    }
+                    .schedule {
+                        margin-top: 5px;
+                        font-weight: 600;
+                        font-size: 18px;
+                        font-family: 'Roboto', sans-serif;
+                    }
+                    table {
+                        width: 100%;
+                        thead {
+                            th {
+                                font-family: 'Roboto', sans-serif;
+                            }
+                        }
+                        tbody {
+                            font-family: 'Roboto', sans-serif;
+                        }
+                    }
+                }
+            }
+        }
+        .button {
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end;
+            button {
+                background-color: gray;
+                color: #fff;
+                padding: 10px 20px;
+                font-size: 18px;
+                border: none;
+                border-radius: 5px;
+                font-weight: 600;
+                font-family: 'Roboto', sans-serif;
+                &:hover {
+                    background-color: red;
+                }
+            }
+        }
+    }
+}

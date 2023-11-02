@@ -17,13 +17,14 @@ function Header() {
     const [selectedOption, setSelectedOption] = useState('');
     const [toggleImg, setToggleImg] = useState(false);
     const [toggleMenuUser, setToggleMenuUser] = useState(false);
-    const { userInfo, setUserInfo } = useContext(AppContext);
+    const { userInfo, setUserInfo, userParse, setUserParse } = useContext(AppContext);
 
     const location = useLocation();
     const navigate = useNavigate();
 
     useEffect(() => {
         setUserInfo(localStorage.getItem('user'));
+        setUserParse(JSON.parse(localStorage.getItem('user')));
     }, [location]);
 
     const publicRoute = publicRoutes[1];
@@ -57,12 +58,12 @@ function Header() {
 
     const handleLogOut = async () => {
         setToggleMenuUser(false);
-        localStorage.removeItem('user');
         const User = JSON.parse(userInfo);
         const userLogOut = await patch(`https://fitness-sport.onrender.com/auth/logout/${User._id}`, {});
         if (userLogOut.status === 200) {
             navigate('/signin');
         }
+        localStorage.removeItem('user');
     };
 
     const handleOptionChangeSub = (event) => {
@@ -185,7 +186,7 @@ function Header() {
                             </div>
                         </li>
                         <li className={cx('downbtn')}>
-                            <Link to="" className={cx('header-item')}>
+                            <Link to="/blog" className={cx('header-item')}>
                                 BLOG <AiOutlineDown className={cx('ai')} size={'1rem'} color="#fff" />
                             </Link>
                             <div className={cx('dropdown_menu')}>
@@ -340,7 +341,11 @@ function Header() {
                                         onClick={handleToggleUser}
                                     >
                                         <img
-                                            src="https://scontent.fhan18-1.fna.fbcdn.net/v/t1.6435-9/157193579_1117396188778855_678820558290613174_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7a1959&_nc_ohc=-Sm58RG0KW0AX8LBWxx&_nc_ht=scontent.fhan18-1.fna&oh=00_AfAmdk8hAxKBsQoD1cOEaWTtyQVkUa7FzOjBzGgZ0ksObw&oe=655EA304"
+                                            src={
+                                                userParse.img
+                                                    ? userParse.img
+                                                    : 'https://inkythuatso.com/uploads/thumbnails/800/2023/03/9-anh-dai-dien-trang-inkythuatso-03-15-27-03.jpg'
+                                            }
                                             alt=""
                                         />
                                         <FontAwesomeIcon icon={faCircleChevronDown} className={cx('user-icon-down')} />
@@ -354,16 +359,20 @@ function Header() {
                                         <div className={cx('menu-child-top')}>
                                             <div className={cx('list-menu')}>
                                                 <div className={cx('list-item')}>
-                                                    <Link to="/profile">
+                                                    <Link to="/profile" onClick={() => setToggleMenuUser(false)}>
                                                         <div className={cx('user-info')}>
                                                             <div className={cx('user-info-img')}>
                                                                 <img
-                                                                    src="https://scontent.fhan18-1.fna.fbcdn.net/v/t1.6435-9/157193579_1117396188778855_678820558290613174_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=7a1959&_nc_ohc=-Sm58RG0KW0AX8LBWxx&_nc_ht=scontent.fhan18-1.fna&oh=00_AfAmdk8hAxKBsQoD1cOEaWTtyQVkUa7FzOjBzGgZ0ksObw&oe=655EA304"
+                                                                    src={
+                                                                        userParse.img
+                                                                            ? userParse.img
+                                                                            : 'https://inkythuatso.com/uploads/thumbnails/800/2023/03/9-anh-dai-dien-trang-inkythuatso-03-15-27-03.jpg'
+                                                                    }
                                                                     alt=""
                                                                 />
                                                             </div>
                                                             <div className={cx('big-title')}>
-                                                                <h3>Nguyễn Thành Đạt</h3>
+                                                                <h3>{userParse.name}</h3>
                                                             </div>
                                                         </div>
                                                     </Link>

@@ -3,6 +3,7 @@ import Admin from '~/pages/Admin/Admin';
 import Register from '../pages/Register/Form/Form';
 import Signin from '../pages/Signin/Signin';
 import Club from '~/pages/Club/Club';
+import LoginAdmin from '~/pages/logInAdmin/logInAdmin';
 import ForgotPassWord from '~/pages/ForgorPassword/ForgotPassWord';
 import VerifyEmail from '~/pages/VerifyEmail/VerifyEmail';
 import ClubProvince from '~/pages/Club/ClubProvince/ClubProvince';
@@ -11,6 +12,7 @@ import ListBlogContain from '~/pages/ListBlogContain/ListBlogContain';
 import Course from '~/pages/Course/Course';
 import CourseDance from '~/pages/CourseDance/CourseDance';
 import CourseAll from '~/pages/CourseAll/CourseAll';
+import Profile from '~/pages/Profile/Profile';
 import ClubDetails from '~/pages/ClubDetails/ClubDetails';
 import BlogDetails from '~/pages/BlogDetails/BlogDetails';
 
@@ -24,6 +26,7 @@ const publicRoutes = [
         component: Club,
     },
     {
+       
         path: '/club/:city',
         component: ClubProvince,
     },
@@ -45,11 +48,16 @@ const publicRoutes = [
         layout: null,
     },
     {
-        path: '/admin',
+        path: '/admin/*',
         component: Admin,
         layout: null,
     },
     {
+        layout: null,
+        path: '/login/admin',
+        component: LoginAdmin,},
+
+     {   layout: null,
         path: '/register',
         component: Register,
     },
@@ -76,6 +84,10 @@ const publicRoutes = [
     {
         path: '/course',
         component: CourseAll,
+    },
+    {
+        path: '/profile',
+        component: Profile,
     },
 ];
 // Cần đăng nhập

@@ -187,7 +187,7 @@ const Overview = ({ activeClass }) => {
             </div>:
          <div className={cx('overView')}>
             <div className={cx('cardProduct')}>
-                <NavLink to={'client'} className={activeClass}>
+                <NavLink to={'/admin/client'} className={activeClass}>
                     <div className={cx('card')}>
                         <div className={cx('bgrIcon')} style={{ backgroundColor: '#FF2E63' }}>
                             <FontAwesomeIcon icon={faUserGroup} className={cx('icon')} />
@@ -200,7 +200,7 @@ const Overview = ({ activeClass }) => {
                     </div>
                 </NavLink>
 
-                <NavLink to={'course'} className={activeClass}>
+                <NavLink to={'/admin/course'} className={activeClass}>
                     <div className={cx('card')}>
                         <div className={cx('bgrIcon')} style={{ backgroundColor: '#252A34' }}>
                             <FontAwesomeIcon icon={faCalendarMinus} className={cx('icon')} />
@@ -212,7 +212,7 @@ const Overview = ({ activeClass }) => {
                         </div>
                     </div>
                 </NavLink>
-                <NavLink to={'order'} className={activeClass}>
+                <NavLink to={'/admin/order'} className={activeClass}>
                     <div className={cx('card')}>
                         <div className={cx('bgrIcon')} style={{ backgroundColor: '#E23E57' }}>
                             <FontAwesomeIcon icon={faCartPlus} className={cx('icon')} />
@@ -286,7 +286,7 @@ const Overview = ({ activeClass }) => {
                                 );
                             })}
                         </div>
-                        <NavLink to={'client'}>
+                        <NavLink to={'/admin/client'}>
                             <h4>Xem tất cả khách hàng</h4>
                         </NavLink>
                     </div>
@@ -310,7 +310,7 @@ const Overview = ({ activeClass }) => {
                         );
                     })}
 
-                    <NavLink to={'course'}>
+                    <NavLink to={'/admin/course'}>
                         <h4>Xem tất cả Khóa học</h4>
                     </NavLink>
                 </div>
@@ -358,7 +358,7 @@ const Overview = ({ activeClass }) => {
                             })}
                         </tbody>
                     </table>
-                    <NavLink to={'order'}>
+                    <NavLink to={'/admin/order'}>
                         <h4>Xem tất cả các đơn đặt hàng</h4>
                     </NavLink>
                 </div>

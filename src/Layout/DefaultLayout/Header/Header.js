@@ -17,7 +17,7 @@ function Header() {
     const [selectedOption, setSelectedOption] = useState('');
     const [toggleImg, setToggleImg] = useState(false);
     const [toggleMenuUser, setToggleMenuUser] = useState(false);
-    const { userInfo, setUserInfo, userParse, setUserParse } = useContext(AppContext);
+    const { userInfo, setUserInfo, setUserParse, userInfoProfile } = useContext(AppContext);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -65,18 +65,6 @@ function Header() {
             navigate('/signin');
         }
         localStorage.removeItem('user');
-    };
-
-    const handleOptionChangeSub = (event) => {
-        const value = event.target.value || '';
-        console.log(value);
-        setSelectedOption((prevSelectedOption) => {
-            if (prevSelectedOption === value) {
-                return '';
-            } else {
-                return value;
-            }
-        });
     };
 
     const handleToggleUser = () => {
@@ -274,10 +262,12 @@ function Header() {
                             </div>
                         </li>
                         <li className={cx('downbtn')}>
-                            <Link to="" className={cx('header-item')}>LỊCH TẬP / SCHEDULE</Link>
+                            <Link to="" className={cx('header-item')}>
+                                LỊCH TẬP / SCHEDULE
+                            </Link>
                         </li>
                         <li className={cx('downbtn')}>
-                            <Link to="" className={cx('header-item')}>
+                            <Link to="/member" className={cx('header-item')}>
                                 HỘI VIÊN <AiOutlineDown className={cx('ai')} size={'1rem'} color="#fff" />
                             </Link>
                             <div className={cx('dropdown_menu')}>
@@ -343,8 +333,8 @@ function Header() {
                                     >
                                         <img
                                             src={
-                                                userParse.img
-                                                    ? userParse.img
+                                                userInfoProfile.img
+                                                    ? userInfoProfile.img
                                                     : 'https://inkythuatso.com/uploads/thumbnails/800/2023/03/9-anh-dai-dien-trang-inkythuatso-03-15-27-03.jpg'
                                             }
                                             alt=""
@@ -365,15 +355,15 @@ function Header() {
                                                             <div className={cx('user-info-img')}>
                                                                 <img
                                                                     src={
-                                                                        userParse.img
-                                                                            ? userParse.img
+                                                                        userInfoProfile.img
+                                                                            ? userInfoProfile.img
                                                                             : 'https://inkythuatso.com/uploads/thumbnails/800/2023/03/9-anh-dai-dien-trang-inkythuatso-03-15-27-03.jpg'
                                                                     }
                                                                     alt=""
                                                                 />
                                                             </div>
                                                             <div className={cx('big-title')}>
-                                                                <h3>{userParse.name}</h3>
+                                                                <h3>{userInfoProfile.name}</h3>
                                                             </div>
                                                         </div>
                                                     </Link>
@@ -592,12 +582,7 @@ function Header() {
                                 </label>
                                 <ul className={cx('dropdown-content-mobile')}>
                                     <li className={cx('dropdown-group-mobile')}>
-                                        <input
-                                            type="checkbox"
-                                            id="news"
-                                            hidden
-                                            name="drop-down-sub-content-mobile"
-                                        />
+                                        <input type="checkbox" id="news" hidden name="drop-down-sub-content-mobile" />
                                         <label htmlFor="news" style={{ padding: '0' }}>
                                             <div className={cx('group-blog-cate')}>
                                                 <Link className={cx('nav-sub-link')}>Tin tức</Link>

@@ -154,7 +154,6 @@ const ListBlogContain = () => {
                     </div>
                 </div>
             </div>
-            <Pagination current={current} onChange={onChange} total={100} style={{ paddingTop: '100px' }} />
         </div>
     );
 };

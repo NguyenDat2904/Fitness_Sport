@@ -48,6 +48,9 @@
         margin: 32px 0;
     }
 }
+.quest-list hr:last-child {
+    display: none;
+}
 .quest-title {
     .quest-title-h3 {
         width: calc(100% - 16px);

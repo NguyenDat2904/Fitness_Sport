@@ -6,16 +6,23 @@ import { Link } from 'react-router-dom';
 import { AppContext } from '~/hook/context/AppContext';
 import { get } from '~/uliti/htppRequest';
 import moment from 'moment';
+import { Pagination } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 const cx = classNames.bind(style);
 
 const CourseAll = () => {
     const [show, setShow] = useState('');
-    const { courses, setCourses } = useContext(AppContext);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(false);
+    const { courses, setCourses, setBuyCourse, setIsCheckPay } = useContext(AppContext);
 
     const apiCourses = async () => {
         try {
-            const course = await get('/admin/course', {});
-            setCourses(course.data.courses);
+            setLoading(false);
+            const course = await get(`/admin/course?page=${currentPage}`, {});
+            setCourses(course.data);
+            setLoading(true);
         } catch (error) {
             console.log(error);
         }
@@ -23,7 +30,7 @@ const CourseAll = () => {
 
     useEffect(() => {
         apiCourses();
-    }, []);
+    }, [currentPage]);
 
     const onShow = () => {
         if (show === '') {
@@ -32,10 +39,11 @@ const CourseAll = () => {
             setShow('');
         }
     };
-
-    const renderService = courses?.map((course) => {
+    const onChange = (page) => {
+        setCurrentPage(page);
+    };
+    const renderService = courses.courses?.map((course) => {
         const cost = course.price * 1.2;
-
         const formatted = moment(course.start).format('DD.MM.YYYY');
         const formattedPrice = course.price.toLocaleString('vi-VN', {
             style: 'currency',
@@ -53,6 +61,13 @@ const CourseAll = () => {
                 </div>
             );
         });
+
+        const handleGetCourse = () => {
+            localStorage.setItem('course', JSON.stringify(course));
+            setBuyCourse(course);
+            localStorage.setItem('isCheckPay', JSON.stringify(true));
+            setIsCheckPay(true);
+        };
 
         return (
             <div className={cx('clb-item')} key={course._id}>
@@ -80,8 +95,8 @@ const CourseAll = () => {
                                     <div className={cx('time-out')}>{renderTime}</div>
                                 </div>
                                 <div className={cx('btn-submit')}>
-                                    <Link>
-                                        <button>ĐĂNG KÝ</button>
+                                    <Link to="/payment">
+                                        <button onClick={handleGetCourse}>MUA NGAY</button>
                                     </Link>
                                 </div>
                             </div>
@@ -154,7 +169,25 @@ const CourseAll = () => {
                         </div>
                     </div>
                 </div>
-                <div className={cx('list-item-contain')}>{renderService}</div>
+
+                <div className={cx('list-item-contain')}>
+                    {loading ? (
+                        <>
+                            {renderService}
+                            <Pagination
+                                current={currentPage}
+                                onChange={onChange}
+                                total={courses.totalCourse}
+                                className={cx('pagination')}
+                            />
+                        </>
+                    ) : (
+                        <div className={cx('loading-course')}>
+                            <FontAwesomeIcon icon={faCircleNotch} spin className={cx('loading-icon')} />
+                            <div className={cx('loading-text')}>Đang tải dữ liệu...</div>
+                        </div>
+                    )}
+                </div>
             </div>
 
             <WhiteContain />

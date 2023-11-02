@@ -33,11 +33,6 @@ function App() {
                                 />
                             );
                         })}
-                          <Route path='/register' element={<Register/>}></Route>
-                         <Route path='/signin' element={<Signin/>}></Route>
-                         <Route path='/forgot' element={<ForgotPassWord/>}></Route>
-                         <Route path='/verify' element={<VerifyEmail/>}></Route>
-                        
                     </Routes>
                 </div>
             </Router>

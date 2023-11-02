@@ -1,5 +1,7 @@
 .header__wrapper {
     background-color: var(--black);
+    min-height: 100vh;
+
     header {
         max-width: 1200px;
         margin: auto;
@@ -9,12 +11,49 @@
         .cover-img {
             width: 100%;
             height: 100%;
+            position: relative;
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 border-end-end-radius: 8px;
                 border-end-start-radius: 8px;
+            }
+            form {
+                position: absolute;
+                z-index: 100;
+                bottom: 16px;
+                right: 32px;
+                input {
+                    display: none;
+                }
+                .upload_cover {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #080808;
+                    gap: 4px;
+                    padding: 0 12px;
+                    border-radius: 8px;
+                    line-height: 36px;
+                    &:hover {
+                        background-color: #3a3b3c;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    }
+                    .upload_cover-icon {
+                        color: #f0f8ff;
+                        padding: 0 3px;
+                        width: 22px;
+                        height: 22px;
+                    }
+                    span {
+                        color: #f0f8ff;
+                        font-size: 15px;
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                        font-weight: 500;
+                    }
+                }
             }
         }
     }
@@ -74,6 +113,9 @@
         height: 16px;
         color: #e4e6ea;
     }
+}
+.upload {
+    display: none;
 }
 .header__wrapper .cols__container .left__col {
     h2 {
@@ -185,85 +227,6 @@
     padding: 30px 0;
     justify-content: space-between;
     flex-direction: column;
-}
-.course {
-    margin-top: 33px;
-    margin-bottom: 25px;
-    padding: 8px 16px;
-    border-radius: 8px;
-    background-color: #242526;
-    .list-menu {
-        display: flex;
-        align-items: center;
-        border-bottom: 2px solid var(--primary-red);
-        padding-top: 4px;
-        padding-bottom: 8px;
-        li {
-            color: #f0f8ff;
-            font-weight: 600;
-            flex: 1;
-            padding: 0 4px;
-        }
-        li:nth-child(1) {
-            flex: 0.3;
-        }
-    }
-    .list-course {
-        user-select: none;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        align-items: start;
-        .course-link {
-            color: var(--light);
-            a {
-                color: var(--warning);
-                &:hover {
-                    text-decoration: underline;
-                    cursor: pointer;
-                }
-            }
-        }
-        .list-item-course {
-            border-bottom: 1px solid var(--gray);
-            padding: 8px 0;
-            li {
-                font-size: 14px;
-                color: #f0f8ff;
-                font-weight: 500;
-                flex: 1;
-                padding: 0 4px;
-            }
-            li:nth-child(1) {
-                flex: 0.3;
-            }
-            li:nth-child(3) {
-                color: var(--success);
-                font-weight: 600;
-            }
-            li:nth-child(4) {
-                div {
-                    padding: 2px 0;
-                }
-            }
-        }
-    }
-}
-
-.loading-course {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    .loading-icon {
-        color: var(--danger);
-        font-size: 30px;
-        margin-bottom: 10px;
-    }
-    .loading-text {
-        color: var(--white);
-        font-size: 14px;
-        font-weight: 500;
-    }
 }
 
 .header__wrapper .cols__container .right__col nav ul {

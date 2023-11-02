@@ -12,23 +12,30 @@ import SlideBanner from '~/components/SlideBanner/SlideBanner';
 import Quest from '~/components/Quest/Quest';
 import { data_quest_dance, data_dance_feedback, data_dance_fit } from '~/components/Data/Data';
 import FormRegister from '~/components/FormRegister/FormRegister';
+import { Pagination } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(style);
 
 function CourseDance() {
     const [show, setShow] = useState('');
-    const { courses, setCourses } = useContext(AppContext);
+    const [courses, setCourses] = useState({});
+    const [loading, setLoading] = useState(false);
 
-    const apiCourses = async () => {
-        try {
-            const course = await get('/admin/course', {});
-            setCourses(course.data.courses);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    const { setBuyCourse, setIsCheckPay } = useContext(AppContext);
 
     useEffect(() => {
+        const apiCourses = async () => {
+            try {
+                setLoading(false);
+                const course = await get(`https://fitness-sport.onrender.com/admin/course?limit=27`, {});
+                setCourses(course.data);
+                setLoading(true);
+            } catch (error) {
+                console.log(error);
+            }
+        };
         apiCourses();
     }, []);
     const onShow = () => {
@@ -39,9 +46,14 @@ function CourseDance() {
         }
     };
 
-    const filterDance = courses.filter((dance) => dance.type === 'dance');
-
+    const filterDance = courses.courses?.filter((dance) => dance.type === 'dance');
     const renderService = filterDance?.map((course) => {
+        const handleGetCourse = () => {
+            localStorage.setItem('course', JSON.stringify(course));
+            setBuyCourse(course);
+            localStorage.setItem('isCheckPay', JSON.stringify(true));
+            setIsCheckPay(true);
+        };
         const cost = course.price * 1.2;
 
         const formatted = moment(course.start).format('DD.MM.YYYY');
@@ -88,8 +100,8 @@ function CourseDance() {
                                     <div className={cx('time-out')}>{renderTime}</div>
                                 </div>
                                 <div className={cx('btn-submit')}>
-                                    <Link>
-                                        <button>ĐĂNG KÝ</button>
+                                    <Link to="/payment">
+                                        <button onClick={handleGetCourse}>MUA NGAY</button>
                                     </Link>
                                 </div>
                             </div>
@@ -118,7 +130,13 @@ function CourseDance() {
                         </div>
                     </div>
                     <div className={cx('right-container')}>
-                        <Slide data={data_dance_fit} />
+                        <Slide
+                            data={data_dance_fit}
+                            slide={{
+                                slidesToShow: 1,
+                                autoplay: false,
+                            }}
+                        />
                     </div>
                 </div>
                 <div className={cx('yoga-classes-container')}>
@@ -233,7 +251,19 @@ function CourseDance() {
                             </div>
                         </div>
                     </div>
-                    <div className={cx('list-item-contain')}>{renderService}</div>
+                    <div className={cx('list-item-contain')}>
+                        {loading ? (
+                            <>
+                                {renderService}
+                                <Pagination current={1} total={filterDance?.length} className={cx('pagination')} />
+                            </>
+                        ) : (
+                            <div className={cx('loading-course')}>
+                                <FontAwesomeIcon icon={faCircleNotch} spin className={cx('loading-icon')} />
+                                <div className={cx('loading-text')}>Đang tải dữ liệu...</div>
+                            </div>
+                        )}
+                    </div>
                 </div>
                 <SlideBanner
                     title="TRẢI NGHIỆM STUDIO TIÊU CHUẨN 5 SAO"
@@ -254,7 +284,13 @@ function CourseDance() {
                         </div>
                     </div>
                     <div className={cx('right-container')}>
-                        <Slide data={data_dance_feedback} />
+                        <Slide
+                            data={data_dance_feedback}
+                            slide={{
+                                slidesToShow: 1,
+                                autoplay: false,
+                            }}
+                        />
                     </div>
                 </div>
                 <div className={cx('white-container')}>

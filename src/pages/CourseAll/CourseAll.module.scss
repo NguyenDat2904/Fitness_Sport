@@ -303,6 +303,23 @@ div::-webkit-scrollbar-track {
         }
     }
 }
+.loading-course {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    .loading-icon {
+        color: var(--danger);
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    .loading-text {
+        color: var(--white);
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
 
 @media (max-width: 768px) {
     .search-contain {

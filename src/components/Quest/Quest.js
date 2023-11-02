@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import classNames from 'classnames/bind';
 import style from './Quest.module.scss';
 const cx = classNames.bind(style);
-function Quest({ img, data }) {
+function Quest({ img, data, check, styles }) {
     const [show, setShow] = useState(null);
 
     const handleShow = (index) => {
@@ -28,7 +28,7 @@ function Quest({ img, data }) {
                     <label htmlFor={`checkbox-${index}`}></label>
                     <div className={cx('quest-title')}>
                         <div className={cx('quest-title-h3')}>
-                            <h3>{quest.title}</h3>
+                            <h3>{quest.name}</h3>
                             <div className={cx('quest-answer', show === index ? 'show' : '')}>{quest.desc}</div>
                         </div>
                         <div className={cx('quest-icon')}>
@@ -44,17 +44,21 @@ function Quest({ img, data }) {
 
     return (
         <div className={cx('quest-container')}>
-            <div className={cx('left-container')}>
+            <div className={cx('left-container')} style={{ width: styles }}>
                 <div className={cx('big-title')}>
-                    <h1>CÁC CÂU HỎI THƯỜNG GẶP</h1>
+                    <h1 style={{ maxWidth: styles }}>CÁC CÂU HỎI THƯỜNG GẶP</h1>
                 </div>
-                <div className={cx('quest-list')}>{renderListQuest}</div>
-            </div>
-            <div className={cx('right-container')}>
-                <div className={cx('quest-img')}>
-                    <img src={img} alt="" />
+                <div className={cx('quest-list')} style={{ maxWidth: styles }}>
+                    {renderListQuest}
                 </div>
             </div>
+            {!check && (
+                <div className={cx('right-container')}>
+                    <div className={cx('quest-img')}>
+                        <img src={img} alt="" />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

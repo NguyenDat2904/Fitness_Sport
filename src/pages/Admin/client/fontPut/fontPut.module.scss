@@ -126,3 +126,14 @@
         }
     }
 }
+@media only screen and (max-width: 640px){
+   .form{
+    height: 100%;
+     .formAddInput{
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+   }
+   
+}

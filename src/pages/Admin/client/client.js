@@ -100,24 +100,24 @@ const Client = () => {
         }
     };
 
-    const result = userData.filter((product) => {
+    const result = userData?.filter((product) => {
         if (selectCourse && selectLever) {
             return (
-                product.courseID.filter((item) => item.name === selectCourse).length > 0 && product.rank === selectLever
+                product.courseID?.filter((item) => item.name === selectCourse).length > 0 && product.rank === selectLever
             );
         }
         if (!selectCourse && selectLever) {
             return product.rank === selectLever;
         }
         if (selectCourse && !selectLever) {
-            return product.courseID.filter((item) => item.name === selectCourse).length > 0;
+            return product.courseID?.filter((item) => item.name === selectCourse).length > 0;
         }
         if (phoneUser) {
             return phoneUser && product && product.phone && product.phone.includes(phoneUser);
         }
         return true;
     });
-    const resultSort = result.sort((nv1, nv2) => {
+    const resultSort = result?.sort((nv1, nv2) => {
         if (selectSort === 'a->z') {
             let a = nv1.name.toLowerCase();
             let b = nv2.name.toLowerCase();

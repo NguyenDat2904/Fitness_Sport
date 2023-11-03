@@ -97,12 +97,7 @@
                     .detail {
                         position: relative;
                         .buttonview {
-                            background-color: #fff;
                             border: none;
-                            &:hover {
-                                background-color: gray;
-                                color: #fff;
-                            }
                         }
                         .noneTableDetail {
                             display: none;

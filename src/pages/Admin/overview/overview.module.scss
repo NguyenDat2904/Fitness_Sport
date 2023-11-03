@@ -120,6 +120,7 @@
                         }
                     }
                     p {
+                        text-align: center;
                         font-family: 'Roboto', sans-serif;
                         margin-bottom: 4px;
                     }
@@ -201,7 +202,6 @@
                 background-color: #fff;
 
                 .asd {
-                    width: 1140px;
                     margin: 0 auto;
                 }
             }
@@ -300,4 +300,207 @@
 
 .miss {
     background-color: var(--danger);
+}
+@media (min-width: 1024px) and (max-width: 1400px) {
+    .view {
+        .overView {
+            .cardProduct {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            .charPirCourse,
+            .chartPir {
+                display: block;
+                .infoPir {
+                    padding: 30px;
+                    border-bottom: 1px solid black;
+                }
+                .clientCoach {
+                    .client {
+                        margin-top: 10px;
+                        h3 {
+                            margin-left: 25%;
+                            margin-bottom: 10px;
+                        }
+                        .clientProduct {
+                            padding: 30px;
+                            display: grid;
+                            border: none;
+                            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+                            .mapClient:nth-child(5) {
+                                display: none;
+                            }
+                            .img {
+                                width: 30%;
+                            }
+                        }
+                    }
+                }
+            }
+            .chartColumn {
+                .chartColumn {
+                    padding-bottom: 30px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width: 640px) {
+    .view {
+        .overView {
+            .cardProduct {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+            .charPirCourse,
+            .chartPir {
+                display: block;
+                .infoPir {
+                    padding: 30px;
+                    border-bottom: 1px solid black;
+                }
+                .clientCoach {
+                    .client {
+                        margin-top: 10px;
+                        h3 {
+                            margin-left: 25%;
+                            margin-bottom: 10px;
+                        }
+                        .clientProduct {
+                            padding: 30px;
+                            display: grid;
+                            border: none;
+                            grid-template-columns: 1fr 1fr 1fr 1fr;
+                            .mapClient:nth-child(4),
+                            .mapClient:nth-child(6) {
+                                display: none;
+                            }
+                            .img {
+                                width: 30%;
+                            }
+                        }
+                    }
+                }
+            }
+            .chartColumn {
+                .chartColumn {
+                    padding-bottom: 30px;
+                }
+                .infoColumn {
+                    table {
+                        thead {
+                            th:nth-child(4),
+                            th:nth-child(5) {
+                                display: none;
+                            }
+                        }
+                        tbody {
+                            td:nth-child(4),
+                            td:nth-child(5) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .view {
+        .overView {
+            .cardProduct {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+            .charPirCourse,
+            .chartPir {
+                background-color: #fff;
+                display: block;
+                table {
+                    thead {
+                        th:nth-child(4),
+                        th:nth-child(5) {
+                            display: none;
+                        }
+                    }
+                    tbody {
+                        td:nth-child(4),
+                        td:nth-child(5) {
+                            display: none;
+                        }
+                    }
+                }
+                .infoPir {
+                    padding: 30px;
+                    border-bottom: 1px solid black;
+                    .course {
+                        .info {
+                            .infoDetail {
+                                button,
+                                h5 {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+                .pirCourse {
+                    margin: 0 auto;
+                    width: 90%;
+                }
+                .clientCoach {
+                    .client {
+                        margin-top: 10px;
+                        h3 {
+                            margin-left: 25%;
+                            margin-bottom: 10px;
+                        }
+                        .clientProduct {
+                            padding: 30px;
+                            display: grid;
+                            border: none;
+                            grid-template-columns: 1fr 1fr;
+                            .mapClient:nth-child(3),
+                            .mapClient:nth-child(2),
+                            .mapClient:nth-child(4),
+                            .mapClient:nth-child(6) {
+                                display: none;
+                            }
+                            .img {
+                                width: 30%;
+                            }
+                        }
+                    }
+                }
+            }
+            .chartColumn {
+                .chartColumn {
+                    padding-bottom: 30px;
+                }
+                .infoColumn {
+                    table {
+                        thead {
+                            th:nth-child(6),
+                            th:nth-child(2),
+                            th:nth-child(4),
+                            th:nth-child(5) {
+                                display: none;
+                            }
+                        }
+                        tbody {
+                            td:nth-child(6),
+                            td:nth-child(2),
+                            td:nth-child(4),
+                            td:nth-child(5) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

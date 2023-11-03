@@ -1,13 +1,14 @@
 import React from 'react';
 import style from './ClbItem.module.scss';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(style);
 
 const ClbItem = (props) => {
     const { item, index } = props;
 
-    const { name, city, district, ward, street, desc, times_days, img, phone } = item;
+    const { _id, name, city, district, ward, street, desc, times_days, img, phone, desc_2 } = item || {};
 
     return (
         <div className={cx('clb-item')}>
@@ -18,7 +19,12 @@ const ClbItem = (props) => {
                             {name} - QUẬN {district.toUpperCase()}
                         </h2>
                     </div>
-                    <div className={cx('description')}>{desc}</div>
+                    {desc ? (
+                        <div className={cx('description')}>{desc}</div>
+                    ) : (
+                        <div className={cx('description')}>{desc_2[0]}</div>
+                    )}
+
                     <div className={cx('information-content')}>
                         <div className={cx('address')}>{street}</div>
                         <div className={cx('hot-line')}>{phone}</div>
@@ -38,9 +44,9 @@ const ClbItem = (props) => {
                 </div>
                 <div className={cx('explore-contain')}>
                     <div className={cx('explore-more')}>
-                        <a href="#" className={cx('clb-link')}>
+                        <Link to={`/club-details/${_id}`} className={cx('clb-link')}>
                             Xem câu lạc bộ
-                        </a>
+                        </Link>
                         <img
                             src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-readmore-white.svg"
                             className={cx('icon-readmore')}
@@ -48,11 +54,11 @@ const ClbItem = (props) => {
                         />
                     </div>
                     <div className={cx('btn-submit')}>
-                        <a href="#">
+                        <Link href="#">
                             <button className={cx('btn', 'btn-block', 'submit-trial')} type="submit">
                                 ĐĂNG KÝ
                             </button>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

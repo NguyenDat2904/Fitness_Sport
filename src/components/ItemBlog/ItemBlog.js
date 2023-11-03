@@ -4,7 +4,8 @@ import style from './ItemBlog.module.scss';
 import { Link } from 'react-router-dom';
 const cx = classNames.bind(style);
 
-const ItemBlog = () => {
+const ItemBlog = ({ item }) => {
+    const { date, img, title, _id } = item || {};
     return (
         <div className={cx('item')}>
             <Link to="">
@@ -14,7 +15,7 @@ const ItemBlog = () => {
                         width="100%"
                         height="100%"
                         alt="blog feature"
-                        src="https://cali.vn/storage/app/media/2023/Blog/CFF/Thumbnail_2.png"
+                        src={img}
                         style={{}}
                     />
                 </div>
@@ -23,16 +24,13 @@ const ItemBlog = () => {
                 <div className={cx('content')}>
                     <span className={cx('title')}>
                         <Link to="">
-                            <h3>
-                                8.000 khán giả “cháy” cùng tlinh, HIEUTHUHAI, Andree Right Hand, Chillies tại đại nhạc
-                                hội California’s Fitness Festival
-                            </h3>
+                            <h3>{title}</h3>
                         </Link>
                     </span>
                 </div>
             </div>
             <div className={cx('read_more_place')}>
-                <Link to="">
+                <Link to={`/blog-details/${_id}`}>
                     <span>Tìm hiểu thêm</span>
                 </Link>
                 <img

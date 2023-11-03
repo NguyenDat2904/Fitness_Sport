@@ -1,21 +1,21 @@
 import * as httpRequest from '../../uliti/htppRequest';
 
-export const getUserData= async(email,password)=>{
+export const getUserData = async (email, password) => {
     try {
-        const results= await httpRequest.post("/auth/login",{
+        const results = await httpRequest.post('/auth/login', {
             email,
-            password
+            password,
         });
-        console.log(results)
+        console.log(results);
         return results;
     } catch (error) {
-        console.log("not found !!!")
+        console.log('not found !!!');
     }
-}
-export const logOut=async(id)=>{
+};
+export const logOut = async (id) => {
     try {
-        const result =await httpRequest.patch(`/auth/logout/${id}`,{})
-        return result
+        const result = await httpRequest.patch(`/auth/logout/${id}`, {});
+        return result;
     } catch (error) {
         console.log('not found !!!');
     }
@@ -32,8 +32,17 @@ export const getLocationData = async (city, district) => {
 
 export const getLocationDataById = async (id) => {
     try {
-        const results = await httpRequest.get(`/location?${id}`, {});
-        return results.data.locations;
+        const results = await httpRequest.get(`/location/${id}`, {});
+        return results.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const getBlogData = async () => {
+    try {
+        const results = await httpRequest.get(`/blog`, {});
+        return results.data.blogs;
     } catch (error) {
         console.error(error);
     }

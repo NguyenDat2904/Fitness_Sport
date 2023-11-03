@@ -26,12 +26,11 @@ const publicRoutes = [
         component: Club,
     },
     {
-       
         path: '/club/:city',
         component: ClubProvince,
     },
     {
-        path: '/club-details',
+        path: '/club-details/:id',
         component: ClubDetails,
     },
     {
@@ -39,7 +38,7 @@ const publicRoutes = [
         component: ListBlogContain,
     },
     {
-        path: '/blog-details',
+        path: '/blog-details/:id',
         component: BlogDetails,
     },
     {
@@ -55,12 +54,10 @@ const publicRoutes = [
     {
         layout: null,
         path: '/login/admin',
-        component: LoginAdmin,},
-
-     {   layout: null,
-        path: '/register',
-        component: Register,
+        component: LoginAdmin,
     },
+
+    { layout: null, path: '/register', component: Register },
     {
         path: '/signin',
         component: Signin,

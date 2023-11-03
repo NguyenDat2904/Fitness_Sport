@@ -1,0 +1,296 @@
+
+.adminLogOut{
+    position: relative;
+    .admin {
+    background-color: #eeeeee;
+    position: relative;
+    .noneModal {
+        display: none;
+    }
+    .modal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(14, 13, 13, 0.7);
+        z-index: 100;
+        position: fixed;
+    }
+    .informationTitle {
+        height: 100%;
+        display: flex;
+        gap: 10px;
+        .mainCategories {
+            background-color: #00adb5;
+            position: relative;
+            .mainFixed {
+                background-color: #00adb5;
+                height: 100vh;
+                position: fixed;
+                .logoImg {
+                    height: 150px;
+                    width: 100%;
+                    display: flex;
+
+                    img {
+                        margin-left: 10px;
+                        width: 100px;
+                        height: 100px;
+                    }
+                    span {
+                        margin-top: 10%;
+                        color: #fff;
+                        font-size: 36px;
+                        font-style: oblique;
+                        font-family: 'Roboto', sans-serif;
+                    }
+                }
+            }
+            .main {
+                display: flex;
+                flex-direction: column;
+
+                .active2 {
+                    font-size: 20px;
+                    font-weight: 400;
+                    font-family: 'Roboto', sans-serif;
+                    .categoriCss {
+                        cursor: pointer;
+                        border-radius: 30px 0 0 30px;
+                        padding: 15px;
+                        margin-left: 10px;
+                        background-color: #fff;
+                        display: flex;
+                        gap: 10px;
+                        h3 {
+                            color: black;
+                            font-size: 20px;
+                            font-weight: 400;
+                            font-family: 'Roboto', sans-serif;
+                        }
+                        .icon {
+                            color: black;
+                            font-size: 22px;
+                        }
+                    }
+                }
+                .categories {
+                    font-size: 20px;
+                    font-weight: 400;
+                    font-family: 'Roboto', sans-serif;
+                    .categoriCss {
+                        cursor: pointer;
+                        padding: 15px;
+                        margin-left: 10px;
+                        display: flex;
+                        gap: 10px;
+                        h3 {
+                            color: #fff;
+                            font-size: 20px;
+                            font-weight: 400;
+                            font-family: 'Roboto', sans-serif;
+                        }
+                        .icon {
+                            color: #fff;
+                            font-size: 22px;
+                        }
+                        &:hover {
+                            background-color: #fff;
+                            border-radius: 30px 0 0 30px;
+                            h3,
+                            .icon {
+                                color: black;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .logo {
+            height: 100%;
+            .TitleBar {
+                border-radius: 5px;
+                margin-bottom: 15px;
+                background-color: #fff;
+                height: 80px;
+                display: grid;
+                grid-template-columns: 0.5fr 3fr 1.2fr;
+                position: relative;
+                .menuBar {
+                    position: relative;
+                    .menu {
+                        cursor: pointer;
+
+                        font-size: 38px;
+                        position: absolute;
+                        left: 30%;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+                .informationAdmin {
+                    position: relative;
+                    .profile {
+                        cursor: pointer;
+                        margin-right: 10%;
+                        margin-top: 5%;
+                        display: flex;
+                        gap: 10px;
+                        justify-content: flex-end;
+                        align-items: center;
+
+                        img {
+                            width: 50px;
+                            border-radius: 50%;
+                            height: auto;
+                        }
+                        span {
+                            font-size: 16px;
+                            font-weight: 400;
+                            font-family: 'Roboto', sans-serif;
+                        }
+                    }
+                    .orDetail {
+                        display: none;
+                    }
+                    .infoDetail {
+                        border-radius: 5px;
+                        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                        margin-top: 14px;
+                        padding-bottom: 10px;
+                        background-color: #fff;
+                        display: block;
+
+                        width: 100%;
+
+                        height: auto;
+                        position: absolute;
+                        z-index: 10;
+
+                        .imgProfile {
+                            width: 100%;
+                            height: 100px;
+                            background-image: url('https://hienthao.com/wp-content/uploads/2023/05/c6e56503cfdd87da299f72dc416023d4-736x620.jpg');
+                            background-repeat: no-repeat;
+                            background-size: 100% 250px;
+                            position: relative;
+                            .img {
+                                width: 70px;
+                                height: 70px;
+                                border-radius: 50%;
+                                position: absolute;
+                                top: 60%;
+                                left: 50%;
+                                transform: translateX(-50%);
+                            }
+                        }
+                        h3 {
+                            margin-top: 10%;
+                            font-family: 'Roboto', sans-serif;
+                            text-align: center;
+                        }
+                        p {
+                            font-family: 'Roboto', sans-serif;
+                            text-align: center;
+                        }
+                        .detail {
+                            margin-left: 25%;
+                            margin-top: 5%;
+                            border: 3px solid #00adb5;
+                            background-color: #fff;
+                            padding: 10px;
+                            display: flex;
+                            gap: 10px;
+                            h4 {
+                                font-family: 'Roboto', sans-serif;
+                                font-size: 18px;
+                            }
+                            .icon {
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+                .searchTitleBar {
+                    display: flex;
+                    position: relative;
+
+                    .search {
+                        width: 100%;
+                        position: relative;
+                        z-index: 2;
+                        input {
+                            border-radius: 10px;
+                            width: 60%;
+                            padding: 10px;
+                            font-size: 20px;
+
+                            font-family: 'Roboto', sans-serif;
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                        .iconSearch {
+                            font-size: 25px;
+                            color: gray;
+                            position: absolute;
+                            top: 50%;
+                            right: 22%;
+                            transform: translateY(-50%);
+                        }
+                    }
+                    .noSearchBar {
+                        display: none;
+                    }
+                    .searchBar {
+                        padding: 10px;
+                        width: 60%;
+                        background-color: #fff;
+                        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                        border-radius: 5px;
+                        position: absolute;
+                        left: 0;
+                        top: 5%;
+                    }
+                }
+            }
+            .infoCategori {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+.loading {
+    background-color: #fff;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        .loading-icon {
+            font-size: 30px;
+            animation: spin 0.85s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
+}

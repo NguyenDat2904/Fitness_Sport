@@ -3,6 +3,7 @@ import Admin from '~/pages/Admin/Admin';
 import Register from '../pages/Register/Form/Form';
 import Signin from '../pages/Signin/Signin';
 import Club from '~/pages/Club/Club';
+import LoginAdmin from '~/pages/logInAdmin/logInAdmin';
 import ForgotPassWord from '~/pages/ForgorPassword/ForgotPassWord';
 import VerifyEmail from '~/pages/VerifyEmail/VerifyEmail';
 import ClubProvince from '~/pages/Club/ClubProvince/ClubProvince';
@@ -51,14 +52,17 @@ const publicRoutes = [
         layout: null,
     },
     {
-        path: '/admin',
+        path: '/admin/*',
         component: Admin,
         layout: null,
     },
     {
-        path: '/register',
-        component: Register,
+        layout: null,
+        path: '/login/admin',
+        component: LoginAdmin,
     },
+
+    { layout: null, path: '/register', component: Register },
     {
         path: '/signin',
         component: Signin,

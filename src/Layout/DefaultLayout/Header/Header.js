@@ -47,7 +47,6 @@ function Header() {
 
     const handleOptionChange = (event) => {
         const value = event.target.value || '';
-        console.log(value);
         setSelectedOption((prevSelectedOption) => {
             if (prevSelectedOption === value) {
                 return '';
@@ -311,7 +310,7 @@ function Header() {
                     </div>
                 </div>
                 <div className={cx('contain-right')}>
-                    <Link
+                    <div
                         to=""
                         style={{
                             color: '#fff',
@@ -389,7 +388,7 @@ function Header() {
                                 </div>
                             )}
                         </div>
-                    </Link>
+                    </div>
                     <div className={cx('block-header-mobile')}>
                         <input id={cx('burger-menu-checker')} type="checkbox" hidden />
                         <label id={cx('burger-menu-cfyc')} style={{ cursor: 'pointer' }} onClick={onShowMenuHandle}>

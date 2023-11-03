@@ -1,0 +1,176 @@
+
+.course{
+    position: relative;
+   .client {
+    height: 100%;
+    .tagBar {
+        display: flex;
+        justify-content: flex-end;
+        button {
+            margin-right: 20px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            padding: 10px 25px;
+            background-color: #fff;
+
+            &:hover {
+                background-color: gray;
+                color: #fff;
+            }
+        }
+    }
+    .fontAdd {
+        display: block;
+    }
+    .noneFontAdd,
+    .noneTable {
+        display: none;
+    }
+    .table {
+        display: block;
+        padding: 30px;
+        border-radius: 10px;
+        margin-top: 20px;
+        background-color: #fff;
+        width: 100%;
+        height: 100vh;
+        overflow: scroll;
+        table {
+            width: 100%;
+            thead {
+                th {
+                    text-align: center;
+                    border-bottom: 1px solid black;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 16px;
+                }
+            }
+            tbody {
+                .error {
+                    border: none;
+                    font-family: 'Roboto', sans-serif;
+                }
+
+                td {
+                    text-align: center;
+                    font-family: 'Roboto', sans-serif;
+                    line-height: 40px;
+                    border-bottom: 1px solid black;
+                    .p {
+                        font-family: 'Roboto', sans-serif;
+                        border-bottom: 1px solid black;
+                    }
+                }
+                img {
+                    margin-top: 5px;
+                    border-radius: 5px;
+                    width: 140px;
+                    height: auto;
+                }
+                .detail {
+                    position: relative;
+                    .buttonview {
+                        font-size: 18px;
+                        background-color: #fff;
+                        border: none;
+                        &:hover {
+                            background-color: gray;
+                            color: #fff;
+                        }
+                    }
+                    .noneTableDetail {
+                        display: none;
+                    }
+                    .tableDetail {
+                        border-radius: 5px;
+                        padding: 10px 10px 10px 0;
+                        width: 150px;
+                        display: block;
+                        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                        background-color: #fff;
+                        position: absolute;
+                        z-index: 5;
+                        top: 25%;
+                        left: -100%;
+                        transform: translateX(-92%);
+
+                        .buttonX {
+                            width: 100%;
+                            height: 25px;
+
+                            font-size: 16px;
+                            position: relative;
+                            button {
+                                padding: 4px;
+                                background-color: #fff;
+                                border: none;
+
+                                border-radius: 5px;
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                &:hover {
+                                    background-color: red;
+                                    color: #fff;
+                                }
+                            }
+                        }
+                        .buttonFix,
+                        .buttonDetete,
+                        .buttonDetail {
+                            padding: 5px 10px;
+                            font-size: 16px;
+                            font-family: 'Roboto', sans-serif;
+                            background-color: #fff;
+                            border: none;
+                            width: 100%;
+                            display: flex;
+                            gap: 15px;
+                            h5 {
+                                font-size: 16px;
+                                font-family: 'Roboto', sans-serif;
+                            }
+                            &:hover {
+                                color: red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+} 
+.loading {
+    background-color: #fff;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        .loading-icon {
+            font-size: 30px;
+            animation: spin 0.85s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
+}

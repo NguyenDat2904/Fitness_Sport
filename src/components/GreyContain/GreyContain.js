@@ -10,7 +10,7 @@ const GreyContain = (props) => {
     const {} = props;
     const [post, setPost] = useState(['', '', '', '', '', '', '', '']);
 
-    const mapPost = post.map((post) => <PostItem />);
+    const mapPost = post.map((post, index) => <PostItem key={index} />);
 
     return (
         <div className={cx('grey-contain')}>

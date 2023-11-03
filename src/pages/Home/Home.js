@@ -90,7 +90,7 @@ function Home() {
     const mapPost = post.map((post) => <PostItem />);
 
     const mapItemContain = sliderContainMobile.map((item, index) => {
-        return <ItemContainMobile item={item} index={index} />;
+        return <ItemContainMobile item={item} key={index} />;
     });
 
     return (

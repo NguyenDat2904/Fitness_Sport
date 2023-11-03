@@ -16,6 +16,9 @@ import ModalDetailOrder from './order/modaldetail/modaldetail';
 import ModalSaveCourse from './course/modal/modalSave/modalSave';
 import ModalDetailCourse from './course/modal/modalDetail/modalDetail';
 import logo from './logo-fitnesss.png';
+import logo2 from './logo-fitnesss.2.png';
+import logo3 from './logo-fitnesss.3.png';
+
 import { Routes, Route, NavLink } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './admin.module.scss';
@@ -159,12 +162,14 @@ function Admin() {
                                 style={{ width: menu ? '20%' : '8%', transition: menu ? '1s' : '1s' }}
                             >
                                 <div className={cx('logoImg')}>
-                                    <img src={logo} alt="" />
+                                    <img className={cx("img-logo")} src={logo2} alt="" />
                                     <span
                                         style={{
                                             display: activeTitle ? 'block' : 'none',
                                         }}
-                                    ></span>
+                                    >
+                                        <img className={cx('img-text')} src={logo3} alt="" />
+                                    </span>
                                 </div>
 
                                 <div className={cx('main')}>

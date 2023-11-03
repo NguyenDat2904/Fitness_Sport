@@ -89,7 +89,6 @@ const FormAddLocation = () => {
                 desc: value.desc,
                 times_days: times_days,
             };
-            console.log(result);
             try {
                 await handleSaveLocation();
                 const accessToken = localStorage.getItem('accessToken');

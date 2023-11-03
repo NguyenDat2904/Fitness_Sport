@@ -61,8 +61,7 @@ const publicRoutes = [
         path: '/login/admin',
         component: LoginAdmin,
     },
-
-    { layout: null, path: '/register', component: Register },
+    { path: '/register', component: Register },
     {
         path: '/signin',
         component: Signin,

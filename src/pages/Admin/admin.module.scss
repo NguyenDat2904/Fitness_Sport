@@ -25,8 +25,10 @@
             background-color: #00adb5;
             position: relative;
             .mainFixed {
+                overflow: hidden;
                 background-color: #00adb5;
                 height: 100vh;
+                width: 100%;
                 position: fixed;
                 .logoImg {
                     height: 150px;
@@ -293,4 +295,129 @@
         }
     }
 }
+}
+@media (min-width:1024px) and (max-width:1400px) {
+    .adminLogOut{
+        .admin{
+            .informationTitle{
+                .mainCategories{
+                     .mainFixed{
+                .logoImg{
+                       span{
+                    font-size: 28px;
+                }
+                }
+             
+            }
+                }
+           
+        }
+        }
+    }
+        
+    
+}
+@media (max-width: 1024px) and (min-width:640px) {
+    .adminLogOut{
+        .admin{
+            .informationTitle{
+                .mainCategories{
+                     .mainFixed{
+                .logoImg{
+                        span{
+                        font-size: 0;
+                    }
+                    }
+             
+            }
+            .main{
+                .active2,
+                .categories{
+                    .categoriCss{
+                         h3{
+                        font-size: 0;
+                    }
+                    .icon{
+                        font-size: 28px;
+                    }
+                    }
+                   
+                }
+            }
+                }
+                .logo{
+                    .TitleBar{
+                        display: grid;
+                        grid-template-columns: 0.5fr 3fr 1.5fr;
+                    }
+                }
+           
+        }
+        }
+    }
+}
+@media (max-width: 640px) {
+    .adminLogOut{
+        .admin{
+            .informationTitle{
+                .mainCategories{
+                     .mainFixed{
+                .logoImg{
+                        span{
+                        font-size: 0;
+                    }
+                    }
+             
+            }
+            .main{
+                .active2,
+                .categories{
+                    .categoriCss{
+                         h3{
+                        font-size: 0;
+                    }
+                    .icon{
+                        font-size: 28px;
+                    }
+                    }
+                   
+                }
+            }
+                }
+                .logo{
+                    .TitleBar{
+                        display: grid;
+                        grid-template-columns: 0.5fr 3fr 1.5fr;
+                        .menuBar{
+                            .menu{
+                                font-size: 28px;
+                            }
+                        } .informationAdmin{
+                            .profile{
+                                span{
+                                    display: none;
+                                }
+                            }
+                        }
+                        .searchTitleBar{
+                            .search{
+                                .iconSearch{
+                                    display: none;
+                                }input {
+                                    margin-left: 10px;
+                                    padding: 5px;
+                                    width: 90%;
+                                font-size: 14px;
+                            }
+                            }
+                            
+
+                        }
+                        
+                    }
+                }
+           
+        }
+        }
+    }
 }

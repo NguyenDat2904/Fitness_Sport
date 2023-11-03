@@ -65,16 +65,21 @@
                 }
             }
             .table {
-                height: 150px;
+                max-height: 150px;
                 overflow: auto;
                 table {
                     width: 100%;
-
                     font-family: 'Roboto', sans-serif;
                     th,
                     td {
+                        padding: 8px 0;
                         line-height: 20px;
                         border-bottom: 1px solid black;
+                    }
+                    tr:last-child {
+                        td {
+                            border: none;
+                        }
                     }
                 }
             }
@@ -92,11 +97,14 @@
 
                 .p {
                     margin-top: 5px;
-                    font-size: 16px;
+                    font-weight: 600;
+                    font-size: 18px;
                     font-family: 'Roboto', sans-serif;
                     span {
-                        font-weight: 600;
-                        font-size: 18px;
+                        padding: 4px;
+                        border-radius: 4px;
+                        font-weight: 500;
+                        font-size: 16px;
                         font-family: 'Roboto', sans-serif;
                     }
                 }
@@ -107,7 +115,7 @@
             display: flex;
             justify-content: flex-end;
             button {
-                background-color: gray;
+                background-color: var(--cyan);
                 color: #fff;
                 padding: 10px 20px;
                 font-size: 18px;
@@ -115,10 +123,25 @@
                 border-radius: 5px;
                 font-weight: 600;
                 font-family: 'Roboto', sans-serif;
+                transition: all 0.3s ease;
                 &:hover {
-                    background-color: red;
+                    background-color: var(--gray);
                 }
             }
         }
     }
+}
+.gold {
+    background-color: #e8c227;
+    color: var(--white);
+    padding: 4px;
+    border-radius: 4px;
+}
+.platinum {
+    background-color: #1f8263;
+    color: var(--white);
+}
+.diamond {
+    background-color: #aca3de;
+    color: var(--white);
 }

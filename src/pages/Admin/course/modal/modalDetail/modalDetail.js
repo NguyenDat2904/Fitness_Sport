@@ -7,10 +7,14 @@ const cx = classNames.bind(styles);
 const ModalDetailCourse = () => {
     const { dataCourseDetail, addressCourse, callAPICourseDetail } = useContext(AppContext);
     return dataCourseDetail.map((product) => {
+        const formatPrice = product.price.toLocaleString('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+        });
         return (
             <div key={product._id} className={cx('modalDetail')}>
                 <div className={cx('leftDetail')}>
-                    <h3>Ảnh Khóa học </h3>
+                    <h3>Ảnh Khóa học</h3>
                     <hr />
                     <div className={cx('img')}>
                         <img src={product.img} alt="" />
@@ -26,18 +30,19 @@ const ModalDetailCourse = () => {
                                     <span> Tên khóa học:</span> {product.name}.
                                 </p>
                                 <p className={cx('p')}>
-                                    <span>Giá:</span> {product.price}.
+                                    <span>Giá:</span> {formatPrice}.
                                 </p>
                                 <p className={cx('p')}>
-                                    {' '}
                                     <span>Thời gian bắt đầu:</span> {product.start.slice(0, 10)}.
                                 </p>
                                 <p className={cx('p')}>
                                     <span>Thời gian kết thúc</span> {product.end.slice(0, 10)}.
                                 </p>
                                 <p className={cx('p')}>
-                                    <span>Trạng thái hoạt động:</span>
-                                    {product.status}
+                                    <span>Trạng thái hoạt động: </span>
+                                    <span className={cx('done', product.status === 'Chưa thanh toán' && 'miss')}>
+                                        {product.status}
+                                    </span>
                                 </p>
                             </div>
                             <div className={cx('infoUserRight')}>
@@ -55,7 +60,7 @@ const ModalDetailCourse = () => {
                                         {product.schedule.map((item, index) => {
                                             return (
                                                 <tr key={item._id}>
-                                                    <td>{index}</td>
+                                                    <td>{index + 1}</td>
                                                     <td>{item.day}</td>
                                                     <td>{item.time}</td>
                                                     <td>{item.time_end}</td>
@@ -78,9 +83,9 @@ const ModalDetailCourse = () => {
                             })}
                             .{' '}
                         </p>
-                        <p className={cx("p")}>
+                        <p className={cx('p')}>
                             <span>Mô tả: </span>
-                            {product.desc?product.desc:""}
+                            {product.desc ? product.desc : ''}
                         </p>
                     </div>
                     <hr />

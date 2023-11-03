@@ -142,7 +142,16 @@ const Course = () => {
                                                 <td>{product.start.slice(0, 10)}</td>
                                                 <td>{product.end.slice(0, 10)}</td>
 
-                                                <td>{product.status}</td>
+                                                <td>
+                                                    <span
+                                                        className={cx(
+                                                            'done',
+                                                            product.status === 'Chưa hoạt động' && 'miss',
+                                                        )}
+                                                    >
+                                                        {product.status}
+                                                    </span>
+                                                </td>
                                                 <td className={cx('detail')}>
                                                     <button
                                                         className={cx('buttonview')}

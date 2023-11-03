@@ -94,7 +94,7 @@ const Overview = ({ activeClass }) => {
         dataPointWidth: 50,
         axisY: {
             prefix: '',
-            suffix: 'k',
+            suffix: ' đ',
         },
         data: [
             {
@@ -238,7 +238,7 @@ const Overview = ({ activeClass }) => {
                     </div>
                     <div className={cx('chartPir')}>
                         <div className={cx('pir')}>
-                            <h3>Khách hàng gần nhất </h3>
+                            <h3>Khách hàng mới </h3>
                             <table>
                                 <thead>
                                     <tr>
@@ -274,7 +274,11 @@ const Overview = ({ activeClass }) => {
                                         return (
                                             <div className={cx('mapClient')} key={product._id}>
                                                 <img
-                                                    src="https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg"
+                                                    src={
+                                                        product.img
+                                                            ? product.img
+                                                            : 'https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg'
+                                                    }
                                                     alt=""
                                                 />
                                                 <p>{product.name}</p>
@@ -332,12 +336,16 @@ const Overview = ({ activeClass }) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {silcedataOrder.map((product, indext) => {
+                                    {silcedataOrder.map((product, index) => {
+                                        const formattedPrice = product.totalPrice?.toLocaleString('vi-VN', {
+                                            style: 'currency',
+                                            currency: 'VND',
+                                        });
                                         return (
-                                            <tr key={indext}>
-                                                <td>{indext}</td>
+                                            <tr key={index}>
+                                                <td>{index + 1}</td>
                                                 <td>
-                                                    {product.courseID.map((item) => {
+                                                    {product.courseID?.map((item) => {
                                                         return (
                                                             <div key={item._id} className={cx('imgOrder')}>
                                                                 <img src={item.img} alt="" />
@@ -345,10 +353,19 @@ const Overview = ({ activeClass }) => {
                                                         );
                                                     })}
                                                 </td>
-                                                <td>{product.name ? product.name : 'null'}</td>
+                                                <td>{product.userID?.name ? product.userID?.name : ''}</td>
                                                 <td>{product.courseID.map((item) => item.name)}</td>
-                                                <td>{product.status}</td>
-                                                <td>{product.totalPrice}</td>
+                                                <td>
+                                                    <span
+                                                        className={cx(
+                                                            'done',
+                                                            product.status === 'Chưa thanh toán' && 'miss',
+                                                        )}
+                                                    >
+                                                        {product.status}
+                                                    </span>
+                                                </td>
+                                                <td>{formattedPrice}</td>
                                                 <td>{product.createdAt ? product.createdAt.slice(0, 10) : ''}</td>
                                             </tr>
                                         );

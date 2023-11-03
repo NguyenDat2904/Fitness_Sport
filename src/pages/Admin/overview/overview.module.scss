@@ -8,7 +8,7 @@
             .card {
                 border-radius: 5px;
                 padding: 10px;
-                background-color: #fff;
+                background-color: #eeee;
                 display: grid;
                 grid-template-columns: 1fr 2fr;
                 gap: 10px;
@@ -48,32 +48,29 @@
             .clientCoach,
             .pir {
                 padding: 20px;
-                background-color: #fff;
+                background-color: #eee;
                 position: relative;
 
                 h3 {
-                    margin: 0 auto;
-                    width: 50%;
-                    font-size: 20px;
-                    text-align: center;
+                    font-size: 24px;
+                    text-align: start;
                     font-family: 'Roboto', sans-serif;
-                    border-bottom: 1px solid black;
                 }
 
                 table {
-                    margin-top: 30px;
+                    margin-top: 16px;
                     width: 100%;
                     height: auto;
 
                     th {
-                        text-align: center;
+                        text-align: start;
                         line-height: 60px;
                         border-bottom: 1px solid black;
                         font-size: 18px;
                         font-family: 'Roboto', sans-serif;
                     }
                     td {
-                        text-align: center;
+                        text-align: start;
                         line-height: 60px;
                         border-bottom: 1px solid black;
                         font-size: 16px;
@@ -82,7 +79,7 @@
                 }
             }
             .clientCoach {
-                background-color: #fff;
+                background-color: #eeee;
                 padding: 10px 0;
 
                 .client {
@@ -101,10 +98,13 @@
                             display: flex;
                             flex-direction: column;
                             align-items: center;
+
                             img {
-                                width: 60%;
-                                height: auto;
+                                width: 80px;
+                                height: 80px;
                                 border-radius: 50%;
+                                object-fit: cover;
+                                margin-bottom: 8px;
                             }
                         }
                     }
@@ -121,6 +121,7 @@
                     }
                     p {
                         font-family: 'Roboto', sans-serif;
+                        margin-bottom: 4px;
                     }
                 }
             }
@@ -131,7 +132,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 10px;
             .infoPir {
-                background-color: #fff;
+                background-color: #eeee;
                 padding: 10px;
                 h4 {
                     text-align: end;
@@ -165,7 +166,7 @@
                             justify-content: space-between;
                             h5 {
                                 font-size: 18px;
-                                color: #362fd9;
+                                color: var(--info);
                                 font-family: 'Roboto', sans-serif;
                             }
                             button {
@@ -174,12 +175,9 @@
                                 border-radius: 5px;
                                 font-weight: 600;
                                 color: #fff;
-                                background-color: gray;
+                                background-color: var(--orange);
                                 border: none;
-                                &:hover {
-                                    color: black;
-                                    background-color: #fff;
-                                }
+                                cursor: default;
                             }
                         }
                     }
@@ -209,7 +207,7 @@
             }
             .infoColumn {
                 padding: 40px 20px;
-                background-color: #fff;
+                background-color: #eeee;
                 h4 {
                     cursor: pointer;
                     margin-top: 40px;
@@ -234,7 +232,7 @@
                     width: 100%;
                     thead {
                         th {
-                            text-align: center;
+                            text-align: start;
 
                             border-bottom: 1px solid black;
                             font-family: 'Roboto', sans-serif;
@@ -252,8 +250,8 @@
                         }
 
                         td {
-                            padding: 10px;
-                            text-align: center;
+                            padding: 10px 0;
+                            text-align: start;
                             border-bottom: 1px solid black;
                             font-family: 'Roboto', sans-serif;
                         }
@@ -292,4 +290,14 @@
             }
         }
     }
+}
+.done {
+    border-radius: 4px;
+    padding: 4px 8px;
+    background-color: var(--success);
+    color: var(--white);
+}
+
+.miss {
+    background-color: var(--danger);
 }

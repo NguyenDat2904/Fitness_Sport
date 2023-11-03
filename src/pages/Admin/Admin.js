@@ -97,8 +97,7 @@ function Admin() {
             await apiLogout.logOut(idLogout);
             navigate('/login/admin');
             if (statusLogout === 200) {
-                localStorage.removeItem('accessToken');
-                localStorage.removeItem('refresh_token');
+                localStorage.clear();
             }
         } catch (error) {
             console.log('error Logout');
@@ -165,45 +164,43 @@ function Admin() {
                                         style={{
                                             display: activeTitle ? 'block' : 'none',
                                         }}
-                                    >
-                                        FITNESS
-                                    </span>
+                                    ></span>
                                 </div>
 
                                 <div className={cx('main')}>
-                                    <NavLink to={'overView'} className={activeClass}>
+                                    <NavLink to={'/admin/overView'} className={activeClass}>
                                         <div className={cx('categoriCss')}>
                                             <FontAwesomeIcon icon={faHouse} className={cx('icon')} />
                                             <h3
                                                 style={{
                                                     display: activeText ? 'block' : 'none',
-                                                    transition: activeText ? '1s' : '1s',
+                                                    transition: activeText ? '0.1s' : '0.1s',
                                                 }}
                                             >
                                                 Tổng quan
                                             </h3>
                                         </div>
                                     </NavLink>
-                                    <NavLink to={'client'} className={activeClass}>
+                                    <NavLink to={'/admin/client'} className={activeClass}>
                                         <div className={cx('categoriCss')}>
                                             <FontAwesomeIcon icon={faUserGroup} className={cx('icon')} />
                                             <h3
                                                 style={{
                                                     display: activeText ? 'block' : 'none',
-                                                    transition: activeText ? '1s' : '',
+                                                    transition: activeText ? '0.1s' : '',
                                                 }}
                                             >
                                                 Khách hàng
                                             </h3>
                                         </div>
                                     </NavLink>
-                                    <NavLink to={'order'} className={activeClass}>
+                                    <NavLink to={'/admin/order'} className={activeClass}>
                                         <div className={cx('categoriCss')}>
                                             <FontAwesomeIcon icon={faCartPlus} className={cx('icon')} />
                                             <h3
                                                 style={{
                                                     display: activeText ? 'block' : 'none',
-                                                    transition: activeText ? '1s' : '',
+                                                    transition: activeText ? '0.1s' : '',
                                                 }}
                                             >
                                                 Đặt hàng
@@ -211,13 +208,13 @@ function Admin() {
                                         </div>
                                     </NavLink>
 
-                                    <NavLink to={'course'} className={activeClass}>
+                                    <NavLink to={'/admin/course'} className={activeClass}>
                                         <div className={cx('categoriCss')}>
                                             <FontAwesomeIcon icon={faCalendarMinus} className={cx('icon')} />
                                             <h3
                                                 style={{
                                                     display: activeText ? 'block' : 'none',
-                                                    transition: activeText ? '1s' : '',
+                                                    transition: activeText ? '0.1s' : '',
                                                 }}
                                             >
                                                 Các khóa học
@@ -225,13 +222,13 @@ function Admin() {
                                         </div>
                                     </NavLink>
 
-                                    <NavLink to={'branch'} className={activeClass}>
+                                    <NavLink to={'/admin/branch'} className={activeClass}>
                                         <div className={cx('categoriCss')}>
                                             <FontAwesomeIcon icon={faLocationDot} className={cx('icon')} />
                                             <h3
                                                 style={{
                                                     display: activeText ? 'block' : 'none',
-                                                    transition: activeText ? '1s' : '',
+                                                    transition: activeText ? '0.1s' : '',
                                                 }}
                                             >
                                                 Chi nhánh
@@ -239,13 +236,13 @@ function Admin() {
                                         </div>
                                     </NavLink>
 
-                                    <NavLink to={'benefit'} className={activeClass}>
+                                    <NavLink to={'/admin/benefit'} className={activeClass}>
                                         <div className={cx('categoriCss')}>
                                             <FontAwesomeIcon icon={faGift} className={cx('icon')} />
                                             <h3
                                                 style={{
                                                     display: activeText ? 'block' : 'none',
-                                                    transition: activeText ? '1s' : '',
+                                                    transition: activeText ? '0.1s' : '',
                                                 }}
                                             >
                                                 Ưu đãi

@@ -26,15 +26,8 @@ const FormPut = ({ setUser, courseData, locationData, handlePutNew, benefitData,
             rank: idPut.rank || '',
         },
         validationSchema: Yup.object({
-            name: Yup.string().required('Bạn vui lòng nhập tên'),
-            age: Yup.number().required('Bạn vui lòng nhập tuổi'),
-            phone: Yup.string()
-                .matches(/(84|0[3|5|7|8|9])+([0-9]{8})\b/, 'Bạn vui lòng nhập đúng số điện thoại')
-                .required('Bạn vui lòng nhập số điện thoại'),
-            email: Yup.string().required('Bạn vui lòng nhập địa chỉ email'),
             address: Yup.string().required('Bạn vui lòng chọn địa chỉ'),
             course: Yup.string().required('Bạn vui lòng chọn khóa học'),
-            rank: Yup.string().required('Bạn vui lòng chọn cấp bậc'),
         }),
         onSubmit: async (value) => {
             const result = {
@@ -110,7 +103,7 @@ const FormPut = ({ setUser, courseData, locationData, handlePutNew, benefitData,
         handleCourseId();
     }, [formick.values.course]);
     console.log(idPut.name);
-    console.log(formick.values.name)
+    console.log(formick.values.name);
     return (
         <form action="" onSubmit={formick.handleSubmit} className={cx('form')}>
             <h2>Sửa Thông tin khách hàng</h2>
@@ -135,7 +128,6 @@ const FormPut = ({ setUser, courseData, locationData, handlePutNew, benefitData,
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         {formick.errors.age && formick.touched.age && (
                             <div className={cx('p')}>
-                                {' '}
                                 <p>{formick.errors.age}</p>
                             </div>
                         )}
@@ -151,7 +143,6 @@ const FormPut = ({ setUser, courseData, locationData, handlePutNew, benefitData,
                         <FontAwesomeIcon icon={faStarOfLife} className={cx('icon')} />
                         {formick.errors.phone && formick.touched.phone && (
                             <div className={cx('p')}>
-                                {' '}
                                 <p>{formick.errors.phone}</p>
                             </div>
                         )}
@@ -250,7 +241,7 @@ const FormPut = ({ setUser, courseData, locationData, handlePutNew, benefitData,
                 <button type="submit" className={cx('buttonSave')}>
                     Lưu
                 </button>
-                <button type='button' className={cx('buttonCal')} onClick={handlePutNew}>
+                <button type="button" className={cx('buttonCal')} onClick={handlePutNew}>
                     Trở lại
                 </button>
             </div>

@@ -13,8 +13,7 @@ const ModalDetailOrder = () => {
                 <h3>Ảnh đơn hàng </h3>
                 <hr />
                 {profileDetailOrder.map((product) => {
-                    return product.courseID.map((item) => {
-                        console.log(item.name);
+                    return product.courseID?.map((item) => {
                         return (
                             <div key={item._id} className={cx('img')}>
                                 <img src={item.img} alt="" />
@@ -32,17 +31,25 @@ const ModalDetailOrder = () => {
                             return (
                                 <div key={product._id} className={cx('infoUserLeft')}>
                                     <p className={cx('p')}>
-                                        <span> Họ và tên:</span> {product.userID === null ? '' : product.userID.name}.
+                                        Họ và tên: <span>{product.userID === null ? '' : product.userID.name}</span>
                                     </p>
                                     <p className={cx('p')}>
-                                        <span>Tuổi:</span> {product.userID === null ? '' : product.userID.age}.
+                                        Tuổi: <span>{product.userID === null ? '' : product.userID.age}</span>
                                     </p>
                                     <p className={cx('p')}>
-                                        {' '}
-                                        <span>Cấp bậc:</span> {product.userID === null ? '' : product.userID.rank}.
+                                        Cấp bậc:
+                                        <span
+                                            className={cx(
+                                                product.rank === 'Gold' && 'gold',
+                                                product.rank === 'Platinum' && 'platinum',
+                                                product.rank === 'Diamond' && 'diamond',
+                                            )}
+                                        >
+                                            {product.rank}
+                                        </span>
                                     </p>
                                     <p className={cx('p')}>
-                                        <span>SDT:</span> {product.userID === null ? '' : product.userID.phone}.
+                                        SDT: <span>{product.userID === null ? '' : product.userID.phone}</span>
                                     </p>
                                 </div>
                             );
@@ -51,12 +58,10 @@ const ModalDetailOrder = () => {
                             return (
                                 <div key={product._id} className={cx('infoUserRight')}>
                                     <p className={cx('p')}>
-                                        <span>Emali: </span>
-                                        {product.userID === null ? '' : product.userID.email}.
+                                        Emali: <span>{product.userID === null ? '' : product.userID.email}</span>
                                     </p>
                                     <p className={cx('p')}>
-                                        <span>Địa chỉ: </span>
-                                        {product.userID === null ? '' : product.userID.address}.
+                                        Địa chỉ: <span>{product.userID === null ? '' : product.userID.address}</span>
                                     </p>
                                 </div>
                             );
@@ -80,15 +85,17 @@ const ModalDetailOrder = () => {
                             </thead>
                             <tbody>
                                 {profileDetailOrder.map((product) => {
-                                    return product.courseID.map((item, index) => {
+                                    console.log(product);
+
+                                    return product.courseID?.map((item, index) => {
                                         return (
                                             <tr key={index}>
-                                                <td>{index}</td>
+                                                <td>{index + 1}</td>
                                                 <td>{item.name}</td>
                                                 <td>{formatCurrencyVND(item.price)}</td>
-                                                <td>{item.updatedAt.slice(0, 10)}</td>
+                                                <td>{item.updatedAt?.slice(0, 10)}</td>
                                                 <td>{item.status}</td>
-                                                <td>{product.timePrice.slice(0, 10)}</td>
+                                                <td>{product.timePrice?.slice(0, 10)}</td>
                                             </tr>
                                         );
                                     });

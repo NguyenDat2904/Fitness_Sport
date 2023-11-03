@@ -138,6 +138,8 @@ const FormAddCourse = ({ location, handleStyleFontAdd }) => {
     useEffect(() => {
         handlIdLocation();
     }, [formick.values.location]);
+    const date= new Date(formick.values.start);
+    console.log(date)
     return (
         <form action="" onSubmit={formick.handleSubmit} className={cx('formAddOrder')}>
             <h2>Thêm mới khóa học</h2>

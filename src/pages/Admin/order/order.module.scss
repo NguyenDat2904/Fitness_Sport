@@ -74,6 +74,7 @@
             width: 100%;
             thead {
                 th {
+                    text-align: center;
                     border-bottom: 1px solid black;
                     font-family: 'Roboto', sans-serif;
                     font-size: 16px;
@@ -85,8 +86,9 @@
                     font-family: 'Roboto', sans-serif;
                 }
                 td {
+                    line-height: 40px;
                     font-family: 'Roboto', sans-serif;
-
+                    text-align: center;
                     border-bottom: 1px solid black;
                 }
 
@@ -194,4 +196,103 @@
         }
     }
 }
+}
+
+@media (min-width:1024px) and (max-width:1400px) {
+    .order{
+        .client{
+           
+            .table{
+                table{
+                    thead{
+                       
+                        th:nth-child(3)
+                        {
+                            display: none;
+                        }
+                    }
+                    tbody{
+                       
+                        td:nth-child(3)
+                        {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width:640px) {
+    .order{
+        .client{
+            .tagBar{
+               
+                .courseLever{
+                    display: flex;
+                    padding-right: 10px;
+                    justify-content: flex-end;
+                    select{
+                        width: 50%;
+                    }
+                }
+            }
+            .table{ 
+                table{
+                    thead{
+                        th:nth-child(6),
+                        th:nth-child(5),
+                        th:nth-child(3)
+                        {
+                            display: none;
+                        }
+                    }
+                    tbody{
+                        td:nth-child(6),
+                        td:nth-child(5),
+                        td:nth-child(3)
+                        {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 640px){
+    .order{
+        .client{
+            .tagBar{
+                .courseLever{
+                    select{
+                        width: 40%;
+                    }
+                }
+            }
+            .table{ 
+                table{
+                    thead{
+                         th:nth-child(4),
+                        th:nth-child(6),
+                        th:nth-child(5),
+                        th:nth-child(3)
+                        {
+                            display: none;
+                        }
+                    }
+                    tbody{
+                        td:nth-child(4),
+                        td:nth-child(6),
+                        td:nth-child(5),
+                        td:nth-child(3)
+                        {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

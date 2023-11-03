@@ -82,3 +82,21 @@
         }
     }
 }
+@media only screen and (max-width: 640px){
+    .formAddOrder{
+        .formInputSelect{
+           display: flex;
+           flex-direction: column;
+            .input{
+                margin-top: 20px;
+                select,
+                input {
+                    height: 40px;
+                }
+                .icon{
+                    margin: 12px 0 0 10px;
+                }
+            }
+        }
+    }
+}

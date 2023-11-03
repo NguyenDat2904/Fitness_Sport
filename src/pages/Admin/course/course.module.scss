@@ -174,3 +174,86 @@
     }
 }
 }
+@media (min-width:1024px) and (max-width:1400px) {
+    .course{
+        .client{
+           
+            .table{
+                table{
+                    thead{
+                        th:nth-child(5),
+                        th:nth-child(6)
+                        {
+                            display: none;
+                        }
+                    }
+                    tbody{
+                        td:nth-child(5),
+                        td:nth-child(6)
+                        {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width:640px) {
+    .course{
+        .client{
+            
+            .table{ 
+                table{
+                    thead{
+                        th:nth-child(6),
+                         th:nth-child(5),
+                        th:nth-child(4)
+                        {
+                            display: none;
+                        }
+                    }
+                    tbody{
+                        td:nth-child(6),
+                        td:nth-child(5),
+                        td:nth-child(4)
+                        {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 640px){
+    .course{
+        .client{
+           
+            .table{ 
+                padding: 30px 10px;
+                table{
+                    thead{
+                        th:nth-child(3),
+                        th:nth-child(6),
+                         th:nth-child(5),
+                        th:nth-child(4)
+                        {
+                            display: none;
+                        }
+                    }
+                    tbody{
+                        td:nth-child(3),
+                        td:nth-child(6),
+                        td:nth-child(5),
+                        td:nth-child(4)
+                        {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

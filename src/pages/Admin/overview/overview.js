@@ -37,18 +37,18 @@ const Overview = ({ activeClass }) => {
         apiUsers();
     }, []);
 
-    const sliceDataClient = dataClient.slice(dataClient.length - 6, dataClient.length);
-    const silcedataOrder = dataOrder.slice(dataOrder.length - 6, dataOrder.length);
-    const silcedataCourses = dataCourse.slice(dataCourse.length - 3, dataCourse.length);
+    const sliceDataClient = dataClient?.slice(dataClient.length - 6, dataClient.length);
+    const silcedataOrder = dataOrder?.slice(dataOrder.length - 6, dataOrder.length);
+    const silcedataCourses = dataCourse?.slice(dataCourse.length - 3, dataCourse.length);
     const total = dataOrder.reduce((a, b) => a + b.totalPrice, 0);
-    const yogaNewPeople = dataClient.filter((product) => {
-        return product.courseID.filter((item) => item.name === 'Yoga cho người mới bắt đầu').length > 0;
+    const yogaNewPeople = dataClient?.filter((product) => {
+        return product.courseID?.filter((item) => item.name === 'Yoga cho người mới bắt đầu').length > 0;
     });
-    const dance = dataClient.filter((product) => {
-        return product.courseID.filter((item) => item.name === 'SEXY DANCE - NỔI BẬT ĐƯỜNG CONG').length > 0;
+    const dance = dataClient?.filter((product) => {
+        return product.courseID?.filter((item) => item.name === 'SEXY DANCE - NỔI BẬT ĐƯỜNG CONG').length > 0;
     });
-    const yogaPeople = dataClient.filter((product) => {
-        return product.courseID.filter((item) => item.name === 'Khóa học yoga cho người làm văn phòng').length > 0;
+    const yogaPeople = dataClient?.filter((product) => {
+        return product.courseID?.filter((item) => item.name === 'Khóa học yoga cho người làm văn phòng').length > 0;
     });
 
     const options1 = {
@@ -69,15 +69,15 @@ const Overview = ({ activeClass }) => {
                 indexLabel: '{label} - {y}%',
                 dataPoints: [
                     {
-                        y: (yogaPeople.length * 100) / (yogaNewPeople.length + dance.length + yogaPeople.length),
+                        y: (yogaPeople?.length * 100) / (yogaNewPeople?.length + dance?.length + yogaPeople?.length),
                         label: 'YOGA  cho người văn phòng',
                     },
                     {
-                        y: (yogaNewPeople.length * 100) / (yogaNewPeople.length + dance.length + yogaPeople.length),
+                        y: (yogaNewPeople?.length * 100) / (yogaNewPeople?.length + dance?.length + yogaPeople?.length),
                         label: 'YOGA cho người mới',
                     },
                     {
-                        y: (dance.length * 100) / (yogaNewPeople.length + dance.length + yogaPeople.length),
+                        y: (dance?.length * 100) / (yogaNewPeople?.length + dance?.length + yogaPeople?.length),
                         label: 'SEXY DANCE',
                     },
                 ],
@@ -195,7 +195,7 @@ const Overview = ({ activeClass }) => {
 
                                 <div>
                                     <h6> Khách hàng</h6>
-                                    <p>{dataClient.length}</p>
+                                    <p>{dataClient?.length}</p>
                                 </div>
                             </div>
                         </NavLink>
@@ -208,7 +208,7 @@ const Overview = ({ activeClass }) => {
 
                                 <div>
                                     <h6>Khóa học</h6>
-                                    <p>{dataCourse.length}</p>
+                                    <p>{dataCourse?.length}</p>
                                 </div>
                             </div>
                         </NavLink>
@@ -220,7 +220,7 @@ const Overview = ({ activeClass }) => {
 
                                 <div>
                                     <h6> Đơn hàng</h6>
-                                    <p>{dataOrder.length}</p>
+                                    <p>{dataOrder?.length}</p>
                                 </div>
                             </div>
                         </NavLink>
@@ -250,7 +250,7 @@ const Overview = ({ activeClass }) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {sliceDataClient.map((product, index) => {
+                                    {sliceDataClient?.map((product, index) => {
                                         return (
                                             <tr key={product._id}>
                                                 <td>{index}</td>
@@ -270,7 +270,7 @@ const Overview = ({ activeClass }) => {
                                 <h3>Khách hàng</h3>
 
                                 <div className={cx('clientProduct')}>
-                                    {sliceDataClient.map((product) => {
+                                    {sliceDataClient?.map((product) => {
                                         return (
                                             <div className={cx('mapClient')} key={product._id}>
                                                 <img
@@ -278,7 +278,7 @@ const Overview = ({ activeClass }) => {
                                                     alt=""
                                                 />
                                                 <p>{product.name}</p>
-                                                <p>{product.createdAt.slice(0, 10)}</p>
+                                                <p>{product.createdAt?product.createdAt.slice(0, 10):""}</p>
                                             </div>
                                         );
                                     })}

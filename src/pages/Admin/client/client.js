@@ -102,17 +102,17 @@ const Client = () => {
         }
     };
 
-    const result = userData.filter((product) => {
+    const result = userData?.filter((product) => {
         if (selectCourse && selectLever) {
             return (
-                product.courseID.filter((item) => item.name === selectCourse).length > 0 && product.rank === selectLever
+                product.courseID?.filter((item) => item.name === selectCourse).length > 0 && product.rank === selectLever
             );
         }
         if (!selectCourse && selectLever) {
             return product.rank === selectLever;
         }
         if (selectCourse && !selectLever) {
-            return product.courseID.filter((item) => item.name === selectCourse).length > 0;
+            return product.courseID?.filter((item) => item.name === selectCourse).length > 0;
         }
 
         if (phoneUser) {
@@ -121,7 +121,7 @@ const Client = () => {
 
         return true;
     });
-    const resultSort = result.sort((nv1, nv2) => {
+    const resultSort = result?.sort((nv1, nv2) => {
         if (selectSort === 'a->z') {
             let a = nv1.name.toLowerCase();
             let b = nv2.name.toLowerCase();
@@ -214,12 +214,12 @@ const Client = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {resultSort.length === 0 ? (
+                            {resultSort?.length === 0 ? (
                                 <tr>
                                     <td className={cx('error')}> Không có thông tin cho loại dữ liệu này...</td>
                                 </tr>
                             ) : (
-                                resultSort.map((product, indext) => {
+                                resultSort?.map((product, indext) => {
                                     const handleDedete = async (id) => {
                                         try {
                                             const accessToken = localStorage.getItem('accessToken');
@@ -238,13 +238,13 @@ const Client = () => {
                                             <td>{product.phone === undefined ? 'null' : product.phone}</td>
                                             <td>{product.email}</td>
 
-                                            {product.courseID.length === 0 ? (
+                                            {product.courseID?.length === 0 ? (
                                                 <td>null</td>
                                             ) : (
                                                 <td>{`${product.courseID[0].name}...`}</td>
                                             )}
                                             <td>{product.rank === '' ? 'null' : product.rank}</td>
-                                            <td>{product.updatedAt.slice(0, 10)}</td>
+                                            <td>{product.updatedAt?product.updatedAt.slice(0, 10):""}</td>
                                             <td className={cx('detail')}>
                                                 <button
                                                     className={cx('buttonview')}

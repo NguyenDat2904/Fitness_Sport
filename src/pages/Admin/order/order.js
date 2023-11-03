@@ -120,7 +120,7 @@ const Order = () => {
                                             <>
                                                 <td>{product.userID.name}</td>
 
-                                                <td>{product.userID.address}</td>
+                                                <td>{product.userID.address.slice(0,34)}...</td>
                                             </>
                                         )}
                                         <td>

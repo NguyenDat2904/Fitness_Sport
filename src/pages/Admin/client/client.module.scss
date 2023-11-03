@@ -15,7 +15,6 @@
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 background-color: #fff;
                 border-radius: 5px;
-
                 outline: none;
                 padding: 0 15px;
                 width: 60%;
@@ -26,7 +25,7 @@
                 font-size: 20px;
                 position: absolute;
                 top: 50%;
-                left: 55%;
+                left: 54%;
                 transform: translateY(-50%);
             }
         }
@@ -52,6 +51,7 @@
                 display: none;
             }
             .selectInfo {
+                
                 border-radius: 5px;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 width: 100%;
@@ -79,6 +79,7 @@
             }
         }
         .selectSort {
+           
             width: 100%;
             background-color: #fff;
             border-radius: 5px;
@@ -232,4 +233,134 @@
             }
         }
     }
+}
+@media (min-width:1024px) and (max-width:1400px) {
+    .users{
+        .client{
+            .tagBar{
+                display: grid;
+        grid-template-columns: 3fr 1.5fr 1fr;
+            }
+            .table{
+                table{
+                    thead{
+                        th:nth-child(6),
+                        th:nth-child(4)
+                        {
+                            display: none;
+                        }
+                    }
+                    tbody{
+                        td:nth-child(6),
+                        td:nth-child(4)
+                        {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1024px) and (min-width:640px) {
+    .users{
+        .client{
+            .tagBar{
+                display: grid;
+               grid-template-columns: 2fr 1.5fr 1fr;
+               .search{
+                input{
+                    width: 80%;
+                }
+                .icon{
+                    position: absolute;
+                    top: 50%;
+                    left: 65%;
+                    transform: translateY(-50%);
+                }
+               }
+            }
+            .table{ 
+                table{
+                    thead{
+                        th:nth-child(6),
+                         th:nth-child(5),
+                        th:nth-child(4)
+                        {
+                            display: none;
+                        }
+                    }
+                    tbody{
+                        td:nth-child(6),
+                        td:nth-child(5),
+                        td:nth-child(4)
+                        {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 640px){
+    .users{
+        .client{
+            .tagBar{
+                display:block;
+               .search{
+                height: 35px;
+                padding: 0 10px;
+                input{
+                    width: 100%;
+                }
+                .icon{
+                    position: absolute;
+                    top: 50%;
+                    left: 85%;
+                    transform: translateY(-50%);
+                }
+               }
+               .courseLever{
+                margin-top: 10px;
+                padding: 0 10px;
+                button{
+                   padding: 8px 5px 0 5px;
+                    height:35px;
+                    font-size: 16px;
+                }
+               }
+               .selectSort{
+                margin-top: 10px;
+                    width: calc(100% - 20px);
+                    margin-left: 10px;
+                    height: 35px;
+               }
+            }
+            .table{ 
+                padding: 30px 10px;
+                table{
+                    thead{
+                        th:nth-child(3),
+                        th:nth-child(6),
+                         th:nth-child(5),
+                        th:nth-child(4)
+                        {
+                            display: none;
+                        }
+                    }
+                    tbody{
+                        td:nth-child(3),
+                        td:nth-child(6),
+                        td:nth-child(5),
+                        td:nth-child(4)
+                        {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

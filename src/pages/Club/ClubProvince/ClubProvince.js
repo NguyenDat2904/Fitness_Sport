@@ -52,18 +52,40 @@ const ClubProvince = () => {
 
     useEffect(() => {
         setLoading(true);
-        getLocationData(cityName.city, dis)
-            .then((result) => {
-                setLocations(result);
-            })
-            .catch((error) => {
-                if (error.response) {
-                    setStatusCode(error.response.status);
-                    navigate('/error');
+        const test = async () => {
+            await getLocationData(cityName.city, dis)
+                .then((result) => {
+                    setLocations(result);
+                    const districtCount = {};
+                    const handleFilterDistrict = () => {
+                        for (const obj of result) {
+                            const district = obj.district;
+                            if (districtCount[district]) {
+                                districtCount[district]++;
+                            } else {
+                                districtCount[district] = 1;
+                            }
+                        }
+                        const filter = Object.keys(districtCount).filter((item) => {
+                            console.log(item);
+                            return districtCount[item];
+                        });
+                        console.log(filter);
+                        setDistricts(filter);
+                        return;
+                    };
+                    handleFilterDistrict();
+                })
+                .catch((error) => {
+                    if (error.response) {
+                        setStatusCode(error.response.status);
+                        navigate('/error');
+                        console.error(error);
+                    }
                     console.error(error);
-                }
-                console.error(error);
-            });
+                });
+        };
+        test();
 
         setShow('');
         setTimeout(() => {
@@ -71,28 +93,6 @@ const ClubProvince = () => {
         }, 2000);
     }, [cityName.city, dis]);
 
-    useEffect(() => {
-        const handleFilterDistrict = () => {
-            const districtCount = {};
-            for (const obj of locations) {
-                const district = obj.district;
-                if (districtCount[district]) {
-                    districtCount[district]++;
-                } else {
-                    districtCount[district] = 1;
-                }
-            }
-            const filter = Object.keys(districtCount).filter((item) => districtCount[item]);
-            console.log(filter);
-            setDistricts(filter);
-        };
-        setTimeout(() => {
-            handleFilterDistrict();
-        }, 2000);
-        if (locations.length === 0) {
-            setDis('');
-        }
-    }, []);
 
     return (
         <>

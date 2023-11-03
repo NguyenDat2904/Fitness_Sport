@@ -35,7 +35,7 @@ const publicRoutes = [
         component: ClubProvince,
     },
     {
-        path: '/club-details',
+        path: '/club-details/:id',
         component: ClubDetails,
     },
     {
@@ -43,7 +43,7 @@ const publicRoutes = [
         component: ListBlogContain,
     },
     {
-        path: '/blog-details',
+        path: '/blog-details/:id',
         component: BlogDetails,
     },
     {

@@ -4,7 +4,8 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 const cx = classNames.bind(style);
 
-const PostItem = () => {
+const PostItem = ({ item }) => {
+    const { img, title } = item;
     return (
         <div className={cx('item')}>
             <Link to="#">
@@ -13,17 +14,14 @@ const PostItem = () => {
                         className={cx('lazy', 'blog-image')}
                         width="100%"
                         height="300px"
-                        src="https://cali.vn/storage/app/media/2023/Blog/CFF/Thumbnail_2.png"
+                        src={img}
                         alt="banner-homepage"
                     />
                 </div>
             </Link>
             <div className={cx('item-text')}>
                 <Link to="#">
-                    <div className={cx('item-title')}>
-                        8.000 khán giả “cháy” cùng tlinh, HIEUTHUHAI, Andree Right Hand, Chillies tại đại nhạc hội
-                        California’s Fitness Festival
-                    </div>
+                    <div className={cx('item-title')}>{title}</div>
                 </Link>
             </div>
             <Link to="#">

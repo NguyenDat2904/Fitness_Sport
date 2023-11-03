@@ -55,23 +55,6 @@ const ClubProvince = () => {
         getLocationData(cityName.city, dis)
             .then((result) => {
                 setLocations(result);
-                const handleFilterDistrict = () => {
-                    const districtCount = {};
-                    for (const obj of result) {
-                        const district = obj.district;
-                        if (districtCount[district]) {
-                            districtCount[district]++;
-                        } else {
-                            districtCount[district] = 1;
-                        }
-                    }
-                    const filter = Object.keys(districtCount).filter((district) => districtCount[district] === 1);
-                    setDistricts(filter);
-                };
-                handleFilterDistrict();
-                if (locations.length === 0) {
-                    setDis('');
-                }
             })
             .catch((error) => {
                 if (error.response) {
@@ -81,11 +64,35 @@ const ClubProvince = () => {
                 }
                 console.error(error);
             });
+
         setShow('');
         setTimeout(() => {
             setLoading(false);
         }, 2000);
-    }, [cityName, dis]);
+    }, [cityName.city, dis]);
+
+    useEffect(() => {
+        const handleFilterDistrict = () => {
+            const districtCount = {};
+            for (const obj of locations) {
+                const district = obj.district;
+                if (districtCount[district]) {
+                    districtCount[district]++;
+                } else {
+                    districtCount[district] = 1;
+                }
+            }
+            const filter = Object.keys(districtCount).filter((item) => districtCount[item]);
+            console.log(filter);
+            setDistricts(filter);
+        };
+        setTimeout(() => {
+            handleFilterDistrict();
+        }, 2000);
+        if (locations.length === 0) {
+            setDis('');
+        }
+    }, []);
 
     return (
         <>

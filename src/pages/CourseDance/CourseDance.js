@@ -83,9 +83,6 @@ function CourseDance() {
                         </div>
                         <div className={cx('description')}>{course.desc}</div>
                         <div className={cx('information-content')}>
-                            <div className={cx('address')}>
-                                Tầng 2 & 3 , Somerset West Point, Số 2 Tây Hồ, P. Quảng An, Q. Tây Hồ, Hà Nội.
-                            </div>
                             <div className={cx('price')}>
                                 <div className={cx('cost')}>{formattedCost}</div>
                                 <div className={cx('sale-price')}>{formattedPrice}</div>
@@ -150,104 +147,6 @@ function CourseDance() {
                                     Lịch tập nhiều khung giờ, có lớp sáng sớm Đa dạng các loại hình Yoga và cấp độ Giảng
                                     dạy bởi YogA Ấn Độ và Việt Nam Giáo án Quốc tế cập nhật hàng tuần
                                 </p>
-                            </div>
-                            <div className={cx('search-position')}>
-                                <div className={cx('search-group')}>
-                                    <div
-                                        className={cx('search-box')}
-                                        style={{ display: 'flex', width: '100%', position: 'relative' }}
-                                    >
-                                        <img
-                                            className={cx('lazy')}
-                                            id="icon-search"
-                                            style={{
-                                                objectFit: 'contain',
-                                                paddingLeft: 20,
-                                                cursor: 'pointer',
-                                                zIndex: 6,
-                                            }}
-                                            alt="icon"
-                                            src="https://cali.vn/themes/cfyc//assets/static/icon/search.svg"
-                                            onClick={onShow}
-                                        />
-                                        <input
-                                            type="text"
-                                            placeholder="Chọn thành phố của bạn.."
-                                            autoComplete="off"
-                                            id={cx('myInput')}
-                                            onClick={onShow}
-                                        />
-                                        <div className={cx('drop-box-mobile', { show })} id={cx('myDropdown')}>
-                                            <div
-                                                id={cx('myDropdown_inside')}
-                                                className={cx('search-clb-dropdown-content')}
-                                            >
-                                                <p className={cx('mobile-header-search-box')}>Chọn thành phố</p>
-                                                <Link to="#">
-                                                    <input id="Hà Nội" type="radio" hidden name="check_box_search" />
-                                                    <label htmlFor="Hà Nội">Hà Nội</label>
-                                                </Link>
-                                                <Link to="#">
-                                                    <input id="Đà Nẵng" type="radio" hidden name="check_box_search" />
-                                                    <label htmlFor="Đà Nẵng">Đà Nẵng</label>
-                                                </Link>
-                                                <Link to="#">
-                                                    <input id="Khánh Hòa" type="radio" hidden name="check_box_search" />
-                                                    <label htmlFor="Khánh Hòa">Khánh Hòa</label>
-                                                </Link>
-                                                <Link to="#">
-                                                    <input
-                                                        id="Bình Dương"
-                                                        type="radio"
-                                                        hidden
-                                                        name="check_box_search"
-                                                    />
-                                                    <label htmlFor="Bình Dương">Bình Dương</label>
-                                                </Link>
-                                                <Link to="#">
-                                                    <input id="Đồng Nai" type="radio" hidden name="check_box_search" />
-                                                    <label htmlFor="Đồng Nai">Đồng Nai</label>
-                                                </Link>
-                                                <Link to="#">
-                                                    <input
-                                                        id="Bà Rịa - Vũng Tàu"
-                                                        type="radio"
-                                                        hidden
-                                                        name="check_box_search"
-                                                    />
-                                                    <label htmlFor="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</label>
-                                                </Link>
-                                                <Link to="#">
-                                                    <input
-                                                        id="Hồ Chí Minh"
-                                                        type="radio"
-                                                        hidden
-                                                        name="check_box_search"
-                                                    />
-                                                    <label htmlFor="Hồ Chí Minh">Hồ Chí Minh</label>
-                                                </Link>
-                                                <Link to="#">
-                                                    <input id="Cần Thơ" type="radio" hidden name="check_box_search" />
-                                                    <label htmlFor="Cần Thơ">Cần Thơ</label>
-                                                </Link>
-                                            </div>
-                                        </div>
-                                        <div className={cx('mobile-shadow')} />
-                                    </div>
-                                    <img
-                                        className="lazy"
-                                        id="icon-search-dropdown"
-                                        style={{
-                                            marginRight: 20,
-                                            cursor: 'pointer',
-                                            transform: show === 'show' ? 'unset' : 'rotate(180deg)',
-                                            transition: 'all 0.3s ease',
-                                        }}
-                                        alt="Vector-submenu.svg"
-                                        src="https://cali.vn/themes/cfyc/assets/static/icon/Vector-submenu.svg"
-                                        onClick={onShow}
-                                    />
-                                </div>
                             </div>
                         </div>
                     </div>

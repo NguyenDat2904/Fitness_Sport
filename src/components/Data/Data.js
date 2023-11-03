@@ -173,7 +173,7 @@ export const data_card = [
         rank: 'Platinum',
     },
     {
-        name: 'Khu vực đặt nước rửa tay',
+        name: 'HẠNG PRESTIGE',
         img: 'https://cali.vn/storage/app/media/2023/MBS/Prestige/DuesPrestige-Card.png',
         desc: 'Tập toàn thời gian tại tất cả CLB trên Toàn Quốc và 10 buổi YI, 10 buổi Hypoxy, Tư vẫn dinh dưỡng, Sử dụng bể bơi, Qùa tặng sinh nhật, Ghế Massage, Phòng xông hơi với 1.488.000 VNĐ',
         price: 1488000,

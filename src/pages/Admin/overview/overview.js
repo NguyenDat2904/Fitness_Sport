@@ -54,7 +54,7 @@ const Overview = ({ activeClass }) => {
     const options1 = {
         animationEnabled: true,
         title: {
-            text: 'Tỉ lệ thang gia các khóa học',
+            text: 'Tỉ lệ tham gia các khóa học',
             fontSize: 24,
             fontFamily: 'sans-serif',
         },

@@ -210,7 +210,10 @@
         text-decoration: unset !important;
     }
 
-    .search-contain,
+    .search-contain{
+        max-width: 1200px;
+        margin: auto;
+    }
     .list-item-contain {
         max-width: 1200px;
         margin: auto;

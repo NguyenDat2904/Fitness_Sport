@@ -78,9 +78,6 @@ const CourseAll = () => {
                         </div>
                         <div className={cx('description')}>{course.desc}</div>
                         <div className={cx('information-content')}>
-                            <div className={cx('address')}>
-                                Tầng 2 & 3 , Somerset West Point, Số 2 Tây Hồ, P. Quảng An, Q. Tây Hồ, Hà Nội.
-                            </div>
                             <div className={cx('price')}>
                                 <div className={cx('cost')}>{formattedCost}</div>
                                 <div className={cx('sale-price')}>{formattedPrice}</div>
